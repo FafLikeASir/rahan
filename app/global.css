@@ -1,150 +1,212 @@
 @import 'tailwindcss';
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
-}
-
+/* ─── Semantic tokens — editorial palette ──────────────────────────── */
 :root {
-  --sh-class: #2d5e9d;
-  --sh-identifier: #354150;
-  --sh-sign: #8996a3;
-  --sh-string: #007f7a;
-  --sh-keyword: #e02518;
-  --sh-comment: #a19595;
-  --sh-jsxliterals: #6266d1;
-  --sh-property: #e25a1c;
-  --sh-entity: #e25a1c;
+  /* Base */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.208 0.042 265.755);       /* slate-900 */
+
+  /* Surface variants */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.208 0.042 265.755);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.208 0.042 265.755);
+
+  /* Muted — slate-50/500 */
+  --muted: oklch(0.984 0.003 247.858);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+
+  /* Primary — slate-900 for headings / nav name */
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(1 0 0);
+
+  /* Secondary — slate-100 */
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.279 0.041 260.031);
+
+  /* Accent — blue-600, signature P2 entry point */
+  --accent: oklch(0.488 0.196 258.5);
+  --accent-foreground: oklch(1 0 0);
+
+  /* Borders & inputs — slate-200 */
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.488 0.196 258.5);
+
+  /* Destructive */
+  --destructive: oklch(0.577 0.245 27.325);
+
+  /* Radius */
+  --radius: 0.5rem;
+
+  /* ── Hero palette ─────────────────────────────────────────────────── */
+  --hero-bg: #0c1929;
+  --hero-deep: #0f2847;
+  --hero-mid: #0e4a6e;
+  --hero-teal: #0a5c5e;
+  --hero-green: #07694a;
+
+  /* ── Hero navy (Mention card accent) ────────────────────────────── */
+  --hero-navy: #122e5e;
+
+  /* ── P2 signature gradient (arrow only) ──────────────────────────── */
+  --gradient-blue: #3b82f6;
+  --gradient-cyan: #06b6d4;
+  --gradient-emerald: #10b981;
+
+  /* ── Hero overlay / glass system ─────────────────────────────────── */
+  --hero-grid-size: 40px;
+  --hero-grid:     rgba(255,255,255,.06);
+  --hero-vignette: rgba(7,10,20,.65);
+  --hero-shadow-text: rgba(0,0,0,.4);
+
+  --hero-glass-a-border: rgba(255,255,255,.08);
+  --hero-glass-a-bg:     rgba(255,255,255,.03);
+  --hero-glass-b-border: rgba(255,255,255,.07);
+  --hero-glass-b-bg:     rgba(255,255,255,.02);
+  --hero-glass-c-bg:     rgba(255,255,255,.025);
+
+  --hero-badge-bg:     rgba(255,255,255,.05);
+  --hero-badge-border: rgba(255,255,255,.15);
+  --hero-badge-text:   rgba(255,255,255,.70);
+
+  --hero-tag-bg:   rgba(255,255,255,.10);
+  --hero-tag-text: rgba(255,255,255,.65);
+
+  --hero-text-1: rgba(255,255,255,.85);
+  --hero-text-2: rgba(255,255,255,.55);
+  --hero-text-3: rgba(255,255,255,.45);
+
+  --hero-initial: rgba(255,255,255,.08);
+
+  --hero-mesh-blue:    rgba(37,99,235,.18);
+  --hero-mesh-cyan:    rgba(6,182,212,.12);
+  --hero-mesh-emerald: rgba(5,150,105,.15);
+  --hero-mesh-indigo:  rgba(99,102,241,.09);
+
+  --hero-aurora-cyan: rgba(6,182,212,.3);
+  --hero-aurora-blue: rgba(37,99,235,.25);
+
+  /* ── Typography ──────────────────────────────────────────────────── */
+  --text-primary: oklch(0.208 0.042 265.755);    /* slate-900 */
+  --text-secondary: oklch(0.446 0.043 257.281);  /* slate-600 */
+  --text-tertiary: oklch(0.554 0.046 257.417);   /* slate-500 */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
+/* ─── @theme inline — Tailwind v4 design token map ───────────────── */
+@theme inline {
+  --font-sans: var(--font-plus-jakarta-sans);
+  --font-mono: var(--font-jetbrains-mono);
+
+  /* Editorial colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Hero palette */
+  --color-hero-bg: var(--hero-bg);
+  --color-hero-deep: var(--hero-deep);
+  --color-hero-mid: var(--hero-mid);
+  --color-hero-teal: var(--hero-teal);
+  --color-hero-green: var(--hero-green);
+
+  /* Text semantic shortcuts */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+
+  /* Custom font sizes */
+  --text-body-sm: 15px;
+  --text-tag:     11px;
+  --text-initial: 120px;
+
+  /* Radius scale */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+/* ─── Base layer ─────────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
   html {
-    color-scheme: dark;
+    @apply font-sans;
+    min-width: 360px;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
   }
 }
 
-html {
-  min-width: 360px;
+/* ─── Selection ──────────────────────────────────────────────────── */
+::selection {
+  background-color: color-mix(in oklch, var(--accent) 20%, transparent);
+  color: var(--foreground);
 }
 
-.prose .anchor {
-  @apply absolute invisible no-underline;
-
-  margin-left: -1em;
-  padding-right: 0.5em;
-  width: 80%;
-  max-width: 700px;
-  cursor: pointer;
-}
-
-.anchor:hover {
-  @apply visible;
-}
-
-.prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
-}
-
-.prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
-  content: '#';
-}
-
-.prose *:hover > .anchor {
-  @apply visible;
-}
-
-.prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
-}
-
-.prose code {
-  @apply px-1 py-0.5 rounded-lg;
-}
-
-.prose pre code {
-  @apply p-0;
-  border: initial;
-  line-height: 1.5;
-}
-
-.prose code span {
-  @apply font-medium;
-}
-
-.prose img {
-  /* Don't apply styles to next/image */
-  @apply m-0;
+/* ─── Prose (case study MDX) ─────────────────────────────────────── */
+.prose {
+  @apply text-text-primary leading-relaxed;
 }
 
 .prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
-}
-
-.prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+  @apply my-4;
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-2xl font-semibold tracking-tight mt-10 mb-3;
 }
 
 .prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-xl font-semibold tracking-tight mt-8 mb-2;
 }
 
 .prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2;
+  @apply text-base font-semibold tracking-tight mt-6 mb-2;
 }
 
 .prose strong {
-  @apply font-medium;
+  @apply font-semibold;
 }
 
 .prose ul {
-  @apply list-disc pl-6;
+  @apply list-disc pl-6 space-y-1;
 }
 
 .prose ol {
-  @apply list-decimal pl-6;
+  @apply list-decimal pl-6 space-y-1;
 }
 
-.prose > :first-child {
-  /* Override removing top margin, causing layout shift */
-  margin-top: 1.25em !important;
-  margin-bottom: 1.25em !important;
+.prose a {
+  @apply underline underline-offset-2 decoration-border hover:decoration-accent transition-colors;
+  color: var(--accent);
 }
 
-pre::-webkit-scrollbar {
-  display: none;
+.prose img {
+  @apply m-0;
 }
 
-pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-/* Remove Safari input shadow on mobile */
-input[type='text'],
-input[type='email'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-table {
-  display: block;
-  max-width: fit-content;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.title {
-  text-wrap: balance;
-}
+/* ─── Scrollbar (code blocks) ────────────────────────────────────── */
+pre::-webkit-scrollbar { display: none; }
+pre { -ms-overflow-style: none; scrollbar-width: none; }
