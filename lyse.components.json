@@ -1,0 +1,14 @@
+{
+  "components": [
+    { "name": "Button", "sourceFile": "components/ui/button.tsx" },
+    { "name": "StickyNav", "sourceFile": "components/layout/StickyNav.tsx" },
+    { "name": "Footer", "sourceFile": "components/layout/Footer.tsx" },
+    { "name": "Hero", "sourceFile": "components/hero/Hero.tsx" },
+    { "name": "WorkSection", "sourceFile": "components/home/WorkSection.tsx" },
+    { "name": "MethodSection", "sourceFile": "components/home/MethodSection.tsx" },
+    { "name": "SystemSection", "sourceFile": "components/home/SystemSection.tsx" },
+    { "name": "AboutSection", "sourceFile": "components/home/AboutSection.tsx" },
+    { "name": "CaseStudyLayout", "sourceFile": "components/case-study/CaseStudyLayout.tsx" },
+    { "name": "CaseFigure", "sourceFile": "components/case-study/CaseFigure.tsx" }
+  ]
+}

@@ -8,7 +8,7 @@ export function Hero() {
     <>
       {/* ── Hero section ───────────────────────────────────────────── */}
       <section
-        className="relative min-h-[560px] overflow-hidden lg:min-h-[640px]"
+        className="relative min-h-[400px] overflow-hidden sm:min-h-[560px] lg:min-h-svh"
         style={{ background: 'linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-deep) 30%, var(--hero-mid) 55%, var(--hero-teal) 78%, var(--hero-green) 100%)' }}
         aria-label="Introduction"
       >

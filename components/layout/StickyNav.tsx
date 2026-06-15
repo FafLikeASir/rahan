@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const links = [
@@ -14,6 +15,7 @@ const links = [
 
 export function StickyNav() {
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
   const isHome = pathname === '/'
 
@@ -64,7 +66,49 @@ export function StickyNav() {
             </li>
           ))}
         </ul>
+
+        <button
+          className={cn(
+            'sm:hidden transition-colors duration-300',
+            dark ? 'text-white/70 hover:text-white/90' : 'text-text-secondary hover:text-primary'
+          )}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+        >
+          {menuOpen ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
+        </button>
       </nav>
+
+      {menuOpen && (
+        <div
+          className={cn(
+            'sm:hidden border-t',
+            scrolled
+              ? 'bg-background/95 backdrop-blur-sm border-border'
+              : 'border-white/10 bg-black/30 backdrop-blur-sm'
+          )}
+        >
+          <ul className="flex flex-col px-6 py-3 gap-0.5" role="list">
+            {links.map(({ href, label }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  onClick={() => setMenuOpen(false)}
+                  className={cn(
+                    'block py-2 text-sm font-medium transition-colors duration-200',
+                    dark
+                      ? 'text-white/70 hover:text-white/90'
+                      : 'text-text-secondary hover:text-primary'
+                  )}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </header>
   )
 }
