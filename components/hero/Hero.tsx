@@ -77,8 +77,9 @@ export function Hero() {
           />
         </div>
 
-        {/* Aurora streaks */}
+        {/* Aurora streaks — horizontal + vertical (Lynx pattern) */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+          {/* Horizontal */}
           <div
             style={{
               position: 'absolute',
@@ -101,42 +102,97 @@ export function Hero() {
               animation: 'aurora2 25s ease-in-out infinite',
             }}
           />
+          {/* Vertical columns */}
+          <div
+            style={{
+              position: 'absolute',
+              top: 0, left: '28%',
+              width: '1px', height: '55%',
+              background: 'linear-gradient(to bottom, transparent, rgba(6,182,212,.25), transparent)',
+              filter: 'blur(0.5px)',
+              willChange: 'transform',
+              animation: 'auroraV1 18s ease-in-out infinite',
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              top: 0, left: '65%',
+              width: '1px', height: '45%',
+              background: 'linear-gradient(to bottom, transparent, rgba(37,99,235,.20), transparent)',
+              filter: 'blur(0.5px)',
+              willChange: 'transform',
+              animation: 'auroraV2 22s ease-in-out infinite',
+            }}
+          />
         </div>
 
         {/* Glass elements (right side, desktop only) */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden lg:block">
-          {/* Glass A — component spec silhouette */}
+          {/* Glass A — component preview (Pelmatech pattern) */}
           <div
             style={{
               position: 'absolute',
               top: '18%', right: '8%',
-              width: 180, height: 100,
+              width: 200, height: 118,
               borderRadius: 14,
               border: '1px solid var(--hero-glass-a-border)',
               background: 'var(--hero-glass-a-bg)',
               backdropFilter: 'blur(1px)',
               willChange: 'transform',
               animation: 'glassFloat1 12s ease-in-out infinite',
-              padding: '14px 16px',
+              padding: '12px 14px',
               display: 'flex',
               flexDirection: 'column',
               gap: 8,
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--gradient-emerald)', opacity: 0.8 }} />
-              <div style={{ width: 60, height: 4, borderRadius: 2, background: 'rgba(255,255,255,.12)' }} />
+            {/* Label row */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
+              <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: 10, color: 'rgba(255,255,255,.35)', letterSpacing: '0.06em' }}>Button</span>
+              <div style={{ display: 'flex', gap: 3 }}>
+                <div style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(255,255,255,.15)' }} />
+                <div style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(255,255,255,.15)' }} />
+              </div>
             </div>
-            <div style={{ width: '80%', height: 3, borderRadius: 2, background: 'rgba(255,255,255,.07)' }} />
-            <div style={{ width: '60%', height: 3, borderRadius: 2, background: 'rgba(255,255,255,.07)' }} />
-            <div style={{ marginTop: 'auto', height: 3, borderRadius: 2, background: 'linear-gradient(90deg, var(--gradient-blue), var(--gradient-cyan), var(--gradient-emerald))', opacity: 0.6 }} />
+            {/* Default state */}
+            <div style={{
+              borderRadius: 6,
+              padding: '5px 10px',
+              fontSize: 11,
+              fontWeight: 500,
+              color: 'rgba(255,255,255,.60)',
+              background: 'rgba(255,255,255,.08)',
+              display: 'flex', alignItems: 'center', gap: 5,
+            }}>
+              <span>Get started</span>
+            </div>
+            {/* Hover state */}
+            <div style={{
+              borderRadius: 6,
+              padding: '5px 10px',
+              fontSize: 11,
+              fontWeight: 500,
+              color: 'rgba(255,255,255,.90)',
+              background: 'rgba(255,255,255,.16)',
+              border: '1px solid rgba(255,255,255,.20)',
+              display: 'flex', alignItems: 'center', gap: 5,
+            }}>
+              <span>Get started</span>
+              <div style={{ width: 3, height: 3, borderRadius: '50%', background: 'var(--gradient-emerald)', opacity: 0.9, marginLeft: 'auto' }} />
+            </div>
+            {/* State label */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 'auto' }}>
+              <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: 9, color: 'rgba(255,255,255,.22)' }}>:default</span>
+              <span style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: 9, color: 'rgba(255,255,255,.22)' }}>:hover</span>
+            </div>
           </div>
 
           {/* Glass B — color token swatches */}
           <div
             style={{
               position: 'absolute',
-              top: '42%', right: '15%',
+              top: '44%', right: '15%',
               width: 140, height: 80,
               borderRadius: 12,
               border: '1px solid var(--hero-glass-b-border)',
@@ -221,34 +277,91 @@ export function Hero() {
             </span>
           </div>
 
-          {/* Heading */}
+          {/* Heading — boosted to text-7xl on desktop */}
           <h1
-            className="mb-3 text-5xl font-extrabold tracking-tight text-white lg:text-6xl hero-fade"
+            className="mb-3 text-5xl font-extrabold tracking-tight text-white lg:text-7xl hero-fade"
             style={{ textShadow: '0 2px 24px var(--hero-shadow-text)', '--delay': '80ms' } as StyledDiv}
           >
             Maxime Luet
           </h1>
 
-          {/* Subheading */}
+          {/* Subheading — "who codes" accented */}
           <p
             className="mb-4 text-xl font-medium lg:text-2xl hero-fade"
-            style={{ color: 'var(--hero-text-1)', '--delay': '160ms' } as StyledDiv}
+            style={{ '--delay': '160ms' } as StyledDiv}
           >
-            Product Designer who codes
+            <span style={{ color: 'var(--hero-text-1)' }}>Product Designer </span>
+            <span style={{ color: 'rgba(255,255,255,1)', fontWeight: 600 }}>who codes</span>
           </p>
 
           {/* Body */}
           <p
-            className="mb-8 max-w-sm text-body-sm leading-relaxed hero-fade"
+            className="mb-6 max-w-sm text-body-sm leading-relaxed hero-fade"
             style={{ color: 'var(--hero-text-2)', '--delay': '240ms' } as StyledDiv}
           >
             Based in France, I design and ship UI and design systems.
           </p>
 
-          {/* Figma → production arrow */}
+          {/* CTA buttons */}
+          <div
+            className="mb-8 flex items-center gap-3 hero-fade"
+            style={{ '--delay': '320ms' } as StyledDiv}
+          >
+            <a
+              href="#work"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                borderRadius: 9999,
+                padding: '8px 18px',
+                fontSize: 14,
+                fontWeight: 500,
+                background: 'rgba(255,255,255,.92)',
+                color: '#0f172a',
+                textDecoration: 'none',
+                transition: 'opacity 150ms ease',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = '0.88')}
+              onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+            >
+              View work
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
+            <a
+              href="#about"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                borderRadius: 9999,
+                padding: '8px 18px',
+                fontSize: 14,
+                fontWeight: 500,
+                background: 'transparent',
+                border: '1px solid rgba(255,255,255,.18)',
+                color: 'rgba(255,255,255,.70)',
+                textDecoration: 'none',
+                transition: 'border-color 150ms ease, color 150ms ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,.35)'
+                e.currentTarget.style.color = 'rgba(255,255,255,.90)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,.18)'
+                e.currentTarget.style.color = 'rgba(255,255,255,.70)'
+              }}
+            >
+              About me
+            </a>
+          </div>
+
+          {/* Figma → production arrow — signature moment, last */}
           <div
             className="flex items-center gap-3 hero-fade"
-            style={{ '--delay': '320ms' } as StyledDiv}
+            style={{ '--delay': '400ms' } as StyledDiv}
           >
             <span className="text-sm font-medium" style={{ color: 'var(--hero-text-3)' }}>
               from Figma
@@ -314,7 +427,7 @@ export function Hero() {
             stroke-dasharray: 18 68;
             stroke-dashoffset: 86;
             animation: arrowSweep 2.5s ease-in-out infinite;
-            animation-delay: 1.2s;
+            animation-delay: 1.5s;
           }
           @keyframes arrowSweep {
             from { stroke-dashoffset:  86; opacity: 0; }
@@ -357,7 +470,7 @@ export function Hero() {
             50%      { transform: translateY(-6px)  rotate(0.3deg); }
           }
 
-          /* Aurora */
+          /* Aurora — horizontal */
           @keyframes aurora1 {
             0%, 100% { transform: translateX(0)   scaleX(1);   opacity: .3; }
             50%      { transform: translateX(8%)  scaleX(1.2); opacity: .6; }
@@ -365,6 +478,16 @@ export function Hero() {
           @keyframes aurora2 {
             0%, 100% { transform: translateX(0)   scaleX(1);   opacity: .25; }
             50%      { transform: translateX(-6%) scaleX(0.9); opacity: .5; }
+          }
+
+          /* Aurora — vertical columns (Lynx pattern) */
+          @keyframes auroraV1 {
+            0%, 100% { transform: scaleY(1);    opacity: .4; }
+            50%      { transform: scaleY(1.15); opacity: .7; }
+          }
+          @keyframes auroraV2 {
+            0%, 100% { transform: scaleY(1);    opacity: .3; }
+            50%      { transform: scaleY(0.85); opacity: .55; }
           }
         }
       `}</style>
