@@ -109,7 +109,7 @@ export function WorkSection() {
       <h2 className="mb-12 text-3xl font-bold tracking-tight text-primary lg:text-4xl">Work</h2>
 
       {/* Bento grid — 3×2, zero empty cells */}
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {caseStudies.map((study, i) => (
           <WorkCard
             key={study.slug}

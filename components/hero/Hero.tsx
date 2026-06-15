@@ -309,6 +309,7 @@ export function Hero() {
           >
             <a
               href="#work"
+              className="active:scale-[0.97]"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -320,7 +321,7 @@ export function Hero() {
                 background: 'rgba(255,255,255,.92)',
                 color: '#0f172a',
                 textDecoration: 'none',
-                transition: 'opacity 150ms ease',
+                transition: 'opacity 150ms ease, transform 150ms ease',
               }}
               onMouseEnter={e => (e.currentTarget.style.opacity = '0.88')}
               onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
@@ -332,6 +333,7 @@ export function Hero() {
             </a>
             <a
               href="#about"
+              className="active:scale-[0.97]"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -343,7 +345,7 @@ export function Hero() {
                 border: '1px solid rgba(255,255,255,.18)',
                 color: 'rgba(255,255,255,.70)',
                 textDecoration: 'none',
-                transition: 'border-color 150ms ease, color 150ms ease',
+                transition: 'border-color 150ms ease, color 150ms ease, transform 150ms ease',
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.borderColor = 'rgba(255,255,255,.35)'

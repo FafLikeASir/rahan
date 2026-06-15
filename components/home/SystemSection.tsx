@@ -26,7 +26,7 @@ export function SystemSection() {
     <section id="system" className="scroll-mt-20 border-t border-border">
       <div className="mx-auto max-w-6xl px-6 py-24 lg:px-8">
         <div className="mb-16 max-w-2xl">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-primary">System</h2>
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-primary lg:text-4xl">System</h2>
           <p className="text-base leading-relaxed text-text-secondary">
             The token layer behind every page. Same values in Figma and in code — colours,
             type, and components that compose the whole site.
