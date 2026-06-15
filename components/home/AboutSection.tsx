@@ -48,13 +48,22 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Photo placeholder */}
+        {/* Photo — replace with next/image once available */}
         <div className="flex items-start justify-center lg:justify-end">
           <div
-            className="h-80 w-64 rounded-2xl bg-muted border border-border flex items-center justify-center lg:h-96 lg:w-72"
-            aria-label="Photo de Maxime Luet"
+            className="relative h-80 w-64 overflow-hidden rounded-2xl border border-border lg:h-96 lg:w-72"
+            style={{ background: 'linear-gradient(145deg, var(--muted) 0%, var(--secondary) 100%)' }}
+            aria-label="Maxime Luet"
+            role="img"
           >
-            <span className="text-sm text-text-tertiary">Photo</span>
+            <div className="flex h-full items-center justify-center" aria-hidden="true">
+              <span
+                className="select-none font-extrabold tracking-tighter"
+                style={{ fontSize: '5rem', color: 'var(--border)', lineHeight: 1 }}
+              >
+                ML
+              </span>
+            </div>
           </div>
         </div>
       </div>
