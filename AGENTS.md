@@ -14,7 +14,6 @@ This file is read by AI coding assistants. Edit freely outside the Lyse-managed 
 | `app/global.css` | Tailwind v4 `@theme inline` tokens + base styles |
 
 Package manager: **npm** (package-lock.json present). pnpm not available in this environment.
-
 ## Lyse audit (auto-managed)
 
 <!-- lyse-managed:begin -->
@@ -29,3 +28,4 @@ Exit codes:
 - 1 — fail (Health Score below threshold or hard errors)
 - 2 — config error
 <!-- lyse-managed:end -->
+
