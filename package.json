@@ -30,6 +30,7 @@
     "uipro-cli": "^2.2.3"
   },
   "devDependencies": {
+    "@lyse-labs/lyse": "^0.1.0-alpha.2",
     "playwright": "^1.60.0"
   }
 }
