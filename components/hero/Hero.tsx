@@ -279,7 +279,7 @@ export function Hero() {
 
           {/* Heading — boosted to text-7xl on desktop */}
           <h1
-            className="mb-3 text-5xl font-extrabold tracking-tight text-white lg:text-7xl hero-fade"
+            className="mb-3 text-5xl font-extrabold tracking-tight text-white lg:text-7xl xl:text-8xl hero-fade"
             style={{ textShadow: '0 2px 24px var(--hero-shadow-text)', '--delay': '80ms' } as StyledDiv}
           >
             Maxime Luet
