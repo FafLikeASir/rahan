@@ -23,7 +23,7 @@ const principles = [
 
 export function MethodSection() {
   return (
-    <section id="method" className="bg-muted">
+    <section id="method" className="scroll-mt-20 bg-muted">
       <div className="mx-auto max-w-6xl px-6 py-24 lg:px-8">
         <div className="max-w-2xl">
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-primary">Method</h2>

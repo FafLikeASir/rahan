@@ -4,7 +4,7 @@ import { caseStudies, elsewhere } from '@/data/case-studies'
 
 function WorkCard({ study }: { study: (typeof caseStudies)[number] }) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-border">
+    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-border transition-shadow duration-200 hover:shadow-md">
       {/* Visual area */}
       <div
         className="relative h-52 overflow-hidden"
@@ -56,7 +56,7 @@ function WorkCard({ study }: { study: (typeof caseStudies)[number] }) {
         <p className="flex-1 text-sm leading-relaxed text-text-secondary">{study.description}</p>
         <Link
           href={`/work/${study.slug}`}
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-opacity hover:opacity-80 group-hover:gap-2.5"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-opacity hover:opacity-80 group-hover:gap-2.5 after:absolute after:inset-0"
         >
           Read case study
           <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
@@ -68,7 +68,7 @@ function WorkCard({ study }: { study: (typeof caseStudies)[number] }) {
 
 export function WorkSection() {
   return (
-    <section id="work" className="mx-auto max-w-6xl px-6 py-24 lg:px-8">
+    <section id="work" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-24 lg:px-8">
       <h2 className="mb-12 text-3xl font-bold tracking-tight text-primary">Work</h2>
 
       {/* Cards grid */}
