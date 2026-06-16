@@ -417,7 +417,9 @@ c'est un signal d'arrêt.
 - **Pas de blog.** Hors scope.
 - **Pas de formulaire de contact.** Lien email + LinkedIn + CV PDF.
 - **Pas de canvas/WebGL** au launch (hero CSS pur).
-- **Pas de bibliothèque d'animation tierce** (framer-motion, GSAP…). CSS only.
-  Si un composant nécessite une animation complexe, discuter d'abord.
+- **Pas de framer-motion.** Banni — GSAP est autorisé.
+- **GSAP** : phase animation uniquement (structure → content → animation). Ne pas implémenter
+  d'animations GSAP avant que la structure et le contenu soient validés.
+  Si des animations ne sont pas précisées dans la demande → les proposer avant d'implémenter.
 - **Pas de composants shadcn inutiles.** Installer au cas par cas.
 - **Pas de `bg-white` ou `text-black` en dur.** Tokens sémantiques.

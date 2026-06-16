@@ -184,6 +184,20 @@ Versioning implicite via git — l'historique des commits trace l'évolution du 
 
 À co-localiser dans le dossier catégorie du composant (`ComponentName.md`) :
 
+---
+
+## §9 — Ordre d'implémentation des tâches
+
+Toute tâche suit cet ordre. Ne pas sauter d'étape.
+
+1. **Structure** — HTML/JSX, layout, composants, props, Server vs Client, accessibilité
+2. **Content** — textes, tokens typographiques, tokens couleur, données
+3. **Animation / Motion / Micro-interactions** — GSAP, transitions CSS, états hover/focus
+   - Si non précisé dans la demande → proposer les animations envisagées, attendre validation
+   - Toujours implémenter `prefers-reduced-motion`
+
+
+
 ```md
 # ComponentName
 

@@ -43,5 +43,5 @@ Next.js 15 (App Router) · TypeScript · Tailwind v4 · shadcn/ui · Plus Jakart
 
 Pas de Pages Router. Pas de dark mode. Pas de blog. Pas de formulaire.
 Pas de API routes. Pas de CMS. Pas de canvas/WebGL au launch.
-Pas de framer-motion/GSAP. Pas de `bg-white` en dur — tokens sémantiques.
+Pas de framer-motion (GSAP autorisé, phase animation uniquement). Pas de `bg-white` en dur — tokens sémantiques.
 Liste complète dans `docs/96-project-structure.md` §15.
