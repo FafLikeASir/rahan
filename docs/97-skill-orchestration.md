@@ -23,7 +23,8 @@
 | Tâche | Skill |
 |---|---|
 | Code générique (utils, data, config) | `ponytail` |
-| Front — composant, page, token, layout | Choisir parmi `gpt-tasteskill` · `ui-ux-pro-max` · `taste-skill` · `front-end-design` selon le contexte |
+| Front — page entière, section, layout | `ui-ux-pro-max` (défaut projet) |
+| Front — composant isolé (anatomy, variants, states, a11y) | `frontend-component-build` |
 | Skill inconnu / non installé | Consulter https://github.com/rampstackco/claude-skills → proposer à Maxime → attendre confirmation |
 | Session remote (web) — skill local absent | Demander la doc du skill à Maxime avant d'agir |
 

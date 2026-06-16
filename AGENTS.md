@@ -20,7 +20,7 @@ Package manager: **npm** (package-lock.json present). pnpm not available in this
 ### Validate design-system conformance
 
 ```bash
-pnpm exec lyse audit
+npx lyse audit
 ```
 
 Exit codes:

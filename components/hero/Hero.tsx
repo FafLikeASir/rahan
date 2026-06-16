@@ -70,21 +70,21 @@ export function Hero() {
     <section ref={sectionRef} className="relative min-h-[100dvh] overflow-hidden" aria-label="Introduction">
 
       {/* Background base */}
-      <div ref={bgRef} aria-hidden="true" className="absolute inset-0" style={{ backgroundColor: '#1f1f1f' }} />
+      <div ref={bgRef} aria-hidden="true" className="absolute inset-0" style={{ backgroundColor: 'var(--hero-bg)' }} />
 
       {/* Warm orange blob — animated independently */}
       <div
         ref={blobRef}
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 will-change-transform"
-        style={{ backgroundImage: 'radial-gradient(ellipse 44% 76% at 50% 50%, rgba(251,55,6,0.9) 0%, transparent 65%)' }}
+        style={{ backgroundImage: 'radial-gradient(ellipse 44% 76% at 50% 50%, color-mix(in srgb, var(--hero-warm-orange) 90%, transparent) 0%, transparent 65%)' }}
       />
 
       {/* Slate blob (bottom-left) — static */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
-        style={{ backgroundImage: 'radial-gradient(ellipse 52% 90% at 30% 100%, rgba(90,118,145,0.75) 0%, transparent 65%)' }}
+        style={{ backgroundImage: 'radial-gradient(ellipse 52% 90% at 30% 100%, color-mix(in srgb, var(--hero-warm-slate) 75%, transparent) 0%, transparent 65%)' }}
       />
 
       {/* Noise grain */}
