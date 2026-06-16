@@ -91,7 +91,7 @@ npx lyse audit
 - Régénérer le contrat DS si tokens ou composants ont changé :
 
 ```bash
-lyse agents > AGENTS.md
+npx lyse agents > AGENTS.md
 ```
 
 ---
