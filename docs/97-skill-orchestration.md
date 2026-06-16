@@ -10,8 +10,22 @@
 
 ## Avant toute action
 
-Lire **96-project-structure.md** — c'est le CLAUDE.md du projet.
-Si le projet a un **AGENTS.md** (généré par Lyse), le lire aussi.
+1. Lire **docs/00-workflow-protocol.md** — protocole de session (plan mode, scoring, Figma, Lyse).
+2. Lire **96-project-structure.md** — architecture et contraintes techniques.
+3. Si le projet a un **AGENTS.md** (généré par Lyse), le lire aussi.
+
+---
+
+## Routing skills — code générique et front
+
+> Détail complet dans `docs/00-workflow-protocol.md §3`. Résumé :
+
+| Tâche | Skill |
+|---|---|
+| Code générique (utils, data, config) | `ponytail` |
+| Front — composant, page, token, layout | Choisir parmi `gpt-tasteskill` · `ui-ux-pro-max` · `taste-skill` · `front-end-design` selon le contexte |
+| Skill inconnu / non installé | Consulter https://github.com/rampstackco/claude-skills → proposer à Maxime → attendre confirmation |
+| Session remote (web) — skill local absent | Demander la doc du skill à Maxime avant d'agir |
 
 ---
 
