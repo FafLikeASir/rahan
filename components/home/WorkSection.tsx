@@ -1,141 +1,171 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import { caseStudies, elsewhere } from '@/data/case-studies'
 import { cn } from '@/lib/utils'
 
-type Layout = 'featured' | 'portrait' | 'wide'
+const gradientOverlay = [
+  'radial-gradient(ellipse 70% 600% at 52% 50%, color-mix(in srgb, var(--hero-warm-orange) 70%, transparent) 0%, color-mix(in srgb, var(--hero-warm-orange) 25%, transparent) 65%, transparent 85%)',
+  'radial-gradient(ellipse 55% 600% at 12% 50%, color-mix(in srgb, var(--hero-warm-slate) 58%, transparent) 0%, transparent 70%)',
+].join(', ')
 
-function WorkCard({ study, layout }: { study: (typeof caseStudies)[number]; layout: Layout }) {
-  const isPortrait = layout === 'portrait'
-
-  return (
-    <article
-      className={cn(
-        'group relative flex flex-col overflow-hidden rounded-2xl border border-border',
-        'transition-all duration-500 hover:-translate-y-0.5 hover:shadow-xl',
-        layout === 'featured' && 'lg:col-span-2',
-        layout === 'portrait' && 'lg:row-span-2',
-        layout === 'wide' && 'lg:col-span-2',
-      )}
-    >
-      {/* Visual */}
-      <div
-        className={cn(
-          'relative overflow-hidden',
-          isPortrait
-            ? 'h-56 lg:h-auto lg:flex-1'
-            : cn(
-                'flex-shrink-0',
-                layout === 'featured' ? 'h-60 lg:h-72' : 'h-52 lg:h-60',
-              ),
-        )}
-        style={{ background: `linear-gradient(135deg, ${study.bgFrom} 0%, ${study.bgTo} 100%)` }}
-        aria-hidden="true"
-      >
-        {/* Grid overlay */}
-        <div
-          className="absolute inset-0 opacity-[.07]"
-          style={{
-            backgroundImage:
-              'linear-gradient(var(--background) 1px, transparent 1px), linear-gradient(90deg, var(--background) 1px, transparent 1px)',
-            backgroundSize: 'var(--hero-grid-size) var(--hero-grid-size)',
-          }}
-        />
-        {/* Company initial */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span
-            className="select-none font-extrabold tracking-tighter"
-            style={{
-              fontSize: layout === 'featured' ? '9rem' : '7rem',
-              color: 'var(--hero-initial)',
-              lineHeight: 1,
-            }}
-          >
-            {study.company[0]}
-          </span>
-        </div>
-        {/* Tags */}
-        <div className="absolute bottom-4 left-4 flex flex-wrap gap-1.5">
-          {study.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full px-2 py-0.5 text-tag font-medium"
-              style={{
-                background: 'var(--hero-tag-bg)',
-                border: '1px solid var(--hero-badge-border)',
-                color: 'var(--hero-tag-text)',
-              }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className={cn('flex flex-col gap-3 p-6', isPortrait ? 'flex-shrink-0' : 'flex-1')}>
-        <div>
-          <p className="text-xs font-medium text-text-tertiary">
-            {study.role} · {study.period}
-          </p>
-          <h3
-            className={cn(
-              'mt-1 font-bold tracking-tight text-primary',
-              layout === 'featured' ? 'text-2xl' : 'text-xl',
-            )}
-          >
-            {study.company}
-          </h3>
-        </div>
-        <p className="flex-1 text-sm leading-relaxed text-text-secondary">{study.description}</p>
-        <Link
-          href={`/work/${study.slug}`}
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-all hover:gap-2.5 hover:opacity-80 after:absolute after:inset-0"
-        >
-          Read case study
-          <ArrowRight
-            className="size-3.5 transition-transform group-hover:translate-x-0.5"
-            aria-hidden="true"
-          />
-        </Link>
-      </div>
-    </article>
-  )
+const textColor = {
+  featured: { primary: 'text-white', secondary: 'text-white/70', meta: 'text-white/55' },
+  default:  { primary: 'text-foreground', secondary: 'text-text-secondary', meta: 'text-muted-foreground' },
 }
 
 export function WorkSection() {
   return (
-    <section id="work" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-24 lg:px-8">
-      <h2 className="mb-12 text-3xl font-bold tracking-tight text-primary lg:text-4xl">Work</h2>
+    <section id="work" aria-label="Work" className="scroll-mt-20">
 
-      {/* Bento grid — 3×2, zero empty cells */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        {caseStudies.map((study, i) => (
-          <WorkCard
-            key={study.slug}
-            study={study}
-            layout={i === 0 ? 'featured' : i === 1 ? 'portrait' : 'wide'}
-          />
-        ))}
+      {/* ── "Work" heading ────────────────────────────────────────────── */}
+      <div className="grid grid-cols-1 lg:grid-cols-7 pt-20 pb-10">
+        <div className="hidden lg:block" />
+        <div className="col-span-1 lg:col-span-5 px-6 lg:px-0">
+          <h2
+            className="font-semibold tracking-tight text-foreground"
+            style={{ fontSize: 'clamp(40px, 4.5vw, 64px)', letterSpacing: '-0.035em' }}
+          >
+            Work
+          </h2>
+        </div>
+        <div className="hidden lg:block" />
       </div>
 
-      {/* Elsewhere band */}
-      <div className="mt-16 border-t border-border pt-10">
-        <p className="mb-6 text-sm font-medium uppercase tracking-widest text-text-tertiary">
-          Elsewhere
-        </p>
-        <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:gap-x-12 sm:gap-y-4">
+      {/* ── Case Studies ──────────────────────────────────────────────── */}
+      <div>
+        {/* "Case Study" subtitle */}
+        <div className="grid grid-cols-1 lg:grid-cols-7 pb-2">
+          <div className="hidden lg:block" />
+          <div className="col-span-1 lg:col-span-5 px-6 lg:px-0">
+            <h3
+              className="font-semibold text-foreground"
+              style={{ fontSize: 'clamp(22px, 2.5vw, 32px)', letterSpacing: '-0.035em' }}
+            >
+              Case Study
+            </h3>
+          </div>
+          <div className="hidden lg:block" />
+        </div>
+
+        {/* Rows */}
+        {caseStudies.map((study) => {
+          const featured = study.slug === 'estorie'
+          const c = featured ? textColor.featured : textColor.default
+
+          return (
+            <div key={study.slug} className="relative border-t border-foreground/[8%]" style={featured ? { backgroundColor: 'color-mix(in srgb, var(--hero-warm-orange) 6%, transparent)' } : undefined}>
+              {/* Gradient overlay — featured row only */}
+              {featured && (
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 overflow-hidden"
+                  style={{ backgroundImage: gradientOverlay }}
+                />
+              )}
+
+              {/* ─── Desktop: 7-column table ─────────────────────────── */}
+              <div className="hidden lg:grid grid-cols-7 py-6 relative z-10">
+                {/* col 1 — gutter */}
+                <div />
+
+                {/* col 2 — date */}
+                <div className="flex items-start pt-0.5">
+                  <p className={cn('text-xs leading-5', c.meta)}>{study.period}</p>
+                </div>
+
+                {/* col 3 — company */}
+                <div className="flex items-start">
+                  <p className={cn('text-base font-semibold leading-5', c.primary)}>{study.company}</p>
+                </div>
+
+                {/* col 4 — role */}
+                <div className="flex items-start">
+                  <p className={cn('text-base font-semibold leading-5', c.secondary)}>
+                    {study.role}
+                  </p>
+                </div>
+
+                {/* col 5 — description */}
+                <div className="flex items-start pr-4">
+                  <p className={cn('text-xs leading-5', c.meta)}>{study.description}</p>
+                </div>
+
+                {/* col 6 — CTA */}
+                <div className="flex items-start justify-end">
+                  <Link
+                    href={`/work/${study.slug}`}
+                    className={cn('text-xs font-semibold leading-5 hover:underline underline-offset-2 transition-all', c.primary)}
+                  >
+                    Read case study →
+                  </Link>
+                </div>
+
+                {/* col 7 — gutter */}
+                <div />
+              </div>
+
+              {/* ─── Mobile: stacked ─────────────────────────────────── */}
+              <div className="lg:hidden px-6 py-6 relative z-10">
+                <p className={cn('text-xs mb-1', c.meta)}>{study.period}</p>
+                <p className={cn('text-base font-semibold', c.primary)}>{study.company}</p>
+                <p className={cn('text-sm font-semibold mt-0.5', c.secondary)}>{study.role}</p>
+                <p className={cn('text-xs mt-2 leading-relaxed', c.meta)}>{study.description}</p>
+                <Link
+                  href={`/work/${study.slug}`}
+                  className={cn('inline-block text-xs font-semibold mt-3 hover:underline underline-offset-2', c.primary)}
+                >
+                  Read case study →
+                </Link>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
+      {/* ── Elsewhere ─────────────────────────────────────────────────── */}
+      <div className="mt-12">
+        {/* "Elsewhere" subtitle */}
+        <div className="grid grid-cols-1 lg:grid-cols-7 pb-2">
+          <div className="hidden lg:block" />
+          <div className="col-span-1 lg:col-span-5 px-6 lg:px-0">
+            <h3
+              className="font-semibold text-foreground"
+              style={{ fontSize: 'clamp(22px, 2.5vw, 32px)', letterSpacing: '-0.035em' }}
+            >
+              Elsewhere
+            </h3>
+          </div>
+          <div className="hidden lg:block" />
+        </div>
+
+        {/* ─── Desktop: cols 2, 4, 6 ───────────────────────────────── */}
+        <div className="hidden lg:grid grid-cols-7 pt-4 pb-20">
+          <div /> {/* col 1 */}
+          {elsewhere.map((item, i) => (
+            <div
+              key={item.company}
+              className={cn(
+                'flex flex-col gap-1',
+                i === 0 && 'col-start-2',
+                i === 1 && 'col-start-4',
+                i === 2 && 'col-start-6',
+              )}
+            >
+              <p className="text-xs text-muted-foreground leading-5">{item.period}</p>
+              <p className="text-base font-semibold text-foreground leading-5">{item.company}</p>
+              <p className="text-base font-semibold text-text-secondary leading-5">
+                {item.role}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* ─── Mobile: stacked ─────────────────────────────────────── */}
+        <div className="lg:hidden flex flex-col gap-6 px-6 pb-20 pt-4">
           {elsewhere.map((item) => (
-            <div key={item.company} className="flex flex-col">
-              <span className="text-sm font-semibold text-primary">
-                {item.company}
-                {'suffix' in item && (
-                  <span className="ml-1 font-normal text-text-tertiary">({item.suffix})</span>
-                )}
-              </span>
-              <span className="text-xs text-text-tertiary">
-                {item.role} · {item.period}
-              </span>
+            <div key={item.company} className="flex flex-col gap-0.5">
+              <p className="text-xs text-muted-foreground">{item.period}</p>
+              <p className="text-sm font-semibold text-foreground">{item.company}</p>
+              <p className="text-sm text-text-secondary">{item.role}</p>
             </div>
           ))}
         </div>

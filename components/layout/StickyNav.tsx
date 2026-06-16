@@ -21,13 +21,10 @@ export function StickyNav() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
-    // On non-home pages, always show scrolled state
     if (!isHome) { setScrolled(true); return }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [isHome])
-
-  const dark = isHome && !scrolled
 
   return (
     <header
@@ -37,29 +34,22 @@ export function StickyNav() {
       )}
     >
       <nav
-        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8"
+        className="mx-auto flex max-w-[1440px] items-center px-6 py-5 lg:px-8"
         aria-label="Main navigation"
       >
         <Link
           href="/"
-          className={cn(
-            'text-sm font-semibold tracking-tight transition-colors duration-300',
-            dark ? 'text-white/90' : 'text-primary'
-          )}
+          className="text-sm font-semibold tracking-tight text-primary transition-colors duration-300 mr-auto"
         >
           Maxime Luet
         </Link>
-        <ul className="hidden sm:flex items-center gap-6" role="list">
+
+        <ul className="hidden sm:flex items-center gap-6 mr-8" role="list">
           {links.map(({ href, label }) => (
             <li key={href}>
               <Link
                 href={href}
-                className={cn(
-                  'text-sm font-medium transition-colors duration-300 hover:opacity-100',
-                  dark
-                    ? 'text-white/50 hover:text-white/90'
-                    : 'text-text-secondary hover:text-primary'
-                )}
+                className="text-sm font-medium text-text-secondary hover:text-primary transition-colors duration-300"
               >
                 {label}
               </Link>
@@ -67,11 +57,17 @@ export function StickyNav() {
           ))}
         </ul>
 
+        {/* "Available for work" badge */}
+        <div
+          className="hidden sm:inline-flex items-center gap-2 rounded-lg border border-foreground/10 px-3 py-1.5 text-sm backdrop-blur-md"
+          style={{ background: 'var(--badge-ink-gradient)' }}
+        >
+          <span className="size-2 rounded-full bg-emerald-500" aria-hidden="true" />
+          <span className="text-foreground font-normal">Available for work</span>
+        </div>
+
         <button
-          className={cn(
-            'sm:hidden transition-colors duration-300',
-            dark ? 'text-white/70 hover:text-white/90' : 'text-text-secondary hover:text-primary'
-          )}
+          className="sm:hidden text-text-secondary hover:text-primary transition-colors duration-300"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
@@ -81,26 +77,14 @@ export function StickyNav() {
       </nav>
 
       {menuOpen && (
-        <div
-          className={cn(
-            'sm:hidden border-t',
-            scrolled
-              ? 'bg-background/95 backdrop-blur-sm border-border'
-              : 'border-white/10 bg-black/30 backdrop-blur-sm'
-          )}
-        >
+        <div className={cn('sm:hidden border-t', scrolled ? 'bg-background/95 backdrop-blur-sm border-border' : 'border-foreground/[8%] bg-white/80 backdrop-blur-sm')}>
           <ul className="flex flex-col px-6 py-3 gap-0.5" role="list">
             {links.map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className={cn(
-                    'block py-2 text-sm font-medium transition-colors duration-200',
-                    dark
-                      ? 'text-white/70 hover:text-white/90'
-                      : 'text-text-secondary hover:text-primary'
-                  )}
+                  className="block py-2 text-sm font-medium text-text-secondary hover:text-primary transition-colors duration-200"
                 >
                   {label}
                 </Link>
