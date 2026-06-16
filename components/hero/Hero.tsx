@@ -1,61 +1,134 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
 import { MapPin } from 'lucide-react'
+import gsap from 'gsap'
 
 const grainSvg = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
 
-const diagonalPattern = `repeating-linear-gradient(-45deg, color-mix(in srgb, var(--foreground) 6%, transparent) 0px, color-mix(in srgb, var(--foreground) 6%, transparent) 1px, transparent 1px, transparent 9px)`
+const diagonalPattern = `repeating-linear-gradient(-45deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 9px)`
 
 export function Hero() {
-  return (
-    <section className="relative min-h-[100dvh] overflow-hidden" aria-label="Introduction">
+  const sectionRef = useRef<HTMLElement>(null)
+  const bgRef      = useRef<HTMLDivElement>(null)
+  const blobRef    = useRef<HTMLDivElement>(null)
+  const h1Ref      = useRef<HTMLHeadingElement>(null)
+  const subRef     = useRef<HTMLParagraphElement>(null)
+  const locRef     = useRef<HTMLDivElement>(null)
+  const statsRef   = useRef<HTMLDivElement>(null)
 
-      {/* Warm gradient — two radial blobs (orange + slate-blue) */}
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const section = sectionRef.current!
+    const blob    = blobRef.current!
+
+    // ── Entrance timeline ────────────────────────────────────────────
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+
+    tl
+      .from(bgRef.current, { opacity: 0, duration: 0.8, ease: 'power2.out' })
+      .from(
+        h1Ref.current!.querySelectorAll('.hero-word'),
+        { y: '110%', duration: 0.7, stagger: 0.15 },
+        '-=0.4',
+      )
+      .from(subRef.current,  { opacity: 0, y: 10, duration: 0.5 }, '-=0.3')
+      .from(locRef.current,  { opacity: 0, duration: 0.4 },        '-=0.2')
+      .from(statsRef.current, { opacity: 0, y: 16, duration: 0.5 }, '-=0.3')
+
+    // ── Blob breathing — only scale, GPU-composited ──────────────────
+    const breathing = gsap.to(blob, {
+      scale: 1.07,
+      duration: 9,
+      ease: 'sine.inOut',
+      yoyo: true,
+      repeat: -1,
+    })
+
+    // ── Mouse parallax — moves blob in xPercent/yPercent ────────────
+    const xTo = gsap.quickTo(blob, 'xPercent', { duration: 1.5, ease: 'power2.out' })
+    const yTo = gsap.quickTo(blob, 'yPercent', { duration: 1.5, ease: 'power2.out' })
+
+    const onMouseMove = (e: MouseEvent) => {
+      const { left, top, width, height } = section.getBoundingClientRect()
+      xTo(((e.clientX - left) / width  - 0.5) *  8)
+      yTo(((e.clientY - top)  / height - 0.5) *  6)
+    }
+
+    section.addEventListener('mousemove', onMouseMove)
+
+    return () => {
+      tl.kill()
+      breathing.kill()
+      gsap.killTweensOf(blob)
+      section.removeEventListener('mousemove', onMouseMove)
+    }
+  }, [])
+
+  return (
+    <section ref={sectionRef} className="relative min-h-[100dvh] overflow-hidden" aria-label="Introduction">
+
+      {/* Background base */}
+      <div ref={bgRef} aria-hidden="true" className="absolute inset-0" style={{ backgroundColor: '#1f1f1f' }} />
+
+      {/* Warm orange blob — animated independently */}
+      <div
+        ref={blobRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 will-change-transform"
+        style={{ backgroundImage: 'radial-gradient(ellipse 44% 76% at 50% 50%, rgba(251,55,6,0.9) 0%, transparent 65%)' }}
+      />
+
+      {/* Slate blob (bottom-left) — static */}
       <div
         aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          backgroundColor: 'var(--background)',
-          backgroundImage: [
-            'radial-gradient(ellipse 58% 82% at 52% 50%, color-mix(in srgb, var(--hero-warm-orange) 55%, transparent) 0%, transparent 68%)',
-            'radial-gradient(ellipse 66% 90% at 28% 98%, color-mix(in srgb, var(--hero-warm-slate) 68%, transparent) 0%, transparent 68%)',
-          ].join(', '),
-        }}
+        className="pointer-events-none absolute inset-0"
+        style={{ backgroundImage: 'radial-gradient(ellipse 52% 90% at 30% 100%, rgba(90,118,145,0.75) 0%, transparent 65%)' }}
       />
 
       {/* Noise grain */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[.03]"
-        style={{ backgroundImage: grainSvg, backgroundSize: '256px 256px', mixBlendMode: 'multiply' }}
+        className="pointer-events-none absolute inset-0 opacity-25"
+        style={{ backgroundImage: grainSvg, backgroundSize: '256px 256px', mixBlendMode: 'color-burn' }}
       />
+
+      {/* Nav row bottom border — matches Figma grid row 1 border-b */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-20 h-px bg-white/[0.1]" />
 
       {/* ── Content ───────────────────────────────────────────────────── */}
       <div className="relative z-10 min-h-[100dvh] flex flex-col">
 
         {/* Main content zone */}
-        <div className="flex-1 grid grid-cols-1 lg:grid-cols-7 pt-20">
-          <div className="hidden lg:block" aria-hidden="true" /> {/* col 1 */}
+        <div className="flex-1 grid grid-cols-1 lg:grid-cols-7 pt-20 border-b border-white/[0.1]">
+          <div className="hidden lg:block border-r border-white/[0.1]" aria-hidden="true" /> {/* col 1 */}
 
-          <div className="col-span-1 lg:col-span-5 flex flex-col justify-center px-6 lg:px-0 py-16 lg:py-20">
-            <h1 className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
-              <span
-                className="font-extrabold tracking-tighter leading-none text-white"
-                style={{ fontSize: 'clamp(48px, 8.5vw, 130px)', textShadow: `0 2px 32px color-mix(in srgb, var(--hero-warm-shadow) 25%, transparent)` }}
+          <div className="col-span-1 lg:col-span-5 flex flex-col px-6 lg:px-0 border-r border-white/[0.1]">
+            {/* Centered text zone */}
+            <div className="flex-1 flex flex-col justify-center">
+              <h1
+                ref={h1Ref}
+                className="font-semibold leading-none text-black"
+                style={{ fontSize: 'clamp(48px, 8.33vw, 120px)', letterSpacing: '-4.2px' }}
               >
-                Product
-              </span>
-              <span
-                className="font-extrabold tracking-tighter leading-none text-white"
-                style={{ fontSize: 'clamp(48px, 8.5vw, 130px)', textShadow: `0 2px 32px color-mix(in srgb, var(--hero-warm-shadow) 25%, transparent)` }}
-              >
-                Designer
-              </span>
-            </h1>
+                {/* Word mask: each word slides up from behind its overflow-hidden parent */}
+                <span className="inline-block overflow-hidden align-bottom">
+                  <span className="hero-word inline-block">Product</span>
+                </span>
+                {' '}
+                <span className="inline-block overflow-hidden align-bottom">
+                  <span className="hero-word inline-block">Designer</span>
+                </span>
+              </h1>
 
-            <p className="mt-4 text-base text-foreground/70 max-w-[520px]">
-              I design UI for digital products and ship design systems.
-            </p>
+              <p ref={subRef} className="mt-2.5 text-white/80" style={{ fontSize: '20px' }}>
+                I design UI for digital products and ship design systems.
+              </p>
+            </div>
 
-            <div className="mt-auto pt-10 flex items-center gap-2 text-sm text-foreground/55">
+            {/* Location pinned to bottom */}
+            <div ref={locRef} className="pb-8 flex items-center gap-2 text-sm text-white/50">
               <MapPin size={16} aria-hidden="true" />
               Based in France
             </div>
@@ -65,45 +138,45 @@ export function Hero() {
         </div>
 
         {/* Stats zone */}
-        <div className="grid grid-cols-2 lg:grid-cols-7 h-[180px] lg:h-[260px] border-t border-black/[0.06]">
+        <div ref={statsRef} className="grid grid-cols-2 lg:grid-cols-7 h-[180px] lg:h-[260px] border-t border-white/[0.1]">
           {/* col 1 (lg) */}
-          <div className="hidden lg:block" aria-hidden="true" />
+          <div className="hidden lg:block border-r border-white/[0.1]" aria-hidden="true" />
 
           {/* col 2 (lg) — diagonal pattern */}
           <div
-            className="hidden lg:block"
+            className="hidden lg:block border-r border-white/[0.1]"
             aria-hidden="true"
             style={{ backgroundImage: diagonalPattern }}
           />
 
           {/* col 3 (lg) */}
-          <div className="hidden lg:block" aria-hidden="true" />
+          <div className="hidden lg:block border-r border-white/[0.1]" aria-hidden="true" />
 
           {/* col 4 (lg) / mobile col 1 — 10+ */}
-          <div className="flex flex-col justify-end pb-8 px-6 lg:px-0 lg:pl-6">
+          <div className="flex flex-col justify-end pb-8 px-6 lg:px-0 lg:pl-6 border-r border-white/[0.1]">
             <span
-              className="font-extrabold tracking-tighter leading-none text-white"
-              style={{ fontSize: 'clamp(40px, 4vw, 60px)', textShadow: `0 1px 16px color-mix(in srgb, var(--hero-warm-shadow) 20%, transparent)` }}
+              className="font-semibold leading-none text-white"
+              style={{ fontSize: 'clamp(40px, 4.5vw, 65px)', letterSpacing: '-1.5px' }}
             >
               10+
             </span>
-            <span className="text-xs text-foreground/55 mt-1.5">years of XP</span>
+            <span className="text-xs text-white/50 mt-1.5">years of XP</span>
           </div>
 
           {/* col 5 (lg) / mobile col 2 — Open */}
-          <div className="flex flex-col justify-end pb-8 px-6 lg:px-0 lg:pl-6">
+          <div className="flex flex-col justify-end pb-8 px-6 lg:px-0 lg:pl-6 border-r border-white/[0.1]">
             <span
-              className="font-extrabold tracking-tighter leading-none text-white"
-              style={{ fontSize: 'clamp(40px, 4vw, 60px)', textShadow: `0 1px 16px color-mix(in srgb, var(--hero-warm-shadow) 20%, transparent)` }}
+              className="font-semibold leading-none text-white"
+              style={{ fontSize: 'clamp(40px, 4.5vw, 65px)', letterSpacing: '-1.5px' }}
             >
               Open
             </span>
-            <span className="text-xs text-foreground/55 mt-1.5">for full-time roles</span>
+            <span className="text-xs text-white/50 mt-1.5">for full-time roles</span>
           </div>
 
           {/* col 6 (lg) — diagonal pattern */}
           <div
-            className="hidden lg:block"
+            className="hidden lg:block border-r border-white/[0.1]"
             aria-hidden="true"
             style={{ backgroundImage: diagonalPattern }}
           />
