@@ -3,6 +3,12 @@
 > Ce fichier est lu automatiquement par Claude Code à chaque session.
 > Il pointe vers la documentation complète dans `/docs`.
 
+## Règle #0 — Plan mode & protocole de session
+
+**Toujours démarrer en plan mode.** Aucune implémentation sans plan validé.
+Lire `docs/00-workflow-protocol.md` pour le protocole complet :
+scoring de faisabilité, routing des skills, workflow Figma → code, audit Lyse.
+
 ## Règle #1
 
 Lire `docs/96-project-structure.md` avant toute action. C'est la source de
@@ -37,5 +43,5 @@ Next.js 15 (App Router) · TypeScript · Tailwind v4 · shadcn/ui · Plus Jakart
 
 Pas de Pages Router. Pas de dark mode. Pas de blog. Pas de formulaire.
 Pas de API routes. Pas de CMS. Pas de canvas/WebGL au launch.
-Pas de framer-motion/GSAP. Pas de `bg-white` en dur — tokens sémantiques.
+Pas de framer-motion (GSAP autorisé, phase animation uniquement). Pas de `bg-white` en dur — tokens sémantiques.
 Liste complète dans `docs/96-project-structure.md` §15.
