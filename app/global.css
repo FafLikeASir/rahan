@@ -48,6 +48,12 @@
   --hero-teal: #0a5c5e;
   --hero-green: #07694a;
 
+  /* ── Hero warm gradient (new design) ────────────────────────────── */
+  --hero-warm-orange: #fb3706;
+  --hero-warm-slate: #809fb4;
+  --hero-warm-shadow: #782800;
+  --badge-ink-gradient: linear-gradient(99deg, color-mix(in srgb, var(--foreground) 5%, transparent) 0%, color-mix(in srgb, var(--foreground) 12%, transparent) 100%);
+
   /* ── Hero navy (Mention card accent) ────────────────────────────── */
   --hero-navy: #122e5e;
 
