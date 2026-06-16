@@ -76,13 +76,13 @@ export function StickyNav() {
           style={{
             background: scrolled
               ? 'var(--badge-ink-gradient)'
-              : 'linear-gradient(99deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.20) 100%)',
+              : 'var(--hero-badge-gradient)',
           }}
         >
           <span
             className="size-2 rounded-full bg-emerald-400"
             aria-hidden="true"
-            style={{ boxShadow: scrolled ? undefined : '0 0 6px 2px rgba(52,211,153,0.55)' }}
+            style={{ boxShadow: scrolled ? undefined : 'var(--hero-badge-glow)' }}
           />
           <span className="font-normal">Available for work</span>
         </div>
