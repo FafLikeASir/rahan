@@ -21,7 +21,7 @@
 | Content | **MDX** pour les études de cas | Sépare contenu et composant |
 | Hébergement | **Vercel** | Déjà en place |
 | DS Audit | **Lyse** (`@lyse-labs/lyse`) | Audit DS + génération AGENTS.md + serveur MCP |
-| Package manager | **pnpm** (si dispo) ou npm | Vérifier le lockfile existant |
+| Package manager | **npm** | package-lock.json présent — ne pas utiliser pnpm |
 
 ---
 
@@ -151,30 +151,33 @@ shadcn/ui amène ses propres CSS variables (`--background`, `--foreground`,
 les valeurs du design system de Maxime. On ne crée pas un système parallèle.
 
 ```css
-/* globals.css — @theme inline (Tailwind v4) */
-@theme inline {
-  /* Override des tokens shadcn avec la palette Maxime */
-  --color-background: #ffffff;
-  --color-foreground: #0f172a;       /* slate-900 */
-  --color-primary: #1d4ed8;          /* blue-700 — accent */
-  --color-primary-foreground: #ffffff;
-  --color-muted: #f8fafc;            /* slate-50 */
-  --color-muted-foreground: #475569; /* slate-600 */
-  --color-border: #e2e8f0;           /* slate-200 */
-  /* ... etc, mapper tout le token set shadcn */
+/* app/global.css — :root (Tailwind v4, pas de @theme inline pour les vars CSS brutes) */
 
-  /* Tokens custom Maxime (hors shadcn) */
-  --color-hero-bg: #0c1929;
-  --color-hero-deep: #0f2847;
-  --color-hero-mid: #0e4a6e;
-  --color-hero-teal: #0a5c5e;
-  --color-hero-green: #07694a;
-  --color-gradient-from: #2563eb;    /* blue-600 */
-  --color-gradient-to: #059669;      /* emerald-600 */
-  --color-text-tertiary: #94a3b8;    /* slate-400 */
-  --color-border-strong: #cbd5e1;    /* slate-300 */
-}
+/* Palette éditoriale (shadcn override) */
+--background: oklch(1 0 0);
+--foreground: oklch(0.208 0.042 265.755);  /* slate-900 */
+--muted:      oklch(0.984 0.003 247.858);  /* slate-50 */
+--border:     oklch(0.929 0.013 255.508);  /* slate-200 */
+--accent:     oklch(0.488 0.196 258.5);    /* blue-600 — accent signature */
+
+/* Hero — palette warm (switch bleu/émeraude → orange/slate, juin 2026) */
+--hero-bg:           #1f1f1f;   /* fond base hero */
+--hero-warm-orange:  #fb3706;   /* blob principal — couleur chaude signature */
+--hero-warm-slate:   #809fb4;   /* blob secondaire bas-gauche */
+--hero-warm-shadow:  #782800;   /* ombre warm (non utilisé visuellement encore) */
+
+/* Tokens badge nav hero */
+--hero-badge-gradient: linear-gradient(99deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.20) 100%);
+--hero-badge-glow:     0 0 6px 2px rgba(52,211,153,0.55);  /* glow émeraude dot "Available" */
+
+/* Glass / overlay hero */
+--hero-grid-size:       40px;
+--hero-grid:            rgba(255,255,255,.06);
+--hero-glass-a-border:  rgba(255,255,255,.08);
+--hero-glass-a-bg:      rgba(255,255,255,.03);
 ```
+
+**Règle fondamentale :** Les tokens hero s'utilisent en `var(--hero-*)` dans les `inline style` (gradients, blobs). Les tokens éditoriaux via classes Tailwind (`bg-background`, `text-foreground`, `border-border`, etc.).
 
 ### 5.2 Règles Tailwind
 
@@ -313,6 +316,13 @@ Maxime Luet         Work · Method · About · Contact
 - `robots.txt` permissif
 - Canonical URLs
 
+**Security headers** (`next.config.ts`) :
+- `X-Frame-Options: DENY` — anti-clickjacking
+- `X-Content-Type-Options: nosniff`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
+- CSP non implémenté (inline styles GSAP + SVG data URIs rendent un CSP strict complexe — à adresser si requis)
+
 ---
 
 ## 10. Performance
@@ -369,13 +379,15 @@ composants sont en place (pas avant — Lyse a besoin de matière à auditer).
 
 **Workflow :**
 1. `npx lyse audit` — vérifier le Health Score après chaque batch de composants
-2. `lyse agents > AGENTS.md` — régénérer le contrat DS après chaque ajout/modif
+2. `npx lyse agents > AGENTS.md` — régénérer le contrat DS après chaque ajout/modif
    de token ou composant. Ce fichier est lu par Claude Code en début de session.
-3. `lyse mcp` — optionnel, pour les sessions Claude Code longues où l'agent
+3. `npx lyse mcp` — optionnel, pour les sessions Claude Code longues où l'agent
    doit interroger les tokens en temps réel.
 
+**Score actuel : 93/100** (tokens 69, a11y 100, components 100). Findings restants : faux positifs documentés (données d'affichage dans `SystemSection`, pattern diagonal hero).
+
 **AGENTS.md** vit à la racine du projet, à côté de CLAUDE.md. Il est généré,
-pas écrit à la main. Ne pas le modifier manuellement — relancer `lyse agents`.
+pas écrit à la main. Ne pas le modifier manuellement — relancer `npx lyse agents`.
 
 ---
 

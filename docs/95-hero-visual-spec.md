@@ -203,7 +203,7 @@ Maxime Luet         Work · Method · About · Contact
 
 - Pas de flat linear-gradient 2 stops (le problème de maximeluet)
 - Pas de cubes 3D aléatoires (le problème de rahan)
-- Pas de couleurs chaudes corail/orange (hors palette P2)
+- Pas de couleurs chaudes corail/orange **autre que `--hero-warm-orange` (#fb3706)** — c'est la couleur signature du hero depuis juin 2026
 - Pas de glassmorphism en ambiance générale sur tout le site
 - Pas de dark mode — seulement le hero est sombre
 - Pas de canvas/WebGL au launch (CSS d'abord)
@@ -211,20 +211,21 @@ Maxime Luet         Work · Method · About · Contact
 
 ---
 
-## Tokens spécifiques au hero (à ajouter au Tailwind config)
+## Tokens spécifiques au hero (dans `app/global.css` — Tailwind v4, pas de tailwind.config.js)
 
-```js
-// tailwind.config.js extend
-colors: {
-  hero: {
-    bg: '#0c1929',
-    deep: '#0f2847',
-    mid: '#0e4a6e',
-    teal: '#0a5c5e',
-    green: '#07694a',
-  }
-}
+```css
+/* Palette warm — switch opéré en juin 2026 (suppression bleu/émeraude comme ambiance) */
+--hero-bg:           #1f1f1f;   /* fond de base */
+--hero-warm-orange:  #fb3706;   /* blob principal animé (GSAP parallax) */
+--hero-warm-slate:   #809fb4;   /* blob secondaire statique bas-gauche */
+
+/* Ancienne palette conservée en variable mais non utilisée visuellement */
+--hero-deep: #0f2847;
+--hero-mid:  #0e4a6e;
+--hero-teal: #0a5c5e;
+--hero-green: #07694a;
 ```
 
-Les tokens globaux du site (palette slate, accent bleu-700, gradient P2)
-restent inchangés — cf. la palette définie dans la session brand-identity.
+Usage : toujours via `var(--hero-*)` dans les `inline style` des blobs et fonds. Ne pas hardcoder les hex dans les composants — utiliser `color-mix(in srgb, var(--hero-warm-orange) XX%, transparent)` pour les gradients avec opacité.
+
+Les tokens éditoriaux du site (palette slate, accent bleu-600) restent inchangés.
