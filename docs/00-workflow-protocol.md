@@ -88,11 +88,8 @@ npx lyse audit
 - Reporter le **Health Score** dans le fil de session
 - Si régression par rapport au score précédent → identifier le composant ou token fautif avant de clore
 - Si amélioration → noter les tokens/composants qui ont progressé
-- Régénérer le contrat DS si tokens ou composants ont changé :
-
-```bash
-npx lyse agents > AGENTS.md
-```
+- Si tokens ou composants ont changé : **proposer un diff** de ce qui a changé dans AGENTS.md, ne jamais écraser en aveugle.
+  - Exécuter `npx lyse agents` dans un fichier temporaire, comparer avec l'existant, et soumettre uniquement les changements pertinents à Maxime pour validation avant d'écraser.
 
 ---
 
