@@ -33,62 +33,85 @@ export function StickyNav() {
         scrolled ? 'bg-background/95 backdrop-blur-sm border-b border-border' : 'bg-transparent'
       )}
     >
+      {/* Desktop — 7-col grid mirrors hero layout */}
       <nav
-        className="mx-auto flex max-w-[1440px] items-center px-6 py-6 lg:px-[calc(100%/7)]"
+        className="hidden sm:grid grid-cols-7 max-w-[1440px] mx-auto h-20"
         aria-label="Main navigation"
       >
+        {/* col 1 — empty */}
+        <div />
+
+        {/* col 2-3 — Logo */}
+        <div className="col-span-2 flex items-center">
+          <Link
+            href="/"
+            className={cn(
+              'transition-colors duration-300 text-xl font-normal',
+              scrolled ? 'text-primary' : 'text-white'
+            )}
+          >
+            Maxime Luet
+          </Link>
+        </div>
+
+        {/* col 4-5 — Nav links */}
+        <div className="col-span-2 flex items-center gap-6">
+          <ul className="flex items-center gap-6" role="list">
+            {links.map(({ href, label }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className={cn(
+                    'text-base font-medium transition-colors duration-300',
+                    scrolled ? 'text-text-secondary hover:text-primary' : 'text-white/50 hover:text-white'
+                  )}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* col 6 — Badge */}
+        <div className="flex items-center justify-center">
+          <div
+            className={cn(
+              'inline-flex items-center gap-2 rounded-lg border p-2 text-sm transition-colors duration-300',
+              scrolled
+                ? 'border-foreground/10 text-foreground backdrop-blur-md'
+                : 'border-white/10 text-white backdrop-blur-[50px]'
+            )}
+            style={{
+              background: scrolled
+                ? 'var(--badge-ink-gradient)'
+                : 'linear-gradient(99deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.20) 100%)',
+            }}
+          >
+            <span
+              className="size-2 rounded-full bg-emerald-400"
+              aria-hidden="true"
+              style={{ boxShadow: scrolled ? undefined : '0 0 6px 2px rgba(52,211,153,0.55)' }}
+            />
+            <span className="font-normal">Available for work</span>
+          </div>
+        </div>
+
+        {/* col 7 — empty */}
+        <div />
+      </nav>
+
+      {/* Mobile — simple flex row */}
+      <nav className="sm:hidden flex items-center px-6 h-20" aria-label="Main navigation">
         <Link
           href="/"
-          className={cn(
-            'transition-colors duration-300 mr-auto',
-            scrolled
-              ? 'text-sm font-semibold tracking-tight text-primary'
-              : 'text-xl font-normal text-white'
-          )}
+          className={cn('text-xl font-normal mr-auto transition-colors duration-300', scrolled ? 'text-primary' : 'text-white')}
         >
           Maxime Luet
         </Link>
 
-        <ul className="hidden sm:flex items-center gap-6 mr-8" role="list">
-          {links.map(({ href, label }) => (
-            <li key={href}>
-              <Link
-                href={href}
-                className={cn(
-                  'text-base font-medium transition-colors duration-300',
-                  scrolled ? 'text-text-secondary hover:text-primary' : 'text-white/50 hover:text-white'
-                )}
-              >
-                {label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* "Available for work" badge */}
-        <div
-          className={cn(
-            'hidden sm:inline-flex items-center gap-2 rounded-lg border p-2 text-sm transition-colors duration-300',
-            scrolled
-              ? 'border-foreground/10 text-foreground backdrop-blur-md'
-              : 'border-white/10 text-white backdrop-blur-[50px]'
-          )}
-          style={{
-            background: scrolled
-              ? 'var(--badge-ink-gradient)'
-              : 'var(--hero-badge-gradient)',
-          }}
-        >
-          <span
-            className="size-2 rounded-full bg-emerald-400"
-            aria-hidden="true"
-            style={{ boxShadow: scrolled ? undefined : 'var(--hero-badge-glow)' }}
-          />
-          <span className="font-normal">Available for work</span>
-        </div>
-
         <button
-          className="sm:hidden text-text-secondary hover:text-primary transition-colors duration-300"
+          className="text-text-secondary hover:text-primary transition-colors duration-300"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
