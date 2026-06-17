@@ -91,7 +91,7 @@ export function Hero() {
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-25"
-        style={{ backgroundImage: grainSvg, backgroundSize: '256px 256px', mixBlendMode: 'color-burn' }}
+        style={{ backgroundImage: grainSvg, backgroundSize: '300px 300px', mixBlendMode: 'color-burn' }}
       />
 
       {/* Nav row bottom border — matches Figma grid row 1 border-b */}
@@ -109,14 +109,12 @@ export function Hero() {
             <div className="flex-1 flex flex-col justify-center">
               <h1
                 ref={h1Ref}
-                className="font-semibold leading-none text-black"
+                className="flex gap-4 font-semibold leading-none text-black"
                 style={{ fontSize: 'clamp(48px, 8.33vw, 120px)', letterSpacing: '-4.2px' }}
               >
-                {/* Word mask: each word slides up from behind its overflow-hidden parent */}
                 <span className="inline-block overflow-hidden align-bottom">
                   <span className="hero-word inline-block">Product</span>
                 </span>
-                {' '}
                 <span className="inline-block overflow-hidden align-bottom">
                   <span className="hero-word inline-block">Designer</span>
                 </span>
@@ -128,7 +126,7 @@ export function Hero() {
             </div>
 
             {/* Location pinned to bottom */}
-            <div ref={locRef} className="pb-8 flex items-center gap-2 text-base text-white">
+            <div ref={locRef} className="flex items-center gap-1 p-2 text-base text-white">
               <MapPin size={16} aria-hidden="true" />
               Based in France
             </div>
@@ -138,7 +136,7 @@ export function Hero() {
         </div>
 
         {/* Stats zone */}
-        <div ref={statsRef} className="grid grid-cols-2 lg:grid-cols-7 h-[180px] lg:h-[260px] border-t border-white/[0.1]">
+        <div ref={statsRef} className="grid grid-cols-2 lg:grid-cols-7 h-[180px] lg:h-[257px] border-t border-white/[0.1]">
           {/* col 1 (lg) */}
           <div className="hidden lg:block border-r border-white/[0.1]" aria-hidden="true" />
 
@@ -153,25 +151,25 @@ export function Hero() {
           <div className="hidden lg:block border-r border-white/[0.1]" aria-hidden="true" />
 
           {/* col 4 (lg) / mobile col 1 — 10+ */}
-          <div className="flex flex-col justify-end pb-8 px-6 lg:px-0 lg:pl-6 border-r border-white/[0.1]">
+          <div className="flex flex-col justify-center p-[24px] border-r border-white/[0.1]">
             <span
-              className="font-semibold leading-none text-white"
-              style={{ fontSize: 'clamp(40px, 4.5vw, 65px)', letterSpacing: '-1.5px' }}
+              className="font-medium leading-none text-white text-[40px] lg:text-[52px]"
+              style={{ letterSpacing: '-1.5px' }}
             >
               10+
             </span>
-            <span className="text-xs text-white/50 mt-1.5">years of XP</span>
+            <span className="text-base text-white/[72%]">years of XP</span>
           </div>
 
           {/* col 5 (lg) / mobile col 2 — Open */}
-          <div className="flex flex-col justify-end pb-8 px-6 lg:px-0 lg:pl-6 border-r border-white/[0.1]">
+          <div className="flex flex-col justify-center p-[24px] border-r border-white/[0.1]">
             <span
-              className="font-semibold leading-none text-white"
-              style={{ fontSize: 'clamp(40px, 4.5vw, 65px)', letterSpacing: '-1.5px' }}
+              className="font-medium leading-none text-white text-[40px] lg:text-[52px]"
+              style={{ letterSpacing: '-1.5px' }}
             >
               Open
             </span>
-            <span className="text-xs text-white/50 mt-1.5">for full-time roles</span>
+            <span className="text-base text-white/[72%]">for full-time roles</span>
           </div>
 
           {/* col 6 (lg) — diagonal pattern */}

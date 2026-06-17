@@ -74,7 +74,7 @@ export function StickyNav() {
         </div>
 
         {/* col 6 — Badge */}
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-end">
           <div
             className={cn(
               'inline-flex items-center gap-2 rounded-lg border p-2 text-sm transition-colors duration-300',
