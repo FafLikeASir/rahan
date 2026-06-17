@@ -37,17 +37,17 @@ Si hors-scope → remonter à Maxime, ne pas improviser.
 
 ## §3 — Routing des skills
 
-### Code générique
-→ Skill **`ponytail`**
+**Convention :** toute étape du protocole qui déclenche une action (code, design, contenu) annote le skill applicable sous la forme `→ Skill: X`. Si aucun skill n'est requis : `→ Skill: none`.
 
-### Code front (composant, page, token, layout)
-Passer en revue ces 4 skills et choisir le plus adapté au contexte :
-- `gpt-tasteskill`
-- `ui-ux-pro-max`
-- `taste-skill`
-- `front-end-design`
-
-Critères de choix : type de tâche (composant isolé vs page entière), niveau de detail UX requis, complexité visuelle.
+| Tâche | Skill |
+|---|---|
+| Code générique (utils, data, config) | `ponytail` |
+| Front — page entière, section, layout | `ui-ux-pro-max` |
+| Front — composant isolé | `frontend-component-build` |
+| Tokens / palette / typo | `design-system` + `design-standards` |
+| Contenu (textes, études de cas) | `content-and-copy` |
+| Animation / Motion / Micro-interactions | `gpt-tasteskill` |
+| Audit accessibilité | `design-standards` |
 
 ### Skill inconnu ou non installé
 1. Consulter https://github.com/rampstackco/claude-skills
@@ -63,6 +63,8 @@ Si aucun skill ne correspond → expliquer pourquoi, proposer l'approche manuell
 ## §4 — Fin de tâche : documentation
 
 Après chaque tâche qui crée ou modifie un composant, fichier, token, ou décision :
+
+→ Skill: `ponytail` (pour tout code écrit ou modifié dans cette tâche)
 
 1. **Composant créé ou modifié** → créer/mettre à jour le `.md` co-localisé (template en §8)
 2. **Index composants** → mettre à jour `docs/98-components-index.md`
@@ -188,8 +190,11 @@ Versioning implicite via git — l'historique des commits trace l'évolution du 
 Toute tâche suit cet ordre. Ne pas sauter d'étape.
 
 1. **Structure** — HTML/JSX, layout, composants, props, Server vs Client, accessibilité
+   → Skill: `frontend-component-build` (composant isolé) ou `ui-ux-pro-max` (page/section) — cf. §3
 2. **Content** — textes, tokens typographiques, tokens couleur, données
+   → Skill: `content-and-copy`
 3. **Animation / Motion / Micro-interactions** — GSAP, transitions CSS, états hover/focus
+   → Skill: `gpt-tasteskill`
    - Si non précisé dans la demande → proposer les animations envisagées, attendre validation
    - Toujours implémenter `prefers-reduced-motion`
 
