@@ -1,165 +1,123 @@
 # Portfolio Maxime Luet — Hero Visual Specification
 
-> Spécification visuelle du hero, issue de l'exploration brand-identity.
-> Consolide les décisions de 91/92/93 + les 6 références visuelles explorées
-> (Uprail, Asterisk, Lynx, Pelmatech, Mure, Barcelona/cikstefan) + les deux
-> portfolios précédents (rahan.vercel.app, maximeluet.vercel.app).
+> Spécification visuelle du hero — direction **actuelle et validée**.
+> Source de vérité : Figma node `1:2` (Desktop - 1, 1440×1024).
+> Lecture obligatoire avant toute modification du hero.
 >
-> Lecture obligatoire avant le build Next.js du hero.
+> Note : une direction bleu-émeraude a été explorée et **abandonnée**.
+> Ce fichier documente uniquement la direction retenue (warm dark).
 
 ---
 
 ## Principe directeur
 
-Le hero est la **couverture du magazine**, pas une page intérieure. C'est le seul
-endroit du site où l'impact visuel est maximal. La direction Editorial Restrained
-(93) s'applique au contenu de lecture (études de cas, Method, About) — pas à la
-première impression.
+Le hero est la **couverture du magazine**. Impact visuel maximal, unique endroit
+du site aussi expressif. Le reste du site est Editorial Restrained (blanc, typographique).
 
-**Structure du site :** hero cinématographique immersif → transition → blanc
-éditorial typographique pour tout le reste.
+**Structure du site :** hero cinématographique warm dark → transition → blanc éditorial.
 
 ---
 
 ## 1. Fond
 
-**Sombre, profond, multi-couches.** Pas de flat linear-gradient à 2 stops.
+**Sombre, near-black, avec mesh warm.**
 
-- Base : gradient multi-stops bleu nuit → bleu profond → teal → émeraude
-  - `#0c1929` → `#0f2847` → `#122e5e` → `#0e4a6e` → `#0a5c5e` → `#07694a`
-  - Direction : 135deg ou radiale selon le rendu
-- Mesh animées : 3-4 radial gradients à basse opacité (8-15%) qui driftent
-  lentement (12-20s par cycle). Créent la profondeur sans manger la lisibilité.
-  Inspiration : rahan (multi-color mesh), Asterisk (mesh avec grid), Pelmatech
-  (aurora streaks).
-- Vignette cinématographique : radial gradient sombre sur les bords, concentre
-  l'attention sur la zone texte (centre-gauche). Inspiration : Uprail.
-- Grain : noise SVG overlay, 2-3% opacité, mix-blend-mode overlay. Ajoute de la
-  matière (pas un fond digital lisse). Inspiration : Lynx, Mure.
-
-**Couleurs de mesh :**
-- Pôle bleu : `rgba(37, 99, 235, .15-.25)` (blue-600)
-- Pôle teal : `rgba(6, 182, 212, .10-.15)` (cyan-500)
-- Pôle émeraude : `rgba(5, 150, 105, .12-.20)` (emerald-600)
-- Accent indigo discret (optionnel) : `rgba(99, 102, 241, .08-.12)` (indigo-500)
+- Base : `#1f1f1f` (dark near-black, pas de flat gradient)
+- Blob orange (principal) : `radial-gradient(ellipse 44% 76% at 50% 50%, rgba(251,55,6,0.9) 0%, transparent 65%)`
+  — centré, animé (breathing + mouse parallax)
+- Blob slate (secondaire) : `radial-gradient(ellipse 52% 90% at 30% 100%, rgba(90,118,145,0.75) 0%, transparent 65%)`
+  — ancré bas-gauche, statique
+- Grain : SVG noise overlay, **25% opacité**, `mix-blend-mode: color-burn`, tiled 256×256px
 
 ---
 
-## 2. Grid lines
+## 2. Structure grille
 
-**Lignes de structure visibles à travers le mesh.** C'est le signal "design
-system" rendu visuel — pas de la décoration.
+7 colonnes × 205.7px (sur 1440px viewport) visibles via bordures blanches à 10% :
 
-- Grille de lignes fines : 0.5px, `rgba(255, 255, 255, .05-.08)`
-- Perspective légère optionnelle (CSS perspective transform) pour donner un
-  effet de profondeur / horizon. Inspiration : Asterisk, Pelmatech.
-- Espacement : ~60-80px entre les lignes
-- La grille est SOUS le mesh (z-index inférieur aux radial gradients) mais
-  visible à travers la transparence.
+| Col | Contenu hero | Contenu nav |
+|---|---|---|
+| 1 | vide | vide |
+| 2-3 | content zone (H1, subtitle, location) | Logo "Maxime Luet" |
+| 4-5 | content zone | Nav links |
+| 6 | content zone | Badge "Available for work" |
+| 7 | vide | vide |
 
----
+- `border-r border-white/[0.1]` entre les colonnes
+- `border-b border-white/[0.1]` sous la nav row (y=80px)
+- `border-t border-white/[0.1]` au-dessus de la stats zone
 
-## 3. Glass elements
-
-**2-4 rectangles arrondis en flottement.** Pas de la décoration abstraite —
-idéalement des silhouettes de composants UI.
-
-- Border : `1px solid rgba(255, 255, 255, .06-.10)`
-- Background : `rgba(255, 255, 255, .02-.05)`
-- `backdrop-filter: blur(1-2px)` (discret)
-- Border-radius : 12-16px
-- Animation : flottement lent vertical (8-14s par cycle), rotation très subtile
-- Répartis côté droit du hero (le texte est à gauche)
-
-**Option ambitieuse (à tester au build) :** un des glass elements contient un
-vrai composant UI simplifié (un bouton avec ses états, ou un token de couleur),
-directement lié à la section System. Le positionnement "designer who codes"
-rendu littéral. Inspiration : Pelmatech (cartes de scheduling dans le hero).
+Stats zone : diagonal pattern dans cols 2 et 6 (repeating-linear-gradient -45deg, blanc 8%).
 
 ---
 
-## 4. Effets de lumière
+## 3. Nav row (80px)
 
-**Aurora / streaks lumineux** qui traversent le fond de manière organique.
+Grille 7-col (`grid-cols-7 h-20`) :
+- **Col 2-3** — Logo : "Maxime Luet", 20px, font-normal, white (transparent hero) / `text-primary` (scrolled)
+- **Col 4-5** — Nav links : Work · Method · About · Contact, 16px, font-medium, white/50 (hero) / `text-text-secondary` (scrolled)
+- **Col 6** — Badge "Available for work" :
+  - `border: 1px solid rgba(255,255,255,0.1)`
+  - `background: linear-gradient(99deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.20) 100%)`
+  - `backdrop-filter: blur(50px)`
+  - `border-radius: 8px`, `padding: 8px`, `gap: 8px`
+  - Green dot 8×8px (`bg-emerald-400`, glow `0 0 6px 2px rgba(52,211,153,0.55)`)
+  - Texte 14px, font-normal, white
 
-- 1-2 traînées de lumière (gradient linéaire étroit, bleu-teal, basse opacité)
-- Animation lente (15-25s), drift + scale légère
-- Bien en dessous du texte côté z-index
-- Inspiration : Pelmatech (aurora bleue), Lynx (colonnes de lumière)
+Nav sticky : `bg-transparent` dans le hero → `bg-background/95 backdrop-blur-sm border-b border-border` hors hero.
 
 ---
 
-## 5. Contenu texte
-
-Contenu validé dans le brief (00), inchangé.
+## 4. Contenu texte
 
 ```
-[badge] 🟢 Open to remote roles
-
-# Maxime Luet
-### Product Designer who codes
-
-Based in France, I design and ship UI and design systems.
-
-from Figma ——→ to production
+# Product Designer
+I design UI for digital products and ship design systems.
+📍 Based in France
 ```
 
 **Typographie :**
-- H1 "Maxime Luet" : Plus Jakarta Sans, 48-56px, weight 800, blanc `#ffffff`
-- H2 "Product Designer who codes" : 22-24px, weight 500, blanc 85%
-- Body : 15px, weight 400, blanc 55%
-- Badge : 12px, blanc 70%, border blanc 15%, background blanc 5%, backdrop-blur
-
-**Ligne "Figma → production" :**
-- Texte : 14px, weight 500, blanc 45-50%
-- Flèche : gradient `#3b82f6` → `#06b6d4` → `#10b981` (bleu → cyan → émeraude)
-- Sweep lumineux : animation 2.5s, trait de lumière blanc 60% qui parcourt la ligne
-- C'est le seul endroit du hero où le gradient-signature P2 apparaît en mode
-  "concentré" — le reste est de l'ambiance, ici c'est du design intentionnel.
+- H1 "Product Designer" : Plus Jakarta Sans, `clamp(48px, 8.33vw, 120px)`, weight 600, `text-black`, `tracking-[-4.2px]`
+  — le noir sur fond dark est intentionnel (contraste warm, force la lisibilité)
+- Subtitle : 20px, weight 400, `text-white` (100%)
+- Location : 16px, weight 400, `text-white` (100%), icône MapPin Lucide
 
 ---
 
-## 6. Transition hero → contenu
+## 5. Stats zone (257px)
 
-**Fade progressif** du fond sombre du hero vers le blanc éditorial.
-
-- Gradient vertical en bas du hero : du fond sombre → blanc `#ffffff`
-- Hauteur de la transition : ~80-120px
-- Pas de coupure nette — la respiration est importante
-- En dessous : le site est en mode light éditorial (palette slate, cf. tokens)
+- Col 4 : `10+` (stat) + `years of XP` (label)
+- Col 5 : `Open` (stat) + `for full-time roles` (label)
+- Stat : `clamp(40px, 4.5vw, 65px)`, weight 600, white, tracking -1.5px
+- Label : 12px, white/50, margin-top 6px
 
 ---
 
-## 7. Motion
+## 6. Motion (GSAP + CSS)
 
-- Mesh drift : transform translate + scale, 12-20s, ease-in-out, infinite
-- Glass float : transform translateY + rotate, 8-14s, ease-in-out, infinite
-- Aurora : transform translate + scale + opacity, 15-25s
-- Sweep Figma→prod : 2.5s, ease-in-out, infinite
-- **Tout en CSS** (transform + opacity uniquement, jamais width/height)
-- **`prefers-reduced-motion: reduce`** : toutes les animations stoppées,
-  le hero reste statique (beau quand même grâce aux mesh fixes)
-- Grain : pas animé (statique)
+**Entrance (GSAP timeline) :**
+1. Background fade in (0.8s, power2.out)
+2. H1 words slide up from overflow-hidden mask (0.7s, stagger 0.15s, power3.out)
+3. Subtitle fade+slide (0.5s)
+4. Location fade (0.4s)
+5. Stats fade+slide (0.5s)
 
----
+**Ambient (GSAP, infinite) :**
+- Blob breathing : scale 1→1.07, 9s, sine.inOut, yoyo
+- Mouse parallax : blob suit la souris via `quickTo` xPercent/yPercent, 1.5s
 
-## 8. Navigation dans le hero
-
-Nav sticky superposée au hero (fond transparent dans le hero, fond blanc quand
-on scroll dans le contenu).
-
-```
-Maxime Luet         Work · Method · About · Contact
-```
-
-- 15px, weight 600 pour le nom, weight 500 pour les liens
-- Couleur dans le hero : blanc 90% (nom), blanc 50% (liens)
-- Couleur hors hero : `#0f172a` (nom), `#475569` (liens)
-- Transition : fade au scroll quand le hero sort du viewport
+**`prefers-reduced-motion: reduce`** → entrance/ambient désactivés, hero statique.
 
 ---
 
-## 9. Responsive
+## 7. Responsive
+
+- **Desktop (≥1024px)** : layout 7-col complet, grille nav, diagonal patterns
+- **Mobile (<768px)** : nav hamburger, grille stats 2-col (pas 7-col)
+
+---
+
+## 8. Performance
 
 - **Desktop (>1024px)** : layout tel que décrit, glass elements visibles
 - **Tablette (768-1024px)** : glass elements réduits (2 au lieu de 4), grid
