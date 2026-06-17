@@ -1,3 +1,4 @@
+import path from 'path'
 import type { NextConfig } from 'next'
 
 const securityHeaders = [
@@ -8,7 +9,10 @@ const securityHeaders = [
 ]
 
 const config: NextConfig = {
-  turbopack: { root: __dirname },
+  turbopack: {
+    // worktree is 3 levels below the monorepo root where node_modules lives
+    root: path.resolve(__dirname, '../../..'),
+  },
   async headers() {
     return [{ source: '/(.*)', headers: securityHeaders }]
   },

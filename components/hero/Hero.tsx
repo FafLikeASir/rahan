@@ -122,13 +122,13 @@ export function Hero() {
                 </span>
               </h1>
 
-              <p ref={subRef} className="mt-2.5 text-white/80" style={{ fontSize: '20px' }}>
+              <p ref={subRef} className="mt-2.5 text-white" style={{ fontSize: '20px' }}>
                 I design UI for digital products and ship design systems.
               </p>
             </div>
 
             {/* Location pinned to bottom */}
-            <div ref={locRef} className="pb-8 flex items-center gap-2 text-sm text-white/50">
+            <div ref={locRef} className="pb-8 flex items-center gap-2 text-base text-white">
               <MapPin size={16} aria-hidden="true" />
               Based in France
             </div>
