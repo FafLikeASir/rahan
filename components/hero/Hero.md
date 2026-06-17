@@ -22,5 +22,6 @@ Aucune prop — contenu entièrement statique (cf. `docs/00-brief-global.md`).
 - `prefers-reduced-motion` : désactive toutes les animations GSAP
 
 ## Décisions design
-Les valeurs de spacing pixel dans les animations GSAP (40px, 65px, 256px…) sont des offsets d'animation, pas des tokens d'espacement UI — faux positifs Lyse `tokens/no-hardcoded-spacing`.
+Les valeurs de spacing pixel dans les animations GSAP (40px, 52px, 300px…) sont des offsets d'animation, pas des tokens d'espacement UI — faux positifs Lyse `tokens/no-hardcoded-spacing`.
 Les `rgba(255,255,255,0.08)` dans `diagonalPattern` sont des valeurs de superposition de bruit sans token équivalent dans le DS — à tokeniser si réutilisés ailleurs.
+Stats label `rgba(255,255,255,0.72)` : hors échelle des tokens `--hero-text-*` existants — à tokeniser si réutilisé ailleurs.

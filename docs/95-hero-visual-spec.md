@@ -27,7 +27,7 @@ du site aussi expressif. Le reste du site est Editorial Restrained (blanc, typog
   — centré, animé (breathing + mouse parallax)
 - Blob slate (secondaire) : `radial-gradient(ellipse 52% 90% at 30% 100%, rgba(90,118,145,0.75) 0%, transparent 65%)`
   — ancré bas-gauche, statique
-- Grain : SVG noise overlay, **25% opacité**, `mix-blend-mode: color-burn`, tiled 256×256px
+- Grain : SVG noise overlay, **25% opacité**, `mix-blend-mode: color-burn`, tiled 300×300px
 
 ---
 
@@ -63,6 +63,7 @@ Grille 7-col (`grid-cols-7 h-20`) :
   - `border-radius: 8px`, `padding: 8px`, `gap: 8px`
   - Green dot 8×8px (`bg-emerald-400`, glow `0 0 6px 2px rgba(52,211,153,0.55)`)
   - Texte 14px, font-normal, white
+  - Alignement dans col 6 : `justify-end` (bord droit de col 6)
 
 Nav sticky : `bg-transparent` dans le hero → `bg-background/95 backdrop-blur-sm border-b border-border` hors hero.
 
@@ -77,7 +78,7 @@ I design UI for digital products and ship design systems.
 ```
 
 **Typographie :**
-- H1 "Product Designer" : Plus Jakarta Sans, `clamp(48px, 8.33vw, 120px)`, weight 600, `text-black`, `tracking-[-4.2px]`
+- H1 "Product Designer" : Plus Jakarta Sans, `clamp(48px, 8.33vw, 120px)`, weight 600, `text-black`, `tracking-[-4.2px]`, layout `flex gap-4`
   — le noir sur fond dark est intentionnel (contraste warm, force la lisibilité)
 - Subtitle : 20px, weight 400, `text-white` (100%)
 - Location : 16px, weight 400, `text-white` (100%), icône MapPin Lucide
@@ -88,8 +89,9 @@ I design UI for digital products and ship design systems.
 
 - Col 4 : `10+` (stat) + `years of XP` (label)
 - Col 5 : `Open` (stat) + `for full-time roles` (label)
-- Stat : `clamp(40px, 4.5vw, 65px)`, weight 600, white, tracking -1.5px
-- Label : 12px, white/50, margin-top 6px
+- Stat : `52px` (desktop) / `40px` (mobile), weight 500 (medium), white, tracking -1.5px
+- Label : 16px, `rgba(255,255,255,0.72)`, pas de margin-top
+- Layout cellule : `flex flex-col justify-center p-[24px]` (centrage vertical + padding uniforme 24px)
 
 ---
 
