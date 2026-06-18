@@ -199,10 +199,10 @@ export function Hero() {
                 className="flex gap-4 font-semibold leading-none text-black"
                 style={{ fontSize: 'clamp(48px, 8.33vw, 120px)', letterSpacing: '-4.2px' }}
               >
-                <span className="inline-block overflow-hidden align-bottom">
+                <span className="inline-block overflow-hidden align-bottom pb-[0.15em]">
                   <span className="hero-word inline-block">Product</span>
                 </span>
-                <span className="inline-block overflow-hidden align-bottom">
+                <span className="inline-block overflow-hidden align-bottom pb-[0.15em]">
                   <span className="hero-word inline-block">Designer</span>
                 </span>
               </h1>
