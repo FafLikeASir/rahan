@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { caseStudies, elsewhere } from '@/data/case-studies'
 import { cn, grainSvg } from '@/lib/utils'
+import { WorkAnimations } from './WorkAnimations'
 
 const gradientOverlay = [
   'radial-gradient(ellipse 70% 600% at 52% 50%, color-mix(in srgb, var(--hero-warm-orange) 70%, transparent) 0%, color-mix(in srgb, var(--hero-warm-orange) 25%, transparent) 65%, transparent 85%)',
@@ -18,6 +19,7 @@ const textColor = {
 export function WorkSection() {
   return (
     <section id="work" aria-label="Work" className="scroll-mt-20">
+      <WorkAnimations />
 
       {/* ── "Work" heading ────────────────────────────────────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-7 pt-20 pb-10">
@@ -58,7 +60,7 @@ export function WorkSection() {
             <div
               key={study.slug}
               className={cn(
-                'relative border-t border-foreground/[8%] group',
+                'work-row relative border-t border-foreground/[8%] group',
                 !featured && 'transition-colors duration-150 hover:bg-foreground/[2.5%]',
               )}
               style={featured ? { backgroundColor: 'color-mix(in srgb, var(--hero-warm-orange) 6%, transparent)' } : undefined}
@@ -149,7 +151,7 @@ export function WorkSection() {
       </div>
 
       {/* ── Elsewhere ─────────────────────────────────────────────────── */}
-      <div className="mt-12">
+      <div className="elsewhere-section mt-12">
         {/* "Elsewhere" subtitle */}
         <div className="grid grid-cols-1 lg:grid-cols-7 pb-2">
           <div className="hidden lg:block" />
@@ -171,7 +173,7 @@ export function WorkSection() {
             <div
               key={item.company}
               className={cn(
-                'flex flex-col gap-1',
+                'elsewhere-item flex flex-col gap-1',
                 i === 0 && 'col-start-2',
                 i === 1 && 'col-start-4',
                 i === 2 && 'col-start-6',
