@@ -36,7 +36,7 @@ export function Hero() {
 
     // ── État initial caché ───────────────────────────────────────────────
     gsap.set(bgRef.current, { opacity: 0 })
-    gsap.set(blob, { opacity: 0, scale: 0.7, xPercent: -15, yPercent: 20 })
+    gsap.set(blob, { opacity: 0, scale: 0.7 })
     gsap.set(slateBlobRef.current, { opacity: 0 })
     if (navEl) gsap.set(navEl, { opacity: 0, yPercent: -100 })
 
@@ -54,15 +54,13 @@ export function Hero() {
     gsap.set([subRef.current, locRef.current], { opacity: 0, y: 10 })
     gsap.set([stat1Ref.current, stat2Ref.current], { opacity: 0, y: 12 })
 
-    // ── Drift ambiant — dégrade vivant (lancé à la fin de l'entrance) ────
-    function driftBlob(el: HTMLElement, xRange: number, yRange: number, sRange: [number, number]) {
+    // ── Wander per-axis — chaque propriété oscille indépendamment ───────
+    function wander(el: HTMLElement, prop: string, min: number, max: number, durMin: number, durMax: number) {
       gsap.to(el, {
-        xPercent: gsap.utils.random(-xRange, xRange),
-        yPercent: gsap.utils.random(-yRange, yRange),
-        scale:    gsap.utils.random(sRange[0], sRange[1]),
-        duration: gsap.utils.random(10, 18),
-        ease:     'sine.inOut',
-        onComplete: () => driftBlob(el, xRange, yRange, sRange),
+        [prop]: gsap.utils.random(min, max),
+        duration: gsap.utils.random(durMin, durMax),
+        ease: 'sine.inOut',
+        onComplete: () => wander(el, prop, min, max, durMin, durMax),
       })
     }
 
@@ -73,16 +71,22 @@ export function Hero() {
     const tl = gsap.timeline({
       defaults: { ease: 'power3.out' },
       onComplete: () => {
-        driftBlob(blob, 18, 14, [0.95, 1.1])
-        driftBlob(slateBlobRef.current!, 10, 8, [0.97, 1.05])
+        // Orange blob — 3 axes indépendants, Lissajous organique
+        wander(blob, 'xPercent', -28,  28,  7, 13)
+        wander(blob, 'yPercent', -22,  22,  5, 10)
+        wander(blob, 'scale',   0.85, 1.2,  4,  8)
+        // Slate blob — plus subtil, plus lent
+        wander(slateBlobRef.current!, 'xPercent', -12, 12, 11, 18)
+        wander(slateBlobRef.current!, 'yPercent',  -8,  8,  9, 15)
 
-        const xTo = gsap.quickTo(blob, 'xPercent', { duration: 1.5, ease: 'power2.out' })
-        const yTo = gsap.quickTo(blob, 'yPercent', { duration: 1.5, ease: 'power2.out' })
+        // Mouse parallax en x/y pixels — s'additionne au drift sans le court-circuiter
+        const xTo = gsap.quickTo(blob, 'x', { duration: 1.5, ease: 'power2.out' })
+        const yTo = gsap.quickTo(blob, 'y', { duration: 1.5, ease: 'power2.out' })
 
         const onMouseMove = (e: MouseEvent) => {
           const { left, top, width, height } = section.getBoundingClientRect()
-          xTo(((e.clientX - left) / width  - 0.5) *  8)
-          yTo(((e.clientY - top)  / height - 0.5) *  6)
+          xTo(((e.clientX - left) / width  - 0.5) * 50)
+          yTo(((e.clientY - top)  / height - 0.5) * 35)
         }
         section.addEventListener('mousemove', onMouseMove)
         removeMouseMove = () => section.removeEventListener('mousemove', onMouseMove)
@@ -93,14 +97,9 @@ export function Hero() {
       // Phase 1 — fond noir → bg fade
       tl.to(bgRef.current, { opacity: 1, duration: 0.9, ease: 'power2.inOut' })
 
-      // Phase 2 — blobs : wander aléatoire puis settle
+      // Phase 2 — blobs : apparition propre
       tl.to(slateBlobRef.current, { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.1')
-      tl.to(blob, { opacity: 0.75, scale: 0.9,
-        xPercent: gsap.utils.random(-25, 25), yPercent: gsap.utils.random(-20, 20),
-        duration: 0.5, ease: 'power2.out' }, '-=0.6')
-      tl.to(blob, { xPercent: gsap.utils.random(-25, 25), yPercent: gsap.utils.random(-20, 20), duration: 0.4, ease: 'power1.inOut' })
-      tl.to(blob, { xPercent: gsap.utils.random(-25, 25), yPercent: gsap.utils.random(-20, 20), duration: 0.35, ease: 'power1.inOut' })
-      tl.to(blob, { opacity: 1, scale: 1, xPercent: 0, yPercent: 0, duration: 0.7, ease: 'expo.out' })
+      tl.to(blob, { opacity: 1, scale: 1, duration: 0.9, ease: 'power2.out' }, '-=0.6')
 
       // Phase 3 — lignes de grille
       tl.to(vLinesRef.current, { scaleY: 1, duration: 0.65, stagger: 0.06, ease: 'power3.inOut' }, '-=0.3')
