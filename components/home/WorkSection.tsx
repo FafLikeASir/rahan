@@ -11,10 +11,7 @@ const gradientOverlay = [
 // ponytail: single div replaces 29 Figma backdrop-blur strips; visual fidelity ~95%
 const glassStrips = 'repeating-linear-gradient(90deg, rgba(0,0,0,0.10) 0%, rgba(255,255,255,0.02) 1.6%, transparent 3.33%)'
 
-const textColor = {
-  featured: { primary: 'text-white', secondary: 'text-text-secondary', meta: 'text-muted-foreground' },
-  default:  { primary: 'text-foreground', secondary: 'text-text-secondary', meta: 'text-muted-foreground' },
-}
+const textColor = { primary: 'text-foreground', secondary: 'text-text-secondary', meta: 'text-muted-foreground' }
 
 export function WorkSection() {
   return (
@@ -53,34 +50,26 @@ export function WorkSection() {
 
         {/* Rows */}
         {caseStudies.map((study) => {
-          const featured = study.slug === 'estorie'
-          const c = featured ? textColor.featured : textColor.default
+          const c = textColor
 
           return (
             <div
               key={study.slug}
-              className={cn(
-                'work-row relative border-t border-foreground/[8%] group',
-                !featured && 'transition-colors duration-150 hover:bg-foreground/[2.5%]',
-              )}
+              className="work-row relative border-t border-foreground/[8%] group"
             >
-              {/* Gradient overlay — featured row only */}
-              {featured && (
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ backgroundImage: gradientOverlay }}
-                />
-              )}
+              {/* Gradient overlay — all rows, on hover */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ backgroundImage: gradientOverlay }}
+              />
 
-              {/* Noise tile — featured row only */}
-              {featured && (
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-[0.25] transition-opacity duration-300"
-                  style={{ backgroundImage: grainSvg, backgroundSize: '300px 300px', mixBlendMode: 'color-burn' }}
-                />
-              )}
+              {/* Noise tile — all rows, on hover */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-[0.25] transition-opacity duration-300"
+                style={{ backgroundImage: grainSvg, backgroundSize: '300px 300px', mixBlendMode: 'color-burn' }}
+              />
 
               {/* Glass strips — all rows, on hover */}
               <div
