@@ -63,13 +63,12 @@ export function WorkSection() {
                 'work-row relative border-t border-foreground/[8%] group',
                 !featured && 'transition-colors duration-150 hover:bg-foreground/[2.5%]',
               )}
-              style={featured ? { backgroundColor: 'color-mix(in srgb, var(--hero-warm-orange) 6%, transparent)' } : undefined}
             >
               {/* Gradient overlay — featured row only */}
               {featured && (
                 <div
                   aria-hidden="true"
-                  className="absolute inset-0 overflow-hidden"
+                  className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{ backgroundImage: gradientOverlay }}
                 />
               )}
@@ -78,7 +77,7 @@ export function WorkSection() {
               {featured && (
                 <div
                   aria-hidden="true"
-                  className="absolute inset-0 pointer-events-none opacity-25"
+                  className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-[0.25] transition-opacity duration-300"
                   style={{ backgroundImage: grainSvg, backgroundSize: '300px 300px', mixBlendMode: 'color-burn' }}
                 />
               )}
