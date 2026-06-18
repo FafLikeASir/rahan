@@ -154,8 +154,11 @@ export function Hero() {
       <div
         ref={slateBlobRef}
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 will-change-transform"
-        style={{ backgroundImage: 'radial-gradient(ellipse 52% 90% at 30% 100%, color-mix(in srgb, var(--hero-warm-slate) 75%, transparent) 0%, transparent 65%)' }}
+        className="pointer-events-none absolute top-0 left-0 right-0 will-change-transform"
+        style={{
+          bottom: '-50%',
+          backgroundImage: 'radial-gradient(ellipse 52% 60% at 30% 67%, color-mix(in srgb, var(--hero-warm-slate) 75%, transparent) 0%, transparent 65%)',
+        }}
       />
 
       {/* Noise grain */}
