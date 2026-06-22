@@ -9,6 +9,14 @@
 Lire `docs/00-workflow-protocol.md` pour le protocole complet :
 scoring de faisabilité, routing des skills, workflow Figma → code, audit Lyse.
 
+**Format plan obligatoire** (template `docs/00-workflow-protocol.md §2`) :
+- Chaque étape : `[Feasibility: XX%]` + `→ Skill: X`
+- Score < 90% → routine de déblocage avant d'implémenter
+- Vérifier avec `/plan-check`
+
+**Custom commands disponibles :** `/design-review` · `/lyse` · `/document` · `/plan-check`  
+**Agents :** `.claude/agents/` — lyse-auditor, component-documenter, design-reviewer
+
 ## Règle #1
 
 Lire `docs/96-project-structure.md` avant toute action. C'est la source de
