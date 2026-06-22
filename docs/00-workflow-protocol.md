@@ -18,10 +18,28 @@
 
 ## §2 — Plan et scoring de faisabilité
 
-Chaque étape du plan est annotée d'un score :
+### Template obligatoire
+
+Tout plan doit suivre ce format exact :
+
+```md
+## Plan — [Nom de la tâche]
+
+### Contexte
+Pourquoi cette tâche existe — le problème ou besoin qu'elle adresse.
+
+### Étapes
+- [ ] Étape 1 — description [Feasibility: XX%] → Skill: X
+- [ ] Étape 2 — description [Feasibility: XX%] → Skill: X
+
+### Vérification
+Comment tester que la tâche est complète (run, MCP, test, browser).
+```
+
+Chaque étape est annotée d'un score :
 
 ```
-- [ ] Étape X — description [Feasibility: 87%]
+- [ ] Étape X — description [Feasibility: 87%] → Skill: design-taste-frontend
 ```
 
 **Si score < 90% :**
@@ -32,6 +50,8 @@ Relancer la routine sur ce point précis :
 4. Répéter jusqu'à ≥ 90% **ou** identifier que le blocage est hors-scope
 
 Si hors-scope → remonter à Maxime, ne pas improviser.
+
+**Commande de vérification :** `/plan-check` — vérifie que le plan respecte ce format.
 
 ---
 
