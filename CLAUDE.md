@@ -25,6 +25,11 @@ Si une décision est écrite dans un des docs 91-95, elle est prise.
 Ne pas la re-débattre. L'appliquer. Si elle semble contradictoire avec une
 autre, demander à Maxime.
 
+## Design system — accès rapide
+
+`DESIGN.md` (racine) — tokens YAML + do's and don'ts condensés. Lecture rapide avant
+toute tâche visuelle. Pointe vers les docs complètes pour les détails.
+
 ## Hiérarchie des documents
 
 1. `docs/96-project-structure.md` — architecture et contraintes techniques
