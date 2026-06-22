@@ -19,10 +19,6 @@ systems et sait les amener jusqu'en production dans le code.
 
 Décrocher un poste de Product Designer / UI-UX Designer (spécialité UI & Design
 System), en startup / scale-up / grand groupe à équipe produit interne.
-Marché tendu, recherche active.
-
-Cible géographique : remote France, Le Mans, Laval, Paris (hybride léger),
-Angers, Rennes. (Détail dans le skill de recherche d'emploi.)
 
 ## Positionnement
 
@@ -192,24 +188,6 @@ Notes :
 - Deux mini-blocs prévus en dessous : Currently + What I'm looking for. À rédiger.
 
 ## Mini-blocs sous About (validés)
-
-```
-**Currently**
-Two screens open most days: the Health Solutions Catalogue at GIE SESAM-Vitale
-(via SII), and eStorie on the side.
-
-**What I'm looking for**
-Product Designer roles — ideally with a Design System scope, but I'm open.
-Remote across France, or hybrid in Paris (light) and cities in western France.
-```
-
-Notes :
-- Registres distincts assumés : Currently en voix off (transition douce depuis
-  About), What I'm looking for en factuel (info pratique scannable par un recruteur).
-- « (via SII) » respecte la convention de présentation client/prestataire validée.
-- Pas de mention « pas d'ESN » : on reste ouvert (les chasseurs de tête peuvent
-  amener des postes in-house intéressants).
-- DS « ideally but open » : ne pas se fermer aux postes Product Designer plus larges.
 
 ## État d'avancement
 

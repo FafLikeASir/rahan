@@ -15,8 +15,9 @@
 Refonte du portfolio de Maxime Luet, Product Designer spécialiste UI & Design
 System qui code (front-end React/Tailwind). ~10 ans en SaaS. Objectif : décrocher
 un poste de Product Designer / UI-UX en startup, scale-up ou grand groupe à équipe
-produit interne (pas d'ESN comme employeur), en remote France ou hybride (Paris
-light, Le Mans, Laval, Angers, Rennes). Le site doit faire deux choses à la fois :
+produit interne.
+
+Le site doit faire deux choses à la fois :
 séduire au scan de 6 secondes (recruteur non-designer) et tenir à l'inspection du
 craft (head of design). Le site est lui-même la preuve de la compétence. Anglais
 only. Stack Next.js + Tailwind, shadcn comme squelette recouvert du style perso.
@@ -189,8 +190,7 @@ lourde.**
 
 **Hors scope (pour l'instant) :**
 - Version FR / i18n (textes gardés séparés pour le permettre plus tard).
-- GIE en 3ᵉ étude de cas (reste une ligne de parcours + exemple méthode ; décision
-  réversible plus tard).
+
 - Témoignages (souhaitables — Head of Product Mention, dev eKonsilio — mais non
   bloquants).
 - Dark mode (possible plus tard, pas au launch).
@@ -209,10 +209,8 @@ lourde.**
 - **Accessibilité :** soignée (cohérent avec le profil ; Maxime a une pratique RGAA).
   Contrastes du mode light à vérifier sérieusement (piège classique du light + accent).
 - **Honnêteté (red flag 7) :** périmètres précis partout (eKonsilio design/DS/front
-  vs collègue back ; eStorie bénévole/temps partiel ; GIE via SII). Non négociable.
-- **Temps :** recherche active → le site doit pouvoir partir « assez bien » vite,
-  puis s'enrichir. Prioriser ce qui débloque les candidatures (hero, vitrine, 1–2
-  cas, contact) avant la section Système poussée.
+  vs collègue back) — non négociable.
+
 - **Zéro faute** (anglais relu).
 
 ---
