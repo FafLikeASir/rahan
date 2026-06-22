@@ -1,42 +1,58 @@
-# Portfolio Blog Starter
+# Portfolio — Maxime Luet
 
-This is a porfolio site template complete with a blog. Includes:
+Personal portfolio. Product Designer specializing in Design Systems & UI, positioned as "from Figma to production."
 
-- MDX and Markdown support
-- Optimized for SEO (sitemap, robots, JSON-LD schema)
-- RSS Feed
-- Dynamic OG images
-- Syntax highlighting
-- Tailwind v4
-- Vercel Speed Insights / Web Analytics
-- Geist font
+→ [rahan.vercel.app](https://rahan.vercel.app)
 
-## Demo
+## Stack
 
-https://portfolio-blog-starter.vercel.app
+- Next.js 15 (App Router) · TypeScript strict
+- Tailwind v4 · shadcn/ui · Plus Jakarta Sans
+- MDX (case studies) · Vercel
 
-## How to Use
+## Sections
 
-You can choose from one of the following two methods to use this repository:
+| Section | Status |
+|---|---|
+| Hero | ✅ |
+| Work (3 case studies) | ✅ eStorie · ✅ Mention · 🚧 eKonsilio |
+| Method | ✅ |
+| System (interactive design system) | 🚧 |
+| About | ✅ |
+| Contact | 🚧 |
 
-### One-Click Deploy
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/blog&project-name=blog&repository-name=blog)
-
-### Clone and Deploy
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
+## Development
 
 ```bash
-pnpm create next-app --example https://github.com/vercel/examples/tree/main/solutions/blog blog
+pnpm dev      # localhost:3000
+pnpm build    # production build
 ```
 
-Then, run Next.js in development mode:
+## Claude Code setup
 
-```bash
-pnpm dev
-```
+This project ships with a full Claude Code configuration.
 
-Deploy it to the cloud with [Vercel](https://vercel.com/templates) ([Documentation](https://nextjs.org/docs/app/building-your-application/deploying)).
+**Custom commands** (`/command` in Claude Code):
+
+| Command | Purpose |
+|---|---|
+| `/design-review` | Design compliance check against `DESIGN.md` and `docs/93–95` |
+| `/lyse` | Run Lyse design system audit (Health Score) |
+| `/document` | Document a component (creates co-located `.md` + updates index) |
+| `/plan-check` | Validate a plan against the workflow protocol |
+
+**Agents** (`.claude/agents/`):
+
+| Agent | Role |
+|---|---|
+| `design-reviewer` | Scores diff alignment with design system before implementation |
+| `lyse-auditor` | Runs `npx lyse audit`, reports regressions |
+| `component-documenter` | Creates/updates component docs after changes |
+
+**Skills** (`.claude/skills/`): `design-taste-frontend` · `gpt-taste` · `redesign-existing-projects`
+
+**Workflow:** always start in plan mode — see `docs/00-workflow-protocol.md`.
+
+## Deployment
+
+Vercel — auto-deploy on push to `main`.
