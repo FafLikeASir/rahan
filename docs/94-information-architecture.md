@@ -363,9 +363,6 @@ Ce sont des choix, pas des oublis.
 
 - **Confidentialité eStorie** : peut-on publier les écrans / le nom ? Décision
   bloquante pour le visuel d'ouverture du cas. À régler avant l'écriture.
-- **Confidentialité GIE** : la mention « GIE SESAM-Vitale (mission via SII) »
-  dans Elsewhere et Currently est-elle OK contractuellement ? À vérifier auprès
-  de SII.
 - **Visuel d'ouverture de chaque cas** : 1 image fixe ? Une mini-séquence ? À
   décider au moment du design.
 - **Open Graph image de la home** : à concevoir (c'est l'aperçu qui apparaît

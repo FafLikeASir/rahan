@@ -27,13 +27,12 @@ export function AboutSection() {
             </p>
           </div>
 
-          {/* Mini-blocks */}
-          <div className="mt-12 grid gap-6 border-t border-border pt-10 sm:grid-cols-2">
+          {/* Mini-blocks — currently hidden (private employer + job search data) */}
+          {/* <div className="mt-12 grid gap-6 border-t border-border pt-10 sm:grid-cols-2">
             <div>
               <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-text-tertiary">Currently</p>
               <p className="text-sm leading-relaxed text-text-secondary">
-                Two screens open most days: the Health Solutions Catalogue at GIE SESAM-Vitale
-                (via SII), and eStorie on the side.
+                Two screens open most days: [current project], and eStorie on the side.
               </p>
             </div>
             <div>
@@ -45,7 +44,7 @@ export function AboutSection() {
                 Remote across France, or hybrid in Paris (light) and cities in western France.
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Photo — replace with next/image once available */}

@@ -273,5 +273,3 @@ lourde.**
 - Naming du design system (quand on cadrera la section Système).
 - Garde-t-on un clin d'œil perso dans le About maintenant que l'angle BD tombe, ou
   on reste sur le About validé tel quel ?
-- Ordre de vitrine : eStorie (bénévole) en tête confirmé, ou Mention prend la tête ?
-  (toujours ouvert depuis 90).
