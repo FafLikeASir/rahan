@@ -38,3 +38,15 @@ next-env.d.ts
 
 # Lyse local cache
 .lyse/
+
+# Docs sources avec données personnelles — utiliser les .public.md sur le repo
+docs/00-brief-global.md
+docs/91-brand-discovery.md
+docs/92-creative-brief.md
+# Fiches expériences — données emploi privées
+docs/11-fiche-estorie.md
+docs/12-fiche-mention.md
+docs/13-fiche-ekonsilio.md
+docs/14-fiche-sparteo.md
+docs/15-fiche-gie.md
+docs/16-fiche-bfast.md

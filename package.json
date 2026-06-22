@@ -4,7 +4,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prepare": "mkdir -p .git/hooks && cp scripts/lyse-post-commit.sh .git/hooks/post-commit && chmod +x .git/hooks/post-commit"
+    "prepare": "mkdir -p .git/hooks && cp scripts/lyse-post-commit.sh .git/hooks/post-commit && chmod +x .git/hooks/post-commit",
+    "docs:strip": "node scripts/strip-private.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",

@@ -51,12 +51,7 @@ export type CaseStudy = (typeof caseStudies)[number]
 export const caseStudyMap = Object.fromEntries(caseStudies.map((c) => [c.slug, c]))
 
 export const elsewhere = [
-  {
-    company: 'GIE SESAM-Vitale',
-    suffix: 'via SII',
-    role: 'Product Designer',
-    period: '2026',
-  },
+  // ponytail: GIE SESAM-Vitale entry removed before public release — private employer data
   {
     company: 'Sparteo',
     role: 'Senior Product Designer',
