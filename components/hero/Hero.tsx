@@ -14,7 +14,6 @@ export function Hero() {
   const bgRef         = useRef<HTMLDivElement>(null)
   const blobRef       = useRef<HTMLDivElement>(null)
   const slateBlobRef  = useRef<HTMLDivElement>(null)
-  const feBlurRef     = useRef<SVGFEGaussianBlurElement>(null)
   const navLineRef    = useRef<HTMLDivElement>(null)
   const vLinesRef     = useRef<HTMLDivElement[]>([])
   const hStatsLineRef = useRef<HTMLDivElement>(null)
@@ -39,7 +38,6 @@ export function Hero() {
     gsap.set(bgRef.current, { opacity: 0 })
     gsap.set(blob, { opacity: 0, scale: 0.7 })
     gsap.set(slateBlobRef.current, { opacity: 0 })
-    if (feBlurRef.current) gsap.set(feBlurRef.current, { attr: { stdDeviation: 0 } })
     if (navEl) gsap.set(navEl, { opacity: 0, yPercent: -100 })
 
     if (isDesktop) {
@@ -102,7 +100,6 @@ export function Hero() {
       // Phase 2 — blobs : apparition propre
       tl.to(slateBlobRef.current, { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.1')
       tl.to(blob, { opacity: 1, scale: 1, duration: 0.9, ease: 'power2.out' }, '-=0.6')
-      if (feBlurRef.current) tl.to(feBlurRef.current, { attr: { stdDeviation: 150 }, duration: 0.9, ease: 'power2.out' }, '<')
 
       // Phase 3 — lignes de grille
       tl.to(vLinesRef.current, { scaleY: 1, duration: 0.65, stagger: 0.06, ease: 'power3.inOut' }, '-=0.3')
@@ -124,7 +121,6 @@ export function Hero() {
       tl.to(bgRef.current, { opacity: 1, duration: 0.7, ease: 'power2.inOut' })
       tl.to(blob, { opacity: 1, scale: 1, xPercent: 0, yPercent: 0, duration: 0.6 }, '-=0.1')
       tl.to(slateBlobRef.current, { opacity: 1, duration: 0.5 }, '<')
-      if (feBlurRef.current) tl.to(feBlurRef.current, { attr: { stdDeviation: 150 }, duration: 0.6, ease: 'power2.out' }, '<')
       if (navEl) tl.to(navEl, { opacity: 1, yPercent: 0, duration: 0.45 }, '-=0.1')
       tl.to(h1Ref.current!.querySelectorAll('.hero-word'), { y: '0%', duration: 0.6, stagger: 0.12 }, '-=0.1')
       tl.to(subRef.current, { opacity: 1, y: 0, duration: 0.45 }, '-=0.3')
@@ -143,15 +139,6 @@ export function Hero() {
   return (
     <section ref={sectionRef} className="relative min-h-[100dvh] overflow-hidden" aria-label="Introduction">
 
-      {/* SVG blur filter — région étendue pour éviter le clipping Safari */}
-      <svg aria-hidden="true" style={{ position: 'absolute', width: 0, height: 0 }}>
-        <defs>
-          <filter id="blob-blur" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur ref={feBlurRef} in="SourceGraphic" stdDeviation="0" />
-          </filter>
-        </defs>
-      </svg>
-
       {/* Background base */}
       <div ref={bgRef} aria-hidden="true" className="absolute inset-0" style={{ backgroundColor: 'var(--hero-bg)' }} />
 
@@ -160,7 +147,7 @@ export function Hero() {
         ref={blobRef}
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 will-change-transform"
-        style={{ backgroundImage: 'radial-gradient(ellipse 44% 76% at 50% 50%, color-mix(in srgb, var(--hero-warm-orange) 90%, transparent) 0%, transparent 65%)', filter: 'url(#blob-blur)' }}
+        style={{ backgroundImage: 'radial-gradient(ellipse 44% 76% at 50% 50%, color-mix(in srgb, var(--hero-warm-orange) 90%, transparent) 0%, transparent 65%)' }}
       />
 
       {/* Slate blob (bottom-left) — drift ambiant */}
@@ -172,7 +159,6 @@ export function Hero() {
           left: '-30%',
           bottom: '-50%',
           backgroundImage: 'radial-gradient(ellipse 40% 60% at 46% 67%, color-mix(in srgb, var(--hero-warm-slate) 75%, transparent) 0%, transparent 65%)',
-          filter: 'url(#blob-blur)',
         }}
       />
 
