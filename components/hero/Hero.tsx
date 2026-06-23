@@ -147,7 +147,7 @@ export function Hero() {
         ref={blobRef}
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 will-change-transform"
-        style={{ backgroundImage: 'radial-gradient(ellipse 44% 76% at 50% 50%, color-mix(in srgb, var(--hero-warm-orange) 90%, transparent) 0%, transparent 65%)' }}
+        style={{ backgroundImage: 'radial-gradient(ellipse 44% 76% at 50% 50%, color-mix(in srgb, var(--hero-warm-orange) 90%, transparent) 0%, transparent 65%)', filter: 'blur(300px)' }}
       />
 
       {/* Slate blob (bottom-left) — drift ambiant */}
@@ -159,6 +159,7 @@ export function Hero() {
           left: '-30%',
           bottom: '-50%',
           backgroundImage: 'radial-gradient(ellipse 40% 60% at 46% 67%, color-mix(in srgb, var(--hero-warm-slate) 75%, transparent) 0%, transparent 65%)',
+          filter: 'blur(300px)',
         }}
       />
 
@@ -200,7 +201,7 @@ export function Hero() {
                 style={{ fontSize: 'clamp(48px, 8.33vw, 120px)', letterSpacing: '-4.2px' }}
               >
                 <span className="inline-block overflow-hidden align-bottom pb-[0.15em]">
-                  <span className="hero-word inline-block">Product</span>
+                  <span className="hero-word inline-block" style={{ mixBlendMode: 'soft-light' }}>Product</span>
                 </span>
                 <span className="inline-block overflow-hidden align-bottom pb-[0.15em]">
                   <span className="hero-word inline-block">Designer</span>
@@ -248,23 +249,23 @@ export function Hero() {
           {/* col 4 (lg) / mobile col 1 — 10+ */}
           <div ref={stat1Ref} className="flex flex-col justify-center p-[24px] border-r border-white/[0.1] lg:border-r-0">
             <span
-              className="font-medium leading-none text-white text-[40px] lg:text-[52px]"
+              className="font-medium leading-none text-white text-[34px] lg:text-[44px]"
               style={{ letterSpacing: '-1.5px' }}
             >
               10+
             </span>
-            <span className="text-base text-white/[72%]">years of XP</span>
+            <span className="text-sm text-white/[72%]">years of XP</span>
           </div>
 
           {/* col 5 (lg) / mobile col 2 — Open */}
           <div ref={stat2Ref} className="flex flex-col justify-center p-[24px] border-r border-white/[0.1] lg:border-r-0">
             <span
-              className="font-medium leading-none text-white text-[40px] lg:text-[52px]"
+              className="font-medium leading-none text-white text-[34px] lg:text-[44px]"
               style={{ letterSpacing: '-1.5px' }}
             >
               Open
             </span>
-            <span className="text-base text-white/[72%]">for full-time roles</span>
+            <span className="text-sm text-white/[72%]">for full-time roles</span>
           </div>
 
           {/* col 6 (lg) — diagonal pattern */}
