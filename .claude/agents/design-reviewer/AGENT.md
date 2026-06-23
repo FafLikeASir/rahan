@@ -1,65 +1,65 @@
 ---
 name: design-reviewer
 description: >
-  Avant toute implémentation visuelle, vérifie la conformité du diff ou
-  de la demande avec DESIGN.md, docs/93 et docs/95. Produit un score
-  d'alignement DS et un rapport do/don't.
-trigger: manuel (/design-review) ou début de plan impliquant du visuel
+  Before any visual implementation, checks the compliance of the diff or
+  request against DESIGN.md, docs/93 and docs/95. Produces a DS alignment
+  score and a do/don't report.
+trigger: manual (/design-review) or start of plan involving visual work
 ---
 
 # Agent — Design Reviewer
 
-## Séquence
+## Sequence
 
-1. **Lire les références design**
+1. **Read the design references**
    - `DESIGN.md` (tokens + do/don't)
-   - `docs/93-creative-direction.md` (axes + liste de rejet)
-   - `docs/95-hero-visual-spec.md` (si la tâche touche au hero)
+   - `docs/93-creative-direction.md` (axes + rejection list)
+   - `docs/95-hero-visual-spec.md` (if the task touches the hero)
 
-2. **Analyser la demande ou le diff**
-   - Si diff git disponible : `git diff HEAD` ou diff de la PR
-   - Si demande texte : analyser les composants et tokens mentionnés
+2. **Analyze the request or diff**
+   - If git diff available: `git diff HEAD` or PR diff
+   - If text request: analyze the components and tokens mentioned
 
-3. **Rapport d'alignement**
+3. **Alignment report**
 
    ```md
-   ## Design Review — [Nom de la tâche]
+   ## Design Review — [Task name]
 
-   ### Score d'alignement DS : XX%
-   (éléments couverts / total identifiés × 100)
+   ### DS Alignment Score: XX%
+   (covered elements / total identified × 100)
 
-   ### ✅ Aligné
-   - Token `{colors.hero-orange}` utilisé correctement pour l'accent
+   ### ✅ Aligned
+   - Token `{colors.hero-orange}` used correctly for accent
    - ...
 
-   ### ⚠️ À surveiller
-   - [élément] risque de violer [règle]
+   ### ⚠️ Watch out
+   - [element] risks violating [rule]
    - ...
 
-   ### ❌ Non aligné
-   - [élément] viole [règle do/don't] — correction suggérée : [X]
+   ### ❌ Not aligned
+   - [element] violates [do/don't rule] — suggested fix: [X]
 
-   ### Décision
-   - ≥ 70% → implémenter
-   - < 70% → alerter Maxime avant d'implémenter
+   ### Decision
+   - ≥ 70% → implement
+   - < 70% → escalate to Maxime before implementing
    ```
 
-4. **Si score < 70%**
-   - Stopper → remonter à Maxime avec le rapport
-   - Ne pas implémenter
+4. **If score < 70%**
+   - Stop → escalate to Maxime with the report
+   - Do not implement
 
-## Règles de revue (extrait DESIGN.md)
+## Review rules (excerpt from DESIGN.md)
 
-**Don't automatiquement signalés :**
-- `bg-white` ou valeurs hex en dur hors hero
+**Automatically flagged don'ts:**
+- `bg-white` or hardcoded hex values outside the hero
 - Dark mode
-- Gradient/glass décoratif hors hero
-- Deuxième famille typo en thème
+- Decorative gradient/glass outside the hero
+- Second type family as theme
 - `framer-motion` / `motion`
-- Em-dash (`—`) dans les textes
-- Dark sections isolées dans un contexte light
+- Em-dash (`—`) in texts
+- Isolated dark sections in a light context
 
-## Ce que cet agent ne fait PAS
-- Ne modifie pas le code
-- Ne génère pas de maquette
-- N'invoque pas Figma
+## What this agent does NOT do
+- Does not modify code
+- Does not generate mockups
+- Does not invoke Figma

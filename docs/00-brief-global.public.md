@@ -1,76 +1,75 @@
-# Portfolio Maxime Luet — Brief global
+# Portfolio Maxime Luet — Global Brief
 
-> Source de vérité du projet de refonte du portfolio. Document chapeau :
-> positionnement, cible, architecture, contraintes, décisions. Les fiches
-> expériences (10-…) et la discovery (90-…) le complètent.
+> Source of truth for the portfolio redesign project. Master document:
+> positioning, target, architecture, constraints, decisions. Experience sheets
+> (10-…) and discovery (90-…) complement it.
 
 ---
 
-## Qui
+## Who
 
-**Maxime Luet** — Product Designer, spécialiste UI & Design System, avec des
-compétences de développeur front-end (HTML/CSS, JavaScript, React, TailwindCSS).
-Positionnement : « designer qui code » — designer produit qui conçoit des design
-systems et sait les amener jusqu'en production dans le code.
+**Maxime Luet** — Product Designer, specialized in UI & Design System, with
+front-end developer skills (HTML/CSS, JavaScript, React, TailwindCSS).
+Positioning: "designer who codes" — a product designer who designs
+design systems and can bring them to production in code.
 
-~10 ans d'expérience, exclusivement sur des produits SaaS.
+~10 years of experience, exclusively on SaaS products.
 
-## Objectif du portfolio
+## Portfolio objective
 
-Décrocher un poste de Product Designer / UI-UX Designer (spécialité UI & Design
-System), en startup / scale-up / grand groupe à équipe produit interne.
+Land a Product Designer / UI-UX Designer role (UI & Design System specialty),
+at a startup / scale-up / large company with an internal product team.
 
-## Positionnement
+## Positioning
 
-- Titre retenu : **« Product Designer who codes »** (sobre, matche les intitulés
-  visés tout en affichant la différence). « Design Engineer » écarté comme titre
-  principal (trop tech, cible trop étroite) mais le concept de design engineering
-  peut nourrir la section Approche.
-- Différenciateur clé : **du design jusqu'au code en production** — « from Figma
-  to production ».
-- Angle à faire vivre partout : le design system non comme une fin, mais comme le
-  moyen de relier design, produit et code.
+- Retained title: **"Product Designer who codes"** (concise, matches target job titles
+  while displaying the differentiator). "Design Engineer" rejected as primary title
+  (too technical, too narrow a target) but the design engineering concept can feed
+  the Approach section.
+- Key differentiator: **from design through code to production** — "from Figma
+  to production."
+- Angle to carry everywhere: the design system not as an end, but as the
+  means of connecting design, product, and code.
 
-## Stack technique du site
+## Site technical stack
 
-- **Next.js + TailwindCSS** (choix assumé : le site est lui-même une preuve de la
-  compétence front).
-- **shadcn/ui** autorisé comme fondation technique (accessibilité, comportement),
-  MAIS recouvert des tokens / du style de Maxime — le rendu ne doit pas ressembler
-  à du shadcn par défaut (cf. red flag 2). shadcn = squelette, design system perso
-  par-dessus.
-- Textes gardés séparés des composants (pour faciliter une éventuelle version FR
-  plus tard, sans i18n maintenant).
-- Langue : **anglais uniquement** pour l'instant (la langue de la tech ; ouvre au
-  remote international). FR éventuellement plus tard si une candidature le justifie.
+- **Next.js + TailwindCSS** (deliberate choice: the site is itself proof of
+  front-end competence).
+- **shadcn/ui** allowed as a technical foundation (accessibility, behavior),
+  BUT overridden with Maxime's tokens / style — the render must not look
+  like default shadcn (cf. red flag 2). shadcn = skeleton, personal design system on top.
+- Texts kept separate from components (to ease a potential FR version
+  later, without i18n now).
+- Language: **English only** for now (the language of tech; opens to
+  international remote). FR possibly later if a job application justifies it.
 
-## Architecture du portfolio (7 sections)
+## Portfolio architecture (7 sections)
 
-1. **Hero / accroche** — validé (voir plus bas).
-2. **Travaux sélectionnés (vitrine)** — validé. 3 cartes format phrase-résultat.
-3. **Pages d'études de cas (détail)** — Mention rédigée (à ré-équilibrer visuel),
-   eKonsilio à écrire. Structure à deux niveaux : vitrine concise → page détaillée.
-4. **Approche / méthode** — à faire. Façon section « Approach » de Gabriel
-   Valdivia : principes nommés, courts. Matière dans les fiches expériences.
-5. **Système / composants** — à cadrer. Fragment de design system manipulable.
-   Candidat au rôle de side project (coche red flag 5). Peut porter un signal IA.
-6. **À propos** — à faire. Court, une touche perso dosée. Option : court texte sur
-   le métier façon Stamatiou.
-7. **Contact / pied de page** — sobre. Email, LinkedIn, CV.
+1. **Hero / hook** — validated (see below).
+2. **Selected work (showcase)** — validated. 3 cards in result-phrase format.
+3. **Case study pages (detail)** — Mention written (to rebalance visually),
+   eKonsilio to write. Two-level structure: concise showcase → detailed page.
+4. **Approach / method** — to build. Like Gabriel Valdivia's "Approach" section:
+   short named principles. Material in the experience sheets.
+5. **System / components** — to frame. Fragment of manipulable design system.
+   Candidate for the side project role (checks red flag 5). Can carry an AI signal.
+6. **About** — to build. Short, a dosed personal touch. Option: short text on
+   the profession in Stamatiou style.
+7. **Contact / footer** — minimal. Email, LinkedIn, CV.
 
-## Hero (validé)
+## Hero (validated)
 
 ```
 🟢 Open to remote roles
 # Maxime Luet
 ### Product Designer who codes
 Based in France, I design and ship UI and design systems.
-from Figma → to production   (traitement graphique à définir au moment du code)
+from Figma → to production   (graphic treatment to define at code time)
 ```
 
-## Vitrine — 3 cartes (validées)
+## Showcase — 3 cards (validated)
 
-Ordre : eStorie → Mention → eKonsilio. Puis side projects.
+Order: eStorie → Mention → eKonsilio. Then side projects.
 
 **eStorie** — Founding Product Designer · 2025–Present
 > Sole designer at a funeral-tech startup, building the entire product from
@@ -86,42 +85,41 @@ Ordre : eStorie → Mention → eKonsilio. Puis side projects.
 > the design system, and built it in React — the foundation a product team would
 > scale on.
 
-Note : les deux cartes Mention et eKonsilio sont volontairement qualitatives
-(pas de chiffres en vitrine ; les chiffres et les features IA vont dans les
-études de cas détaillées). Les deux racontent des angles distincts —
+Note: the Mention and eKonsilio cards are intentionally qualitative
+(no numbers in the showcase; numbers and AI features go in the detailed
+case studies). Both tell distinct angles —
 Mention = design system governance, eKonsilio = from scratch to prod.
 
-## Contraintes & garde-fous : les 8 red flags (Tom Scott, Verified Insider)
+## Constraints & guardrails: the 8 red flags (Tom Scott, Verified Insider)
 
-À garder en tête à chaque étape :
-1. **Pavés de texte** — visuel d'abord ; le texte ne doit jamais écraser l'output.
-2. **Template > travail** — le craft du site doit égaler/dépasser tout template.
-3. **Aucun signal IA** — montrer une pratique de l'IA. Ici : la refonte assistée
-   par IA du portfolio elle-même peut servir de preuve (« making-of »).
-4. **Ressenti visuel immédiat** — la qualité visuelle décide en quelques secondes.
-5. **Pas de preuve de shipping** — side project / produits réels. eStorie + la
-   section Système jouent ce rôle.
-6. **Double diamant** — pas de discovery maps décoratives qui enterrent le travail.
-7. **Flou sur la contribution perso** — toujours préciser ce que Maxime a fait vs
-   l'équipe. (Corrections déjà appliquées : périmètre eKonsilio, statut eStorie.)
-8. **Décalage scope/titre** — montrer le systems thinking et le « work before the
-   work » (alignement, cadrage). Le fil « design dans les décisions » y répond.
+Keep in mind at every step:
+1. **Walls of text** — visuals first; text must never overwhelm the output.
+2. **Template > work** — the site's craft must equal or surpass any template.
+3. **No AI signal** — show an AI practice. Here: the AI-assisted redesign
+   of the portfolio itself can serve as proof ("making-of").
+4. **Immediate visual impression** — visual quality decides in a few seconds.
+5. **No proof of shipping** — side project / real products. eStorie + the
+   System section play this role.
+6. **Double diamond** — no decorative discovery maps that bury the work.
+7. **Vague personal contribution** — always specify what Maxime did vs.
+   the team. (Corrections already applied: eKonsilio scope, eStorie status.)
+8. **Scope/title mismatch** — show systems thinking and "work before the
+   work" (alignment, framing). The "design in decisions" thread answers this.
 
-## Principes éditoriaux retenus (de l'analyse des portfolios)
+## Retained editorial principles (from portfolio analysis)
 
-- Phrase-résultat en vitrine : rôle + objet + échelle/impact (Jean-Marc Denis,
-  Hurrell).
-- Structure à deux niveaux : vitrine → détail (Daniel Eden, Gabriel Valdivia).
-- Section « Approche » = méthode formulée en principes nommés (Gabriel Valdivia).
-- Section composants / design system manipulable (Heckel, Krehel, Wattenberger).
-- Le site lui-même prouve la compétence (Comeau, Heckel).
-- Créditer les collaborateurs (Brandon Walkin) → honnêteté red flag 7.
-- Écrire sur son métier crédibilise le positionnement (Stamatiou).
-- Ne pas imiter les portfolios de stars qui n'ont aucune étude de cas : leur
-  notoriété fait le travail à leur place, pas le cas de Maxime. Les études de cas
-  détaillées sont SA valeur ajoutée.
+- Result-phrase in showcase: role + object + scale/impact (Jean-Marc Denis, Hurrell).
+- Two-level structure: showcase → detail (Daniel Eden, Gabriel Valdivia).
+- "Approach" section = method framed as named principles (Gabriel Valdivia).
+- Components / manipulable design system section (Heckel, Krehel, Wattenberger).
+- The site itself proves the competence (Comeau, Heckel).
+- Credit collaborators (Brandon Walkin) → honesty red flag 7.
+- Writing about your craft builds credibility for the positioning (Stamatiou).
+- Do not imitate the portfolios of stars who have no case studies: their
+  notoriety does the work for them, not Maxime's case. Detailed case studies
+  are HIS added value.
 
-## Section 4 — Method (validée)
+## Section 4 — Method (validated)
 
 ```
 ## Method
@@ -155,10 +153,10 @@ I don't. Function and beauty hold each other up — and a well-crafted interface
 earns the trust users give a product.
 ```
 
-Note : « Craft » mis de côté comme titre de section (jargon mode), à réutiliser
-ailleurs dans le portfolio (peut-être section Système / page À propos / un encart).
+Note: "Craft" set aside as section title (trendy jargon), to reuse
+elsewhere in the portfolio (maybe System section / About page / a callout).
 
-## Section 6 — About (validée)
+## Section 6 — About (validated)
 
 ```
 ## About
@@ -179,24 +177,24 @@ doesn't matter; they need a shape. Always the same fascination: someone
 shaping something both useful and well-made.
 ```
 
-Notes :
-- Ton voix off / cinéma assumé partout (italique en mockup ; à valider au design).
-- 4ᵉ paragraphe sport (foot/ski) coupé après itération : trop catalogue, n'ajoutait
-  pas de valeur distinctive. La section ferme sur « useful and well-made » qui
-  renvoie à la conviction métier (principe 5 de Method).
-- Photo : oui, à intégrer à côté du texte (la photo du CV).
-- Deux mini-blocs prévus en dessous : Currently + What I'm looking for. À rédiger.
+Notes:
+- Voice-over / cinema tone assumed throughout (italics in mockup; to validate at design).
+- 4th paragraph on sports (football/skiing) cut after iteration: too catalog-like, added
+  no distinctive value. The section closes on "useful and well-made" which
+  echoes the professional conviction (Method principle 5).
+- Photo: yes, to integrate beside the text (the CV photo).
+- Two mini-blocks planned below: Currently + What I'm looking for. To write.
 
-## Mini-blocs sous About (validés)
+## Mini-blocks under About (validated)
 
-## État d'avancement
+## Progress
 
 - [x] Hero
-- [x] Vitrine (3 cartes)
-- [x] Section Method
-- [x] Section About + mini-blocs Currently / What I'm looking for
-- [ ] Étude de cas Mention (rédigée, à ré-équilibrer visuellement)
-- [ ] Étude de cas eKonsilio (à écrire — fil « from scratch to prod », arc 3 actes)
-- [ ] Section Système / composants
+- [x] Showcase (3 cards)
+- [x] Method section
+- [x] About section + Currently / What I'm looking for mini-blocks
+- [ ] Mention case study (written, to rebalance visually)
+- [ ] eKonsilio case study (to write — "from scratch to prod" thread, 3-act arc)
+- [ ] System / components section
 - [ ] Contact
-- [ ] Implémentation Next.js + Tailwind (via Claude Code)
+- [ ] Next.js + Tailwind implementation (via Claude Code)

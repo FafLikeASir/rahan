@@ -1,136 +1,136 @@
 # Claude Code — Starter Checklist
 
-> Ce fichier décrit les étapes d'initialisation du projet portfolio. Exécuter
-> dans l'ordre, une seule fois, au premier lancement de Claude Code sur le repo.
+> This file describes the initialization steps for the portfolio project. Run
+> in order, once only, on the first Claude Code launch on the repo.
 >
-> Prérequis : Node.js 20+, pnpm (ou npm), Claude Code installé.
+> Prerequisites: Node.js 20+, pnpm (or npm), Claude Code installed.
 
 ---
 
-## Phase 0 — Lire la doc avant tout
+## Phase 0 — Read the docs first
 
-Avant toute commande, Claude Code lit ces fichiers dans cet ordre :
+Before any command, Claude Code reads these files in this order:
 
-1. `docs/96-project-structure.md` — architecture, stack, contraintes (= le CLAUDE.md)
-2. `docs/97-skill-orchestration.md` — quel skill/doc pour quelle tâche
-3. `docs/95-hero-visual-spec.md` — spec visuelle du hero
-4. `docs/93-creative-direction.md` — les 4 axes esthétiques + liste de rejet
+1. `docs/96-project-structure.md` — architecture, stack, constraints (= the CLAUDE.md)
+2. `docs/97-skill-orchestration.md` — which skill/doc for which task
+3. `docs/95-hero-visual-spec.md` — hero visual spec
+4. `docs/93-creative-direction.md` — the 4 aesthetic axes + rejection list
 
-**Règle :** ne rien coder avant d'avoir lu au minimum le 96 et le 97.
+**Rule:** do not code anything before reading at minimum 96 and 97.
 
 ---
 
-## Phase 1 — Initialiser le projet Next.js
+## Phase 1 — Initialize the Next.js project
 
 ```bash
-# Créer le projet Next.js 15 avec App Router + TypeScript + Tailwind v4
+# Create the Next.js 15 project with App Router + TypeScript + Tailwind v4
 pnpm create next-app@latest portfolio --typescript --tailwind --app --src-dir --import-alias "@/*"
 cd portfolio
 ```
 
-**Vérifier après init :**
-- `src/app/layout.tsx` existe (App Router, pas Pages Router)
-- `tailwind.config.ts` n'est PAS nécessaire (Tailwind v4 utilise @theme dans CSS)
-- `src/app/globals.css` contient les directives Tailwind v4
+**Check after init:**
+- `src/app/layout.tsx` exists (App Router, not Pages Router)
+- `tailwind.config.ts` is NOT needed (Tailwind v4 uses @theme in CSS)
+- `src/app/globals.css` contains the Tailwind v4 directives
 
 ---
 
-## Phase 2 — Initialiser shadcn/ui
+## Phase 2 — Initialize shadcn/ui
 
 ```bash
 pnpm dlx shadcn@latest init
 ```
 
-**Choix lors de l'init :**
-- Style : Default (on override tout ensuite)
-- Base color : Slate
-- CSS variables : Yes
-- Prefix : (aucun)
-- src/components/ui : Oui (confirmer le chemin `src/components/ui`)
+**Choices during init:**
+- Style: Default (we override everything afterward)
+- Base color: Slate
+- CSS variables: Yes
+- Prefix: (none)
+- src/components/ui: Yes (confirm path `src/components/ui`)
 
-**Installer les composants de base :**
+**Install base components:**
 ```bash
 pnpm dlx shadcn@latest add button badge separator
 ```
 
-Les autres composants s'ajoutent au besoin, pas en avance.
+Other components are added as needed, not upfront.
 
 ---
 
-## Phase 3 — Installer les plugins Claude Code
+## Phase 3 — Install Claude Code plugins
 
 ### Ponytail (YAGNI enforcer)
 ```bash
-# Depuis le marketplace Claude Code :
+# From the Claude Code marketplace:
 /plugins
-# → Sélectionner Ponytail, installer
+# → Select Ponytail, install
 
-# OU manuellement :
+# OR manually:
 git clone https://github.com/DietrichGebert/ponytail.git .ponytail-ref
-# Copier les hooks et skills nécessaires
+# Copy the needed hooks and skills
 
-# Activer en mode full (défaut)
+# Activate in full mode (default)
 /ponytail full
 ```
 
-**Quand l'utiliser :**
-- Actif par défaut pendant tout le build
-- Mode `full` : YAGNI enforcer standard — pas d'abstraction non demandée,
-  pas de scaffolding "pour plus tard", stdlib first
-- Mode `lite` : si un composant complexe (hero, SystemShowcase) nécessite
-  plus de liberté structurelle — switcher temporairement
-- `/ponytail-review` : lancer sur chaque diff avant commit
+**When to use:**
+- Active by default throughout the build
+- `full` mode: standard YAGNI enforcer — no unrequested abstractions,
+  no "for later" scaffolding, stdlib first
+- `lite` mode: if a complex component (hero, SystemShowcase) needs
+  more structural freedom — switch temporarily
+- `/ponytail-review`: run on each diff before commit
 
-**Quand le désactiver :**
-- Jamais complètement pendant le build
-- `lite` temporairement pour les composants à forte densité visuelle (hero)
+**When to disable:**
+- Never completely during the build
+- `lite` temporarily for high visual-density components (hero)
 
 ---
 
 ### ui-ux-pro-max-skill (design intelligence)
 
 ```bash
-# Installer via CLI
+# Install via CLI
 npx uipro init --ai claude
 
-# OU manuellement
+# OR manually
 git clone https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git .uipro-ref
-# Copier src/ui-ux-pro-max/ dans .claude/skills/ui-ux-pro-max/
+# Copy src/ui-ux-pro-max/ into .claude/skills/ui-ux-pro-max/
 ```
 
-**⚠️ CONFIGURATION CRITIQUE :**
+**⚠️ CRITICAL CONFIGURATION:**
 
-Ce skill ne doit PAS se déclencher automatiquement sur les tâches UI.
-La direction design (91-95) a priorité absolue. Ce skill sert UNIQUEMENT :
-- Comme **base de données de référence** consultée manuellement
+This skill must NOT trigger automatically on UI tasks.
+The design direction (91-95) has absolute priority. This skill serves ONLY:
+- As a **reference database** consulted manually
   (`python3 search.py "neo-grotesque" --domain typography`)
-- Pour les **pre-delivery checks** (validation anti-patterns)
-- Pour le **Quick Reference** accessibilité/performance
+- For **pre-delivery checks** (anti-pattern validation)
+- For the **Quick Reference** on accessibility/performance
 
-**Il ne sert PAS à :**
-- Générer un design system (le nôtre est déjà défini en 91-95)
-- Recommander une palette ou un font pairing (décisions prises)
-- Choisir un style visuel (la direction créative est verrouillée)
+**It does NOT serve to:**
+- Generate a design system (ours is already defined in 91-95)
+- Recommend a palette or font pairing (decisions made)
+- Choose a visual style (creative direction is locked)
 
-Si le skill propose des recommandations qui contredisent les docs 91-95,
-**les docs 91-95 gagnent. Toujours.**
+If the skill proposes recommendations that contradict docs 91-95,
+**docs 91-95 win. Always.**
 
 ---
 
-## Phase 4 — Configurer les MCP Servers
+## Phase 4 — Configure MCP Servers
 
 ### Lyse (Design System Audit)
 ```bash
-# Installer Lyse
+# Install Lyse
 pnpm add -D @lyse-labs/lyse
 
-# Vérifier que Lyse peut lire le projet
+# Verify Lyse can read the project
 npx lyse audit
 ```
 
-**Activer le MCP Server (optionnel, pour les sessions longues) :**
+**Enable the MCP Server (optional, for long sessions):**
 ```bash
-# Dans Claude Code settings ou .claude/mcp.json :
+# In Claude Code settings or .claude/mcp.json:
 {
   "mcpServers": {
     "lyse": {
@@ -141,14 +141,14 @@ npx lyse audit
 }
 ```
 
-**Workflow Lyse (après les premiers tokens/composants) :**
+**Lyse workflow (after first tokens/components):**
 ```bash
-npx lyse audit                  # Score de santé
-lyse agents > AGENTS.md         # Contrat DS pour Claude Code
+npx lyse audit                  # Health score
+lyse agents > AGENTS.md         # DS contract for Claude Code
 ```
 
-### Figma (Dev Mode) — optionnel
-Si le Dev Mode MCP Server est activé dans Figma Desktop :
+### Figma (Dev Mode) — optional
+If the Dev Mode MCP Server is enabled in Figma Desktop:
 ```json
 {
   "mcpServers": {
@@ -160,20 +160,20 @@ Si le Dev Mode MCP Server est activé dans Figma Desktop :
 }
 ```
 
-Pas bloquant pour le build — fallback : exports manuels.
+Not blocking for the build — fallback: manual exports.
 
-### shadcn/ui MCP — déjà disponible via le skill shadcn
-Pas de config supplémentaire. Le skill `shadcn` dans Claude Code peut déjà
-chercher les composants et leurs docs.
+### shadcn/ui MCP — already available via the shadcn skill
+No additional config. The `shadcn` skill in Claude Code can already
+search components and their docs.
 
 ---
 
-## Phase 5 — Organiser les fichiers du projet
+## Phase 5 — Organize project files
 
-### Placer la documentation
+### Place the documentation
 ```bash
 mkdir -p docs
-# Copier tous les fichiers de référence :
+# Copy all reference files:
 # 00-brief-global.md
 # 91-brand-discovery.md
 # 92-creative-brief.md
@@ -187,11 +187,11 @@ mkdir -p docs
 # case-study-ekonsilio.md
 ```
 
-### Créer le CLAUDE.md racine
-Copier le contenu de `96-project-structure.md` dans `CLAUDE.md` à la racine.
-Claude Code le lit automatiquement à chaque session.
+### Create the root CLAUDE.md
+Copy the content of `96-project-structure.md` into `CLAUDE.md` at the root.
+Claude Code reads it automatically at every session.
 
-### Créer l'arborescence des composants
+### Create the component tree
 ```bash
 mkdir -p src/components/{ui,layout,hero,home,case-study}
 mkdir -p src/content
@@ -203,9 +203,9 @@ mkdir -p public/cv
 
 ---
 
-## Phase 6 — Poser les tokens
+## Phase 6 — Set the tokens
 
-### Typographie (src/lib/fonts.ts)
+### Typography (src/lib/fonts.ts)
 ```typescript
 import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google'
 
@@ -224,11 +224,11 @@ export const fontMono = JetBrains_Mono({
 })
 ```
 
-### Palette (dans src/app/globals.css)
-Override les tokens shadcn avec les valeurs de la direction (cf. 96 §5.1).
-Ajouter les tokens hero custom (cf. 95 §9).
+### Palette (in src/app/globals.css)
+Override the shadcn tokens with the direction values (cf. 96 §5.1).
+Add the custom hero tokens (cf. 95 §9).
 
-### Après les tokens — premier audit Lyse
+### After tokens — first Lyse audit
 ```bash
 npx lyse audit
 lyse agents > AGENTS.md
@@ -236,35 +236,35 @@ lyse agents > AGENTS.md
 
 ---
 
-## Phase 7 — Premier composant : le Hero
+## Phase 7 — First component: the Hero
 
-Le hero est le test des 6 secondes. C'est le premier composant à builder
-après les tokens.
+The hero is the 6-second test. It is the first component to build
+after the tokens.
 
-**Lire obligatoirement :** `docs/95-hero-visual-spec.md` (TOUT le document).
+**Required reading:** `docs/95-hero-visual-spec.md` (the full document).
 
-**Décomposition :**
-1. `src/components/hero/hero.tsx` — conteneur
-2. `src/components/hero/hero-mesh.tsx` — mesh gradients animés (Client)
+**Breakdown:**
+1. `src/components/hero/hero.tsx` — container
+2. `src/components/hero/hero-mesh.tsx` — animated mesh gradients (Client)
 3. `src/components/hero/hero-grid.tsx` — grid lines
 4. `src/components/hero/hero-glass.tsx` — glass elements (Client)
-5. `src/components/hero/hero-content.tsx` — texte + badge + ligne Figma→prod
+5. `src/components/hero/hero-content.tsx` — text + badge + Figma→prod line
 
-**Ponytail mode :** passer en `lite` pour le hero (composant complexe avec
-beaucoup de couches visuelles). Revenir en `full` ensuite.
+**Ponytail mode:** switch to `lite` for the hero (complex component with
+many visual layers). Return to `full` afterward.
 
 ---
 
-## Checklist post-setup
+## Post-setup checklist
 
 - [ ] Next.js 15 + App Router + TypeScript + Tailwind v4
-- [ ] shadcn/ui initialisé avec button, badge, separator
-- [ ] Ponytail installé, mode full actif
-- [ ] ui-ux-pro-max installé, configuré en référence manuelle (pas auto-trigger)
-- [ ] Docs 91-97 dans `/docs`
-- [ ] CLAUDE.md à la racine (= contenu du 96)
-- [ ] Arborescence des composants créée
-- [ ] Fonts chargées via next/font
-- [ ] Tokens palette dans globals.css
-- [ ] Lyse audit passé, AGENTS.md généré
-- [ ] Hero buildé et validé (test des 6 secondes)
+- [ ] shadcn/ui initialized with button, badge, separator
+- [ ] Ponytail installed, full mode active
+- [ ] ui-ux-pro-max installed, configured as manual reference (no auto-trigger)
+- [ ] Docs 91-97 in `/docs`
+- [ ] CLAUDE.md at the root (= content of 96)
+- [ ] Component tree created
+- [ ] Fonts loaded via next/font
+- [ ] Palette tokens in globals.css
+- [ ] Lyse audit passed, AGENTS.md generated
+- [ ] Hero built and validated (6-second test)

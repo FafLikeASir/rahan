@@ -1,6 +1,6 @@
 # /plan-check
 
-Vérifie que le plan en cours respecte le template obligatoire du workflow-protocol.
+Checks that the current plan follows the required template from workflow-protocol.
 
 ## Usage
 
@@ -8,19 +8,19 @@ Vérifie que le plan en cours respecte le template obligatoire du workflow-proto
 /plan-check
 ```
 
-## Ce que ça fait
+## What it does
 
-Vérifie que chaque étape du plan actuel contient :
-- `[Feasibility: XX%]` — score de faisabilité
-- `→ Skill: X` — skill applicable (ou `→ Skill: none`)
-- Les trois sections obligatoires : Contexte / Étapes / Vérification
+Checks that each step in the current plan contains:
+- `[Feasibility: XX%]` — feasibility score
+- `→ Skill: X` — applicable skill (or `→ Skill: none`)
+- The three required sections: Context / Steps / Verification
 
-Si une étape a un score < 90% → déclenche la routine de déblocage :
-1. Identifier le blocage exact
-2. Proposer une reformulation ou approche alternative
-3. Réévaluer → nouveau score
-4. Répéter jusqu'à ≥ 90% ou identifier que c'est hors-scope
+If any step has a score < 90% → triggers the unblocking routine:
+1. Identify the exact blocker
+2. Propose a rephrasing or alternative approach
+3. Re-evaluate → new score
+4. Repeat until ≥ 90% or identify it as out of scope
 
-## Référence
+## Reference
 
-`docs/00-workflow-protocol.md §2` (scoring) et `§3` (routing skills)
+`docs/00-workflow-protocol.md §2` (scoring) and `§3` (skill routing)

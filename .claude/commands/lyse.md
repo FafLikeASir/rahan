@@ -1,6 +1,6 @@
 # /lyse
 
-Invoque l'agent `lyse-auditor` : audit de conformité design system.
+Invokes the `lyse-auditor` agent: design system compliance audit.
 
 ## Usage
 
@@ -8,19 +8,19 @@ Invoque l'agent `lyse-auditor` : audit de conformité design system.
 /lyse
 ```
 
-## Ce que ça fait
+## What it does
 
-1. Lance `npx lyse audit`
-2. Reporte le Health Score et la tendance
-3. Si régression → identifie le fautif et propose un fix
-4. Si tokens ont changé → compare avec AGENTS.md, soumet le diff pour validation
+1. Runs `npx lyse audit`
+2. Reports the Health Score and trend
+3. If regression → identifies the culprit and proposes a fix
+4. If tokens changed → compares with AGENTS.md, submits the diff for validation
 
-## Quand l'utiliser
+## When to use
 
-- Après chaque plan exécuté (obligatoire, voir workflow-protocol §5)
-- Avant de merger une PR
-- En cas de doute sur la conformité DS après modifications CSS/Tailwind
+- After every executed plan (required, see workflow-protocol §5)
+- Before merging a PR
+- When in doubt about DS compliance after CSS/Tailwind changes
 
-## Agent sous-jacent
+## Underlying agent
 
 `.claude/agents/lyse-auditor/AGENT.md`

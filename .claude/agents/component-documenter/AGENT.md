@@ -1,58 +1,58 @@
 ---
 name: component-documenter
 description: >
-  Après création ou modification d'un composant, crée ou met à jour
-  le fichier .md co-localisé et l'index composants. Vérifie l'alignement
-  avec DESIGN.md.
-trigger: manuel (/document ComponentName) ou fin de tâche impliquant un composant
+  After a component is created or modified, creates or updates
+  the co-located .md file and the components index. Checks alignment
+  with DESIGN.md.
+trigger: manual (/document ComponentName) or end of task involving a component
 ---
 
 # Agent — Component Documenter
 
-## Séquence
+## Sequence
 
-1. **Identifier le composant**
-   - Argument : nom du composant (`/document Hero`)
-   - Fallback : lire le dernier fichier `.tsx` modifié (git diff --name-only HEAD~1)
+1. **Identify the component**
+   - Argument: component name (`/document Hero`)
+   - Fallback: read the last modified `.tsx` file (git diff --name-only HEAD~1)
 
-2. **Lire le composant**
-   - Lire le fichier `.tsx` du composant
-   - Lire le `.md` co-localisé s'il existe (pour ne pas écraser)
+2. **Read the component**
+   - Read the component's `.tsx` file
+   - Read the co-located `.md` if it exists (to avoid overwriting)
 
-3. **Vérifier l'alignement DESIGN.md**
-   - Lire `DESIGN.md`
-   - Vérifier : tokens utilisés (`var(--...)`, classes Tailwind) alignés avec les tokens YAML
-   - Vérifier : règles do/don't respectées
-   - Si divergence → signaler, ne pas silencieusement "corriger"
+3. **Check DESIGN.md alignment**
+   - Read `DESIGN.md`
+   - Check: tokens used (`var(--...)`, Tailwind classes) aligned with YAML tokens
+   - Check: do/don't rules respected
+   - If divergence → flag it, do not silently "fix" it
 
-4. **Créer ou mettre à jour le `.md` co-localisé**
-   Template (depuis `docs/00-workflow-protocol.md §8`) :
+4. **Create or update the co-located `.md`**
+   Template (from `docs/00-workflow-protocol.md §8`):
 
    ```md
    # ComponentName
 
-   ## Rôle
-   Une phrase — ce que ce composant fait, pas comment.
+   ## Role
+   One sentence — what this component does, not how.
 
    ## Props
-   | Prop | Type | Défaut | Description |
+   | Prop | Type | Default | Description |
    |---|---|---|---|
 
-   ## Tokens Lyse utilisés
-   - `--color-X` → classe Tailwind `bg-X`
+   ## Lyse tokens used
+   - `--color-X` → Tailwind class `bg-X`
 
-   ## Variants / états
-   Liste des variantes ou états interactifs.
+   ## Variants / states
+   List of variants or interactive states.
 
-   ## Décisions design
-   Pourquoi ce choix — contrainte cachée, compromis, workaround.
-   Ne pas documenter ce que le code dit déjà.
+   ## Design decisions
+   Why this choice — hidden constraint, trade-off, workaround.
+   Do not document what the code already says.
    ```
 
-5. **Mettre à jour `docs/98-components-index.md`**
-   - Ajouter ou mettre à jour la ligne du composant
+5. **Update `docs/98-components-index.md`**
+   - Add or update the component's row
 
-## Ce que cet agent ne fait PAS
-- Ne modifie pas le code `.tsx`
-- Ne renomme pas les composants
-- Ne propose pas de refactoring
+## What this agent does NOT do
+- Does not modify `.tsx` code
+- Does not rename components
+- Does not propose refactoring

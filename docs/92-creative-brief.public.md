@@ -1,275 +1,265 @@
 # Portfolio Maxime Luet — Creative Brief
 
-> Pont entre la discovery et l'exécution (implémentation Next.js + Tailwind via
-> Claude Code). Traduit le brief global (00), la discovery red flags/benchmark (90)
-> et la discovery branding (91) en décisions dures : voix, direction visuelle,
-> scope, contraintes, critères de réussite.
-> Décisions de cette session : light éditorial · couleur à trancher (pistes
-> bleu/vert/gradient) · typo sans soignée · périmètre Système cadré · nom = Maxime
-> Luet, pas d'alias en façade · naming du design system laissé ouvert.
+> Bridge between discovery and execution (Next.js + Tailwind implementation via
+> Claude Code). Translates the global brief (00), the red flags/benchmark discovery (90)
+> and the branding discovery (91) into hard decisions: voice, visual direction,
+> scope, constraints, success criteria.
+> Session decisions: editorial light · color to decide (blue/green/gradient tracks)
+> · polished sans typography · System section scope framed · name = Maxime
+> Luet, no alias upfront · design system naming left open.
 
 ---
 
 ## 1. Snapshot
 
-Refonte du portfolio de Maxime Luet, Product Designer spécialiste UI & Design
-System qui code (front-end React/Tailwind). ~10 ans en SaaS. Objectif : décrocher
-un poste de Product Designer / UI-UX en startup, scale-up ou grand groupe à équipe
-produit interne.
+Redesign of Maxime Luet's portfolio, a Product Designer specialized in UI & Design
+System who codes (React/Tailwind front-end). ~10 years in SaaS. Objective: land
+a Product Designer / UI-UX role at a startup, scale-up, or large company with an internal product team.
 
-Le site doit faire deux choses à la fois :
-séduire au scan de 6 secondes (recruteur non-designer) et tenir à l'inspection du
-craft (head of design). Le site est lui-même la preuve de la compétence. Anglais
-only. Stack Next.js + Tailwind, shadcn comme squelette recouvert du style perso.
+The site must do two things at once:
+win the 6-second scan (non-designer recruiter) and hold up to craft inspection
+(head of design). The site is itself proof of competence. English only.
+Stack Next.js + Tailwind, shadcn as skeleton overridden with personal style.
 
 ---
 
 ## 2. Audience
 
-**Primaire — le recruteur / talent (souvent non-designer).** Scanne en 6–10 s,
-juge sur le ressenti visuel et les titres avant de lire. Veut répondre vite à :
-« ce profil sait-il faire le travail, et puis-je le présenter à mon équipe ? ».
-Bloqué aujourd'hui par : 200 portfolios qui se ressemblent, peu de temps. On le
-gagne par l'impact visuel immédiat + des titres-résultats clairs (vitrine déjà
-rédigée façon phrase-résultat).
+**Primary — the recruiter / talent (often non-designer).** Scans in 6–10s,
+judges on visual impression and titles before reading. Wants to quickly answer:
+"does this profile know how to do the work, and can I present them to my team?".
+Currently blocked by: 200 look-alike portfolios, little time. Won with
+immediate visual impact + clear result-titles (showcase already written as result-phrases).
 
-**Secondaire — le head of design / designer senior.** Regarde le craft fin : typo,
-hiérarchie, interactions, cohérence système, et… les fautes (rédhibitoires pour un
-profil qui revendique le craft). C'est lui qui valide « designer who codes » sur
-pièces — via les études de cas détaillées et le site lui-même. On le gagne par la
-densité de craft et la substance des cas (la vraie différence de Maxime).
+**Secondary — the head of design / senior designer.** Looks at fine craft: typography,
+hierarchy, interactions, system consistency, and… mistakes (disqualifying for a
+profile claiming craft). They validate "designer who codes" on evidence —
+via detailed case studies and the site itself. Won through craft density and case substance
+(Maxime's real differentiator).
 
-Les deux doivent être servis par la même page : surface forte + profondeur réelle.
-
----
-
-## 3. Objectifs
-
-- **Objectif : déclencher des prises de contact qualifiées.**
-  Signal : entretiens obtenus via le portfolio (le KPI qui compte vraiment).
-- **Objectif : passer le scan de 6 secondes.**
-  Signal : un testeur non-designer, après 10 s, sait dire « Product Designer qui
-  fait de l'UI et des design systems, et qui code ». (Test à faire avant launch.)
-- **Objectif : prouver le craft au second regard.**
-  Signal : zéro faute ; cohérence système visible ; au moins une interaction qui
-  démontre la maîtrise UI sans distraire.
-- **Objectif : cocher les red flags devenus exigences de base.**
-  Signal : preuve de shipping présente (eStorie + section Système), signal IA
-  présent (making-of), périmètres honnêtes partout.
+Both must be served by the same page: strong surface + real depth.
 
 ---
 
-## 4. Message clé
+## 3. Objectives
 
-**« Un Product Designer qui conçoit des UI et des design systems, et qui les amène
-jusqu'en production dans le code. »**
-Si un visiteur ne retient qu'une chose du hero : design + système + jusqu'au code.
-Pas « je code » seul (devenu un standard) — la *jonction* design↔code, racontée et
-prouvée.
-
----
-
-## 5. Voix & ton
-
-Déjà largement établie et validée (About + Method). C'est la moitié de la marque —
-le travail visuel se met à son diapason, il n'invente pas une personnalité parallèle.
-
-- **Sobre, pas plat.** Phrases nettes, denses, rien de superflu — mais une vraie
-  voix derrière.
-- **Voix off / cinéma, pas slogan.** Registre narratif posé (« pixels you could
-  push »). Pas de ton Medium/Substack, pas d'enthousiasme générique.
-- **Concret, pas jargon.** Le métier décrit par ses effets réels (« a folder
-  nobody uses isn't a system »). Jargon mode (ship, craft) dosé au compte-gouttes.
-- **Honnête, pas vendeur.** Périmètres précis, collaborateurs crédités. L'honnêteté
-  est un parti pris esthétique autant qu'éthique (red flag 7).
-- **Situé, pas corporate.** Une touche perso assumée (Sarthe/Mayenne, le regard sur
-  les artisans) — assaisonnement, pas le plat.
-
-**Naming / marque :** portfolio au nom propre — **Maxime Luet**, pas de studio ni
-d'alias en façade (crédibilité candidat, vérifiabilité, cohérence avec la voix
-perso). Le design system perso pourra porter un nom d'artefact plus tard (naming à
-décider, voir §7) — utile au systems thinking et réutilisable si Maxime vise un jour
-le freelance/studio. Aucun nom imposé pour l'instant.
+- **Objective: trigger qualified outreach.**
+  Signal: interviews obtained via the portfolio (the KPI that really counts).
+- **Objective: pass the 6-second scan.**
+  Signal: a non-designer tester, after 10s, can say "Product Designer who
+  does UI and design systems, and codes." (Test to run before launch.)
+- **Objective: prove craft on second look.**
+  Signal: zero mistakes; visible system consistency; at least one interaction that
+  demonstrates UI mastery without distracting.
+- **Objective: check the red flags now turned into baseline requirements.**
+  Signal: proof of shipping present (eStorie + System section), AI signal
+  present (making-of), honest scope everywhere.
 
 ---
 
-## 6. Direction visuelle
+## 4. Key message
 
-Cap issu de la discovery branding : **T2 « The Working Surface »** (le site EST une
-UI produit soignée, gouvernée par un vrai petit système) **assaisonné de T4** (voix
-+ touche perso), avec **T1** (sobriété éditoriale) comme discipline / garde-fou
-anti-gadget. **Éviter T3 frontal** (blueprint/terminal/mono — convention 2026 qui
-sature, ressemble à un template, et contredit un positionnement UI-craft).
-
-**Mode :** **light par défaut, éditorial.** Choix assumé à contre-courant de la
-vague tech/dark : plus proche de la voix About, et c'est précisément ce qui détache
-du flot terminal-dark. (Dark mode optionnel possible plus tard, mais pas un toggle-
-gadget mis en avant.)
-
-**Typographie :** **une sans soignée, registre produit (néo-grotesque).** Sert le
-territoire T2 (le site comme interface). Hiérarchie au cordeau, généreuse en blanc.
-Une seule famille bien réglée vaut mieux que deux mal mariées ; une seconde voix
-typographique (mono ou serif) éventuellement *en accent rare* — un label de spec,
-un détail de système — jamais comme thème.
-
-**Couleur — à trancher (b3, pistes ci-dessous).** Instinct de Maxime : bleu, vert,
-ambiances gradient/fractal/glassmorphism. Tension à gérer : le glass/gradient est
-plutôt une convention « tech glossy » que la sobriété éditoriale rejette en masse.
-**Réconciliation retenue : base sobre quasi monochrome + couleur signature unique,
-et le gradient comme matière RARE et LOCALISÉE** — réservé aux moments qui *prouvent*
-quelque chose, pas à la décoration. Pistes :
-
-- **P1 — Bleu d'encre + 1 accent.** Quasi monochrome (encre/ardoise) sur fond clair,
-  un bleu profond comme signature. Sobre, sérieux, crédible. Le plus sûr.
-- **P2 — Bleu→vert en gradient signature, localisé.** La couleur de marque est un
-  dégradé bleu-vert utilisé *uniquement* sur un élément porteur de sens : la
-  transition « Figma → production », l'état actif d'un composant live de la section
-  Système. Ailleurs : monochrome. Le gradient devient une *démonstration* (un état,
-  un token animé), pas un fond déco. Concilie l'instinct gradient avec T1.
-- **P3 — Vert comme signature.** Plus rare sur le segment (le bleu domine les
-  portfolios tech) → différenciant. À tester pour ne pas tomber dans le « vert
-  startup éco ».
-
-→ **Reco : P2 comme intention, P1 comme repli sûr.** P2 transforme le goût de
-Maxime pour le gradient en preuve de maîtrise (un dégradé *gouverné par des tokens*,
-pas un fond Photoshop) — exactement le récit du portfolio. À départager sur maquette.
-
-**Glassmorphism / fractal :** à manier comme P2 — seulement là où ça démontre (un
-composant en « surface » qui révèle sa structure, une transition). Jamais comme
-ambiance générale (ce serait T3-glossy, le piège).
-
-**Imagerie :** la photo perso (du CV) dans le About. Captures produit traitées
-proprement (pas de JPEG basse-déf — c'était un défaut du site actuel). Le « from
-Figma → production » mérite un traitement graphique signature (maquette qui devient
-composant réel) — candidat n°1 pour la couleur P2 et le seul gradient assumé.
+**"A Product Designer who designs UI and design systems, and ships them
+to production in code."**
+If a visitor retains one thing from the hero: design + system + all the way to code.
+Not "I code" alone (now a standard) — the *junction* design↔code, told and proved.
 
 ---
 
-## 7. Scope & livrables
+## 5. Voice & tone
 
-Périmètre = les 7 sections du brief global. État repris de 00 :
+Already largely established and validated (About + Method). It is half the brand —
+the visual work aligns with it, it does not invent a parallel personality.
 
-**Déjà rédigé / validé (à implémenter) :**
-- **Hero** — « Product Designer who codes », statut open-to-remote, Figma→production.
-- **Vitrine — 3 cartes** phrase-résultat : eStorie → Mention → eKonsilio.
-- **Method** — 5 principes nommés.
-- **About** + mini-blocs Currently / What I'm looking for. (Y loger le clin d'œil
-  perso si on en garde un — l'alias BD étant abandonné, About reste tel quel sauf
-  décision contraire.)
+- **Spare, not flat.** Clean, dense sentences, nothing superfluous — but a real
+  voice behind.
+- **Voice-over / cinema, not slogan.** A settled narrative register ("pixels you could
+  push"). No Medium/Substack tone, no generic enthusiasm.
+- **Concrete, not jargon.** The craft described by its real effects ("a folder
+  nobody uses isn't a system"). Trendy jargon (ship, craft) used sparingly.
+- **Honest, not sales-y.** Precise scope, collaborators credited. Honesty is an
+  aesthetic as much as an ethical stance (red flag 7).
+- **Situated, not corporate.** A dose of personal touch (Sarthe/Mayenne, watching
+  craftsmen work) — seasoning, not the main dish.
 
-**À produire (contenu) :**
-- **Étude de cas Mention** — rédigée, à **ré-équilibrer visuellement** (red flag 1) :
-  alléger le texte par des visuels, le paragraphe Jira → schéma.
-- **Étude de cas eKonsilio** — à écrire (arc 3 actes, « from scratch to prod »).
-- **Section Système / composants** — voir périmètre ci-dessous (d3).
-- **Contact / pied de page** — email, LinkedIn, CV.
-
-**Section Système — périmètre cadré (réponse à d3) :**
-Implémentation via Claude Code, temps réel limité, recherche d'emploi active → on
-vise l'impact maximal au risque minimal. **Reco : niveau « modéré + », pas la démo
-lourde.**
-- **Cœur (à faire) :** une section qui *montre* le système qui gouverne déjà le
-  site — palette/tokens, typo, 3–4 composants réels affichés avec leurs états
-  (défaut, hover, focus, disabled). Le point clé : ce ne sont pas des composants de
-  démo, ce sont *ceux du site*. Le site se documente lui-même → preuve vivante de
-  T2, sans surcoût de build d'un playground séparé.
-- **Bonus si le temps (1 seul) :** *un* composant réellement manipulable (toggle de
-  token qui repeint en live, ou switch d'état) — la démonstration P2/gradient.
-- **À éviter :** un Storybook public complet ou un playground multi-composants
-  interactif → coût élevé, risque gadget, hors-cible pour un recruteur.
-- **Naming du DS :** ouvert. Pas bloquant. À trancher quand on construit la section
-  (pistes à proposer alors, liées à la direction visuelle, pas à la BD).
-- Cette section porte aussi la **preuve de shipping** (red flag 5) et peut porter
-  un **signal IA**.
-
-**Signal IA (red flag 3) — où il vit :**
-- Le **making-of IA** du portfolio (refonte assistée par IA) : forme à décider —
-  reco = une note courte dans About ou une page « colophon » sobre, pas une section
-  tape-à-l'œil.
-- Les **features IA de Mention** dans l'étude de cas détaillée (pas en vitrine).
-
-**Hors scope (pour l'instant) :**
-- Version FR / i18n (textes gardés séparés pour le permettre plus tard).
-
-- Témoignages (souhaitables — Head of Product Mention, dev eKonsilio — mais non
-  bloquants).
-- Dark mode (possible plus tard, pas au launch).
+**Naming / brand:** portfolio under the real name — **Maxime Luet**, no studio or
+alias upfront (candidate credibility, verifiability, coherence with the personal voice).
+The personal design system could carry an artifact name later (naming to
+decide, see §7) — useful for systems thinking and reusable if Maxime ever goes freelance/studio.
+No name imposed for now.
 
 ---
 
-## 8. Contraintes
+## 6. Visual direction
 
-- **Technique :** Next.js + TailwindCSS. shadcn/ui autorisé comme fondation
-  (accessibilité, comportement) MAIS recouvert des tokens/style perso — le rendu ne
-  doit pas ressembler à du shadcn par défaut (red flag 2). Textes séparés des
-  composants (FR ultérieur sans i18n maintenant). Hébergement Vercel (actuel).
-- **Le site EST une contrainte de preuve :** sa qualité front doit égaler le
-  discours. Performance, responsive impeccable, mobile parfait, chargement rapide.
-- **Langue :** anglais uniquement.
-- **Accessibilité :** soignée (cohérent avec le profil ; Maxime a une pratique RGAA).
-  Contrastes du mode light à vérifier sérieusement (piège classique du light + accent).
-- **Honnêteté (red flag 7) :** périmètres précis partout (eKonsilio design/DS/front
-  vs collègue back) — non négociable.
+Cap from the branding discovery: **T2 "The Working Surface"** (the site IS a
+polished product UI, governed by a real small system) **seasoned with T4** (voice
++ personal touch), with **T1** (editorial restraint) as discipline / anti-gadget guardrail.
+**Avoid T3 frontally** (blueprint/terminal/mono — saturated 2026 convention,
+looks like a template, contradicts a UI-craft positioning).
 
-- **Zéro faute** (anglais relu).
+**Mode:** **light by default, editorial.** A deliberate counter-current choice against the
+tech/dark wave: closer to the About voice, and exactly what separates from the
+terminal-dark flow. (Optional dark mode possible later, but not a toggle-gadget put forward.)
+
+**Typography:** **one polished sans, product register (neo-grotesque).** Serves the
+T2 territory (the site as interface). Sharp hierarchy, generous whitespace.
+One well-tuned family beats two poorly matched; a second typographic voice (mono or serif)
+possibly *as a rare accent* — a spec label, a system detail — never as a theme.
+
+**Color — to decide (b3, tracks below).** Maxime's instinct: blue, green,
+gradient/fractal/glassmorphism ambiances. Tension to manage: glass/gradient is
+rather a "tech glossy" convention that editorial restraint overwhelmingly rejects.
+**Retained reconciliation: near-monochrome spare base + one unique signature color,
+and gradient as RARE and LOCALIZED material** — reserved for moments that *prove*
+something, not decoration. Tracks:
+
+- **P1 — Ink blue + 1 accent.** Near-monochrome (ink/slate) on light background,
+  one deep blue as signature. Spare, serious, credible. The safest.
+- **P2 — Blue→green localized signature gradient.** The brand color is a blue-green
+  gradient used *only* on a meaning-bearing element: the "Figma → production"
+  transition, the active state of a live component in the System section.
+  Elsewhere: monochrome. The gradient becomes a *demonstration* (a state, an animated token),
+  not a decorative background. Reconciles the gradient instinct with T1.
+- **P3 — Green as signature.** Rarer in the segment (blue dominates tech portfolios)
+  → differentiating. To test to avoid falling into "eco startup green."
+
+→ **Recommendation: P2 as intention, P1 as safe fallback.** P2 transforms Maxime's
+taste for gradient into proof of mastery (a gradient *governed by tokens*,
+not a Photoshop background) — exactly the portfolio's story. To decide on mockup.
+
+**Glassmorphism / fractal:** handle like P2 — only where it demonstrates (a
+component "surface" that reveals its structure, a transition). Never as a general ambient mood
+(that would be T3-glossy, the trap).
+
+**Imagery:** the personal photo (from the CV) in About. Product screenshots treated
+cleanly (no low-res JPEG — that was a flaw on the current site). The "from
+Figma → production" deserves a signature graphic treatment (mockup becoming a
+real component) — candidate #1 for P2 color and the only assumed gradient.
 
 ---
 
-## 9. Inspiration & contre-modèles
+## 7. Scope & deliverables
 
-**Veut ressembler à (pourquoi) :**
-- **Pedro Duarte (ped.ro)** — voix narrative 1ʳᵉ personne, preuve glissée dans le
-  récit. Pour le ton.
-- **Daniel Eden (daneden.me)** — architecture vitrine → détail → archive ; sobriété
-  éditoriale. Pour la structure 2 niveaux et la discipline T1.
-- **Gabriel Valdivia** — la section « Approach » en principes nommés. Modèle direct
-  de la section Method.
-- **Maxime Heckel / Jakub Krehel** — section composants consultable. Pour la section
-  Système (mais en version UI-produit, pas shader/dev).
+Scope = the 7 sections of the global brief. Status from 00:
 
-**Veut se distinguer de (pourquoi) :**
-- **La vague Technical Mono / terminal / blueprint (2026)** — convention saturée,
-  template-look, contredit le positionnement UI-craft. À ne pas rejoindre.
-- **Le template Framer médian** — le vrai concurrent : Product Designer propre et
-  interchangeable. La barre à dépasser, c'est lui (pas les stars US).
-- **Les portfolios de stars sans étude de cas** — leur notoriété fait le travail à
-  leur place ; Maxime, lui, prouve par la substance. Ne pas imiter leur vitrine muette.
-- **Le glossy gradient/glass généralisé** — joli, vide, daté vite. D'où le gradient
-  *localisé et porteur de sens* seulement.
+**Already written / validated (to implement):**
+- **Hero** — "Product Designer who codes", open-to-remote status, Figma→production.
+- **Showcase — 3 cards** result-phrase: eStorie → Mention → eKonsilio.
+- **Method** — 5 named principles.
+- **About** + Currently / What I'm looking for mini-blocks. (Lodge the personal aside
+  there if one is kept — the BD alias abandoned, About stays as-is unless decided otherwise.)
+
+**To produce (content):**
+- **Mention case study** — written, to **visually rebalance** (red flag 1):
+  lighten text with visuals, the Jira paragraph → diagram.
+- **eKonsilio case study** — to write (3-act arc, "from scratch to prod").
+- **System / components section** — see scope below (d3).
+- **Contact / footer** — email, LinkedIn, CV.
+
+**System section — framed scope (answer to d3):**
+Implementation via Claude Code, limited time → aim for maximum impact at minimum risk.
+**Recommendation: "moderate +" level, not the heavy demo.**
+- **Core (to build):** a section that *shows* the system already governing
+  the site — palette/tokens, typography, 3–4 real components displayed with their states
+  (default, hover, focus, disabled). Key point: these are not demo components, they are
+  *the site's own*. The site documents itself → living proof of T2, without the build cost
+  of a separate playground.
+- **Bonus if time allows (1 only):** *one* truly manipulable component (token toggle that
+  repaints live, or state switch) — the P2/gradient demonstration.
+- **To avoid:** a full public Storybook or a multi-component interactive playground →
+  high cost, gadget risk, off-target for a recruiter.
+- **DS naming:** open. Not blocking. To decide when building the section
+  (tracks to propose then, linked to visual direction, not the BD).
+- This section also carries the **proof of shipping** (red flag 5) and can carry
+  an **AI signal**.
+
+**AI signal (red flag 3) — where it lives:**
+- The **AI making-of** of the portfolio (AI-assisted redesign): form to decide —
+  recommendation = a short note in About or a sober "colophon" page, not an eye-catching section.
+- The **AI features of Mention** in the detailed case study (not in the showcase).
+
+**Out of scope (for now):**
+- FR version / i18n (texts kept separate to enable it later).
+
+- Testimonials (desirable — Mention Head of Product, eKonsilio dev — but not blocking).
+- Dark mode (possible later, not at launch).
+
+---
+
+## 8. Constraints
+
+- **Technical:** Next.js + TailwindCSS. shadcn/ui allowed as a foundation
+  (accessibility, behavior) BUT overridden with personal tokens/style — the render must
+  not look like default shadcn (red flag 2). Texts separate from components
+  (FR later without i18n now). Vercel hosting (current).
+- **The site IS a proof constraint:** its front-end quality must equal
+  the claims. Performance, impeccable responsive, perfect mobile, fast loading.
+- **Language:** English only.
+- **Accessibility:** careful (coherent with the profile; Maxime has RGAA practice).
+  Light mode contrasts to check seriously (classic light + accent trap).
+- **Honesty (red flag 7):** precise scope everywhere (eKonsilio design/DS/front
+  vs. back colleague) — non-negotiable.
+
+- **Zero mistakes** (English proofread).
+
+---
+
+## 9. Inspiration & counter-models
+
+**Wants to look like (why):**
+- **Pedro Duarte (ped.ro)** — first-person narrative voice, proof woven into the
+  story. For the tone.
+- **Daniel Eden (daneden.me)** — showcase → detail → archive architecture; editorial
+  restraint. For the 2-level structure and T1 discipline.
+- **Gabriel Valdivia** — "Approach" section as short named principles. Direct model
+  for Method.
+- **Maxime Heckel / Jakub Krehel** — browsable components section. For the System
+  section (but in a governed UI-product version, not shader/dev).
+
+**Wants to stand apart from (why):**
+- **The Technical Mono / terminal / blueprint wave (2026)** — saturated convention,
+  template-look, contradicts the UI-craft positioning. Do not join.
+- **The median Framer template** — the real competitor: clean and interchangeable
+  Product Designer. The bar to clear is that one (not US stars).
+- **Star portfolios without case studies** — their notoriety does the work for them;
+  Maxime proves through substance. Do not imitate their silent showcase.
+- **Generalized glossy gradient/glass** — pretty, hollow, dated quickly. Hence the
+  *localized and meaning-bearing* gradient only.
 
 ---
 
 ## 10. Validation
 
-- **Qui signe :** Maxime (décideur unique).
-- **Artefacts de validation, dans l'ordre :**
-  1. Ce brief (direction figée).
-  2. Décision couleur P1/P2/P3 sur **1–2 maquettes hero** (le pari du scan de 6 s
-     se joue là).
-  3. Étude de cas Mention ré-équilibrée + eKonsilio rédigée.
-  4. URL de staging Vercel → test du scan de 6 s avec un·e non-designer.
-- **Critère de mise en ligne :** passe le test des 6 s + zéro faute + responsive
-  mobile impeccable + périmètres honnêtes vérifiés.
+- **Who signs off:** Maxime (sole decision-maker).
+- **Validation artifacts, in order:**
+  1. This brief (direction fixed).
+  2. Color decision P1/P2/P3 on **1–2 hero mockups** (the 6-second scan bet
+     is played there).
+  3. Mention case study rebalanced + eKonsilio written.
+  4. Vercel staging URL → 6-second scan test with a non-designer.
+- **Launch criterion:** passes the 6s test + zero mistakes + impeccable
+  mobile responsive + honest scope verified.
 
 ---
 
-## Décisions de session (récap)
+## Session decisions (recap)
 
-| Question | Décision |
+| Question | Decision |
 |---|---|
-| Mode clair/sombre | **Light éditorial** par défaut (a1) |
-| Couleur | À trancher sur maquette — reco **P2 (gradient bleu-vert localisé)**, repli **P1 (bleu d'encre)** (b3) |
-| Typo | **Sans soignée, néo-grotesque** ; 2ᵉ voix typo en accent rare seulement (c2) |
-| Section Système | **Modéré +** : le site se documente lui-même + 1 composant manipulable bonus (d3) |
-| Nom / marque | **Maxime Luet**, pas d'alias en façade. « Rahan/Studio Rahan » écarté (IP + lisibilité). « Faf » **abandonné** (connotation politique actuelle). DS perso : naming ouvert |
-| Gradient/glass | Matière **rare et localisée** (preuve, pas déco) — réconcilie l'instinct avec la sobriété T1 |
+| Light/dark mode | **Editorial light** by default (a1) |
+| Color | To decide on mockup — recommendation **P2 (localized blue-green gradient)**, fallback **P1 (ink blue)** (b3) |
+| Typography | **Polished sans, neo-grotesque**; 2nd typographic voice as rare accent only (c2) |
+| System section | **Moderate +**: the site documents itself + 1 manipulable component as bonus (d3) |
+| Name / brand | **Maxime Luet**, no alias upfront. "Rahan/Studio Rahan" rejected (IP + readability). "Faf" **abandoned** (current political connotation). Personal DS: naming open |
+| Gradient/glass | **Rare and localized** material (proof, not decoration) — reconciles instinct with T1 restraint |
 
 ---
 
-## Questions ouvertes pour la suite
+## Open questions for later
 
-- Trancher la couleur sur maquette (P1/P2/P3).
-- Forme exacte du making-of IA (note About vs page colophon).
-- Naming du design system (quand on cadrera la section Système).
-- Garde-t-on un clin d'œil perso dans le About maintenant que l'angle BD tombe, ou
-  on reste sur le About validé tel quel ?
+- Decide color on mockup (P1/P2/P3).
+- Exact form of the AI making-of (About note vs. colophon page).
+- Naming of the design system (when framing the System section).
+- Keep a personal aside in About now that the BD angle is dropped, or
+  leave About as-is (validated)?

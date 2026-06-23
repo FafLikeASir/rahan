@@ -1,6 +1,6 @@
 # /document
 
-Invoque l'agent `component-documenter` sur un composant.
+Invokes the `component-documenter` agent on a component.
 
 ## Usage
 
@@ -10,20 +10,20 @@ Invoque l'agent `component-documenter` sur un composant.
 /document StickyNav
 ```
 
-## Ce que ça fait
+## What it does
 
-1. Identifie le composant (argument ou dernier fichier `.tsx` modifié)
-2. Lit le `.tsx` et le `.md` co-localisé existant
-3. Vérifie l'alignement avec `DESIGN.md`
-4. Crée ou met à jour le `.md` co-localisé (template §8 workflow-protocol)
-5. Met à jour `docs/98-components-index.md`
+1. Identifies the component (argument or last modified `.tsx` file)
+2. Reads the `.tsx` and the existing co-located `.md`
+3. Checks alignment with `DESIGN.md`
+4. Creates or updates the co-located `.md` (template §8 workflow-protocol)
+5. Updates `docs/98-components-index.md`
 
-## Quand l'utiliser
+## When to use
 
-- Après création d'un nouveau composant
-- Après modification significative d'un composant existant
-- Quand le `.md` co-localisé est absent ou obsolète
+- After creating a new component
+- After a significant modification to an existing component
+- When the co-located `.md` is missing or out of date
 
-## Agent sous-jacent
+## Underlying agent
 
 `.claude/agents/component-documenter/AGENT.md`

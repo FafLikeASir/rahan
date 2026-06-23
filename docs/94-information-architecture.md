@@ -1,101 +1,99 @@
 # Portfolio Maxime Luet — Information Architecture
 
-> Pont entre la direction créative (93) et l'implémentation. Fige la structure du
-> site : pages, routes, navigation, gabarit d'étude de cas. Lecture obligatoire
-> avant le build Next.js. Pas de taxonomie ni de card sorting : sur 3–4 pages, le
-> framework IA classique est largement hors-sujet ; on en garde ce qui sert le
-> build et on déclare explicitement ce qu'on n'instancie pas.
+> Bridge between creative direction (93) and implementation. Locks the site
+> structure: pages, routes, navigation, case study template. Required reading
+> before the Next.js build. No taxonomy or card sorting: on 3–4 pages, the
+> classic IA framework is wildly out of scope; we keep what serves the
+> build and explicitly declare what we do not instantiate.
 >
-> Décisions de session : sitemap arrêté, gabarit d'étude de cas commun, ordre
-> vitrine confirmé (eStorie → Mention → eKonsilio), 4ᵉ étude de cas méta (Making
-> this) prévue en v1.1.
+> Session decisions: sitemap settled, shared case study template, showcase
+> order confirmed (eStorie → Mention → eKonsilio), 4th meta case study (Making
+> this) planned for v1.1.
 
 ---
 
-## 1. Résumé
+## 1. Summary
 
-- **Une seule page longue** (home en scroll) + **routes séparées pour les études
-  de cas**. C'est la « structure à deux niveaux » du brief, formalisée.
-- **6 sections en scroll** sur la home : Hero, Work (3 cartes), Method, System,
-  About, Contact. (Plus 2 mini-blocs sous About : Currently / What I'm looking for.)
-- **3 études de cas au launch** (eStorie, Mention, eKonsilio), sous `/work/[slug]`.
-- **1 bandeau « Elsewhere »** sous les 3 cartes, condensé, non-cliquable, porte les
-  expériences hors-vitrine (GIE actuel, Sparteo, Bfast).
-- **1 étude de cas méta `/work/making-this`** prévue en v1.1, écrite après le
-  launch dans le même gabarit que les autres.
-- **Nav sticky minimale** : Work · Method · About · Contact. System sans entrée
-  propre (se vit au scroll).
-- **Pas de taxonomie, pas de tags, pas de breadcrumbs.** Assumé.
+- **One long page** (home as scroll) + **separate routes for case studies**. This is the "two-level structure" from the brief, formalized.
+- **6 scroll sections** on the home: Hero, Work (3 cards), Method, System,
+  About, Contact. (Plus 2 mini-blocks under About: Currently / What I'm looking for.)
+- **3 case studies at launch** (eStorie, Mention, eKonsilio), under `/work/[slug]`.
+- **1 "Elsewhere" banner** below the 3 cards, compact, non-clickable, carries
+  experiences outside the showcase (Sparteo, Bfast).
+- **1 meta case study `/work/making-this`** planned for v1.1, written after launch
+  in the same template as the others.
+- **Minimal sticky nav**: Work · Method · About · Contact. System has no nav entry
+  (experienced via scroll).
+- **No taxonomy, no tags, no breadcrumbs.** Intentional.
 
 ---
 
-## 2. Audience & comportements (rappel court)
+## 2. Audience & behaviors (short recap)
 
-Déjà cadré dans 90, 91, 92. Ce qui informe l'IA :
+Already framed in 90, 91, 92. What informs the IA:
 
-- **Recruteur / talent (primaire)** scanne en 6–10 s. Premier réflexe : trouver le
-  travail (Work) et savoir comment contacter (Contact). Ces deux items doivent
-  être atteignables instantanément, depuis n'importe où dans le site, sans réflexion.
-- **Head of design (secondaire)** lit en profondeur : Method, études de cas,
-  System. Il veut pouvoir entrer dans une étude de cas et y rester (lecture longue,
-  zéro friction de retour).
-- **Conséquence IA** : nav permanente Work + Contact ; gabarit d'étude de cas
-  pensé pour la lecture longue ; pas d'éparpillement en multi-pages — le scroll
-  unifié sert le scan rapide.
+- **Recruiter / talent (primary)** scans in 6–10s. First reflex: find the
+  work (Work) and know how to contact (Contact). Both must be reachable instantly,
+  from anywhere on the site, without thinking.
+- **Head of design (secondary)** reads in depth: Method, case studies,
+  System. Wants to enter a case study and stay (long read, zero friction to return).
+- **IA consequence**: permanent Work + Contact nav; case study template
+  designed for long reading; no scattering across multi-pages — unified scroll
+  serves the quick scan.
 
 ---
 
 ## 3. Sitemap
 
 ```
-/                              home (page unique, scroll)
-├─ #hero                       accroche
-├─ #work                       3 cartes vitrine
-│   └─ Elsewhere               bandeau compact sous les cartes
-├─ #method                     5 principes nommés
-├─ #system                     section composants ("modéré +")
+/                              home (single page, scroll)
+├─ #hero                       hook
+├─ #work                       3 showcase cards
+│   └─ Elsewhere               compact banner below cards
+├─ #method                     5 named principles
+├─ #system                     components section ("moderate +")
 ├─ #about                      About + Currently / What I'm looking for
 └─ #contact                    footer
 
-/work/estorie                  étude de cas — à écrire
-/work/mention                  étude de cas — rédigée, à ré-équilibrer
-/work/ekonsilio                étude de cas — à écrire (arc 3 actes)
+/work/estorie                  case study — to write
+/work/mention                  case study — written, to rebalance visually
+/work/ekonsilio                case study — to write (3-act arc)
 
-/work/making-this              étude de cas méta — v1.1, post-launch
+/work/making-this              meta case study — v1.1, post-launch
 ```
 
-**Type de chaque page :**
+**Type of each page:**
 
-| Route | Type | Statut launch | Note |
+| Route | Type | Launch status | Note |
 |---|---|---|---|
-| `/` | singleton, scroll | ✅ launch | home + ancres |
-| `/work/estorie` | détail (gabarit cas) | ✅ launch | confidentialité à vérifier |
-| `/work/mention` | détail (gabarit cas) | ✅ launch | ré-équilibrage visuel |
-| `/work/ekonsilio` | détail (gabarit cas) | ✅ launch | à écrire |
-| `/work/making-this` | détail (gabarit cas) | ⏳ v1.1 | post-launch |
+| `/` | singleton, scroll | ✅ launch | home + anchors |
+| `/work/estorie` | detail (case template) | ✅ launch | confidentiality to verify |
+| `/work/mention` | detail (case template) | ✅ launch | visual rebalancing |
+| `/work/ekonsilio` | detail (case template) | ✅ launch | to write |
+| `/work/making-this` | detail (case template) | ⏳ v1.1 | post-launch |
 
-Pas de page `/work` index : la vitrine `#work` sur la home joue ce rôle, pas
-besoin d'une page d'index parallèle qui dédoublerait la liste.
+No `/work` index page: the `#work` showcase on the home plays that role, no
+need for a parallel index page that would duplicate the list.
 
-**Cross-références :**
+**Cross-references:**
 
-- Chaque étude de cas renvoie en haut et en bas vers `/#work` (« ← Work »).
-- Chaque carte de la vitrine `#work` mène à son étude `/work/[slug]` (les 3 au
-  launch ; ajout de Making this en v1.1).
-- Le bandeau Elsewhere ne mène nulle part (intentionnellement — c'est du contexte
-  de parcours, pas du contenu détaillé ; le CV joue ce rôle).
+- Each case study links top and bottom to `/#work` ("← Work").
+- Each showcase `#work` card leads to its study `/work/[slug]` (the 3 at
+  launch; Making this added in v1.1).
+- The Elsewhere banner leads nowhere (intentionally — it is career context,
+  not detailed content; the CV plays that role).
 
 ---
 
 ## 4. URL structure
 
-**Pattern retenu :** `/work/[slug]` pour toutes les études de cas (décidé D1).
+**Retained pattern:** `/work/[slug]` for all case studies (decided D1).
 
-Cohérent avec les pairs (daneden, valdivia), prévisible, encaisse une nᵉ étude de
-cas sans casser le modèle. Le préfixe `/work/` est aussi un label utile dans
-l'URL elle-même (le lecteur sait où il est s'il copie-colle).
+Consistent with peers (daneden, valdivia), predictable, accommodates an nth case
+study without breaking the model. The `/work/` prefix is also a useful label in
+the URL itself (the reader knows where they are if they copy-paste).
 
-**Slugs au launch :**
+**Slugs at launch:**
 
 ```
 /work/estorie
@@ -104,282 +102,276 @@ l'URL elle-même (le lecteur sait où il est s'il copie-colle).
 /work/making-this        (v1.1)
 ```
 
-**Principes :**
+**Principles:**
 
 - Lowercase, kebab-case.
-- Pas de date dans l'URL (les études de cas ne sont pas datées par le slug ;
-  les dates sont dans l'en-tête de page).
-- Pas de catégorie dans l'URL (pas de taxonomie — voir §7).
-- Slug stable. Une fois publié, un slug ne change pas — si renommage,
+- No date in the URL (case studies are not dated by slug;
+  dates are in the page header).
+- No category in the URL (no taxonomy — see §7).
+- Stable slug. Once published, a slug does not change — if renamed,
   redirect 301.
-- Pas de `/case-studies/`, pas de `/projects/`. `work` est plus court, plus
-  honnête, et matche le label de nav.
+- No `/case-studies/`, no `/projects/`. `work` is shorter, more
+  honest, and matches the nav label.
 
-**Cas particuliers :**
+**Special cases:**
 
-- `making-this` : slug court, prononce le label de nav. Pas `making-this-site`
-  (redondant), pas `colophon` (label écarté).
-- `estorie` : pas `e-storie` (le nom de marque est en un mot).
+- `making-this`: short slug, pronounces the nav label. Not `making-this-site`
+  (redundant), not `colophon` (label rejected).
+- `estorie`: not `e-storie` (the brand name is one word).
 
 ---
 
 ## 5. Navigation
 
-### 5.1 Nav primaire (sticky)
+### 5.1 Primary nav (sticky)
 
-Sur **toutes les pages**, en haut, persistante au scroll :
+On **all pages**, at the top, persistent through scroll:
 
 ```
 Maxime Luet         Work · Method · About · Contact
 ```
 
-- 4 items. Sous le seuil cognitif (5-7 max).
-- Sur la home, les items sont des ancres (smooth scroll).
-- Sur une étude de cas, ils ramènent à la home + ancre.
-- Pas d'entrée **System** dans la nav (décidé D4) : la section se vit au scroll
-  pour qui descend, mais le label est opaque pour un recruteur qui scanne. Mieux
-  vaut une nav que tout le monde lit du premier coup que cinq items dont un
-  obscur.
-- Le nom **Maxime Luet** à gauche est aussi un lien vers `/` (réflexe attendu).
+- 4 items. Below the cognitive threshold (5-7 max).
+- On the home, items are anchors (smooth scroll).
+- On a case study, they bring back to home + anchor.
+- No **System** entry in the nav (decided D4): the section is experienced via scroll
+  for those who scroll down, but the label is opaque for a scanning recruiter. Better
+  a nav everyone reads immediately than five items with one obscure one.
+- The name **Maxime Luet** on the left is also a link to `/` (expected reflex).
 
-**Justification de l'ordre :** Work d'abord (le travail = la valeur), Method
-ensuite (la pensée), About (la personne), Contact (l'action). C'est aussi l'ordre
-de priorité d'un recruteur qui scanne.
+**Order justification:** Work first (the work = the value), Method
+next (the thinking), About (the person), Contact (the action). Also the priority
+order of a scanning recruiter.
 
-### 5.2 Nav secondaire
+### 5.2 Secondary nav
 
-Inexistante. Le site est plat (2 niveaux, pas 3). Pas de sidebars, pas de
-sous-menus.
+Does not exist. The site is flat (2 levels, not 3). No sidebars, no
+sub-menus.
 
-### 5.3 Nav utilitaire
+### 5.3 Utility nav
 
-Aussi inexistante au sens classique (pas de login, pas de search, pas de panier).
-Les liens utilitaires (email, LinkedIn, CV) vivent dans le **footer / section
-Contact**.
+Also non-existent in the classic sense (no login, no search, no cart).
+Utility links (email, LinkedIn, CV) live in the **footer / Contact section**.
 
 ### 5.4 Breadcrumbs
 
-Aucun. Le site fait 2 niveaux (home → étude de cas), le skill ne les recommande
-qu'à partir de 3. Un simple lien **« ← Work »** en haut de chaque étude de cas
-suffit, doublé en bas par un retour vers `/#work`.
+None. The site has 2 levels (home → case study), the skill only recommends them
+from 3. A simple **"← Work"** link at the top of each case study suffices, doubled
+at the bottom by a return to `/#work`.
 
 ### 5.5 Footer
 
-Sobre, factuel. Pas une copie complète de la nav.
+Minimal, factual. Not a full copy of the nav.
 
 ```
 maxime.luet@gmail.com · LinkedIn · CV (PDF)
 
 © Maxime Luet — 2026
 Designed and built in Next.js + Tailwind. Hosted on Vercel.
-(→ Making this)        ← apparaît en v1.1 quand la page existe
+(→ Making this)        ← appears in v1.1 when the page exists
 ```
 
-Le footer est aussi la zone Contact de la home (`#contact` y mène). Pas
-d'ambiguïté : une seule zone, deux noms (footer comme objet, Contact comme nav).
+The footer is also the Contact zone of the home (`#contact` leads there). No
+ambiguity: one zone, two names (footer as object, Contact as nav).
 
 ---
 
-## 6. Gabarit d'étude de cas (page `/work/[slug]`)
+## 6. Case study template (page `/work/[slug]`)
 
-Le point à plus fort levier de cette passe IA : si les 3 (puis 4) études de cas
-partagent une enveloppe stable, la lecture reste cohérente *et* le build a un
-gabarit unique. L'**intérieur** du récit reste libre (Mention raconte 2 fronts,
-eKonsilio raconte 3 actes — c'est exactement ça qu'on veut préserver).
+The highest-leverage point of this IA pass: if the 3 (then 4) case studies
+share a stable wrapper, the reading stays consistent *and* the build has a
+single template. The **inside** of the narrative stays free (Mention tells 2 fronts,
+eKonsilio tells 3 acts — that is exactly what to preserve).
 
-### 6.1 Structure type
+### 6.1 Standard structure
 
 ```
-[← Work]                                            (lien de retour, en haut)
+[← Work]                                            (return link, top)
 
-# [Titre du cas]                                     (H1 — verbe d'action recommandé,
-                                                      cf. Mention : "Refondre le
-                                                      design system d'un SaaS B2B")
+# [Case title]                                       (H1 — action verb recommended,
+                                                      cf. Mention: "Redesigning a
+                                                      B2B SaaS design system")
 
-[Rôle · Période]                                     (méta principale, en-tête)
-[Type d'entreprise · Périmètre solo/équipe]          (méta secondaire)
+[Role · Period]                                      (primary meta, header)
+[Company type · Solo/team scope]                     (secondary meta)
 
-[Visuel d'ouverture]                                 (hero du cas — soigné, montre le
-                                                      travail avant qu'on lise)
+[Opening visual]                                     (case hero — polished, shows the
+                                                      work before reading starts)
 
-## Le contexte                                        (entreprise + produit, court)
+## The context                                        (company + product, short)
 
-## Le problème                                        (la situation de départ)
+## The problem                                        (starting situation)
 
-## [Section libre — angle narratif du cas]
-   Mention      → "Le mandat" + "L'audit" + "L'approche" (2 fronts)
-   eKonsilio    → "Acte 1 / Acte 2 / Acte 3"
-   eStorie      → à définir (probablement : "Le scope" + "L'approche")
-   Making this  → à définir (méta-récit : brief → discovery → exécution)
+## [Free section — narrative angle of the case]
+   Mention      → "The mandate" + "The audit" + "The approach" (2 fronts)
+   eKonsilio    → "Act 1 / Act 2 / Act 3"
+   eStorie      → to define (probably: "The scope" + "The approach")
+   Making this  → to define (meta-story: brief → discovery → execution)
 
-[Visuels intercalés]                                  (interfaces, schémas, captures)
+[Interspersed visuals]                                (interfaces, diagrams, screenshots)
 
-## Les résultats
+## The results
 
-## Ce que j'en retire
+## What I take from this
 
-[← Work]                                              (lien de retour, en bas)
-[Next case → ]                                        (lien vers le cas suivant)
+[← Work]                                              (return link, bottom)
+[Next case → ]                                        (link to next case)
 ```
 
-### 6.2 Règles dures du gabarit
+### 6.2 Hard template rules
 
-- **En-tête honnête, non négociable** (red flag 7) : le rôle, la période, le
-  périmètre, les collaborateurs. C'est *dans* le gabarit, pas en option. Mention
-  l'a déjà : « seul designer, en collaboration avec l'équipe produit et les
-  développeurs ». eKonsilio devra avoir : « UI/UX + design system + front en
-  React. Collaborateur fullstack/back sur le POC ; équipe étendue ensuite. »
-- **Visuel d'ouverture obligatoire.** Pas de mur de texte d'entrée (red flag 1).
-  Le visuel donne immédiatement à voir le travail avant que la lecture commence.
-- **Visuels intercalés.** Chaque section longue doit être ponctuée d'un visuel ou
-  d'un schéma. Le ré-équilibrage visuel de Mention découle directement de cette
-  règle.
-- **Voix off, première personne.** Le ton de Mention est la référence.
-- **Pas de double diamant décoratif** (red flag 6). Les phases sont nommées avec
-  les mots du cas, pas avec un vocabulaire de méthodo générique.
-- **Lien de retour systématique** en haut et en bas. Le lecteur ne doit jamais
-  se sentir coincé dans une page de détail.
-- **Lien vers l'étude suivante** en bas (« Next case → »). Ordre vitrine.
+- **Honest header, non-negotiable** (red flag 7): the role, the period, the
+  scope, the collaborators. It is *in* the template, not optional. Mention
+  already has it: "sole designer, in collaboration with the product team and
+  developers." eKonsilio will need: "UI/UX + design system + front in
+  React. Fullstack/back collaborator on the POC; extended team later."
+- **Opening visual required.** No wall of text as the entry (red flag 1).
+  The visual immediately shows the work before reading begins.
+- **Interspersed visuals.** Each long section must be punctuated with a visual or
+  diagram. The visual rebalancing of Mention follows directly from this rule.
+- **Voice-over, first person.** Mention's tone is the reference.
+- **No decorative double diamond** (red flag 6). Phases are named with
+  the case's own words, not generic methodology vocabulary.
+- **Return link systematically** at top and bottom. The reader must never
+  feel trapped on a detail page.
+- **Link to next case** at the bottom ("Next case →"). Showcase order.
 
-### 6.3 Cas spéciaux
+### 6.3 Special cases
 
-**eStorie.** Confidentialité à vérifier (peut-on montrer les écrans publiquement,
-nommer le produit, etc.). Si écrans confidentiels, le visuel d'ouverture peut être
-travaillé (anonymisation, recadrage, ou visuel produit sans données). À régler avant
-l'écriture.
+**eStorie.** Confidentiality to verify (can screens be shown publicly,
+can the product be named, etc.). If screens are confidential, the opening visual can be
+worked around (anonymization, cropping, or product visual without data). To resolve before
+writing.
 
-**Making this.** Écrite *après* le launch, dans le même gabarit. Mandat (décrocher
-un poste), contexte (10 ans SaaS, marché tendu, 200 portfolios qui se
-ressemblent), problème (le site actuel + le benchmark des 14 portfolios),
-approche (les axes décidés et ce qui a été écarté), résultats (à compléter
-quand il y en a), ce que j'en retire. La matière est dans 90/91/92/93 — il faudra
-beaucoup couper, pas écrire.
+**Making this.** Written *after* launch, in the same template. Mandate (landing
+a job), context (10 years SaaS, competitive market, 200 look-alike portfolios),
+problem (the current site + the benchmark of 14 portfolios),
+approach (the decided axes and what was rejected), results (to fill when available),
+what I take from this. The material is in 90/91/92/93 — a lot of cutting needed, not writing.
 
 ---
 
-## 7. Taxonomie & métadonnées
+## 7. Taxonomy & metadata
 
-**Catégories : aucune.** 3–4 études de cas n'ont pas besoin d'une couche de
-catégorisation. Le risque sur un volume aussi petit est précisément d'en mettre
-(« B2B SaaS », « Design System », « Greenfield »…) et de produire un effet
-sur-corporatisé pour rien.
+**Categories: none.** 3–4 case studies do not need a categorization layer. The risk
+on such a small volume is precisely adding one ("B2B SaaS", "Design System", "Greenfield"…)
+and producing an over-corporatized effect for no reason.
 
-**Tags : aucun.** Pareil. Pas de page index `/tag/design-system` qui ferait croire
-qu'il y a 50 cas derrière.
+**Tags: none.** Same. No `/tag/design-system` index page that would imply
+50 cases behind it.
 
-**Métadonnées affichées (par cas)** — vivent en en-tête de la page, pas en
-filtrage de nav :
+**Displayed metadata (per case)** — live in the page header, not as
+nav filtering:
 
-- Rôle (intitulé du poste)
-- Période (`YYYY – YYYY`)
-- Type d'entreprise (1 ligne : « SaaS B2B », « Startup B2B2C »…)
-- Périmètre / collaborateurs (1–2 lignes — l'honnêteté red flag 7)
+- Role (job title)
+- Period (`YYYY – YYYY`)
+- Company type (1 line: "B2B SaaS", "B2B2C Startup"…)
+- Scope / collaborators (1–2 lines — honesty red flag 7)
 
-Ce sont des **données de contenu**, pas de la taxonomie. Elles n'alimentent rien
-d'autre que l'en-tête de leur propre page.
+These are **content data**, not taxonomy. They feed nothing other than their own page header.
 
-**Métadonnées techniques (SEO) :**
+**Technical metadata (SEO):**
 
-- `<title>` par page :
-  - Home : `Maxime Luet — Product Designer who codes`
-  - Étude de cas : `[Titre du cas] — Maxime Luet`
-- `<meta description>` : 1 phrase par page, dérivée du contenu.
-- Open Graph image : par page (la même que le visuel d'ouverture pour les études
-  de cas, une image dédiée pour la home).
+- `<title>` per page:
+  - Home: `Maxime Luet — Product Designer who codes`
+  - Case study: `[Case title] — Maxime Luet`
+- `<meta description>`: 1 sentence per page, derived from content.
+- Open Graph image: per page (same as the opening visual for case studies,
+  a dedicated image for the home).
 
 ---
 
-## 8. Labels (vocabulaire arrêté)
+## 8. Labels (settled vocabulary)
 
-Tableau de référence pour le build — tout label doit venir de cette liste, pas en
-être réinventé en cours de route.
+Reference table for the build — every label must come from this list, not be
+reinvented along the way.
 
-| Élément | Label retenu | Pourquoi |
+| Element | Retained label | Why |
 |---|---|---|
-| Section vitrine | **Work** | Pas « Projects » (banal), pas « Portfolio » (méta), pas « Selected work » (jargon designer). Simple, neutre, scannable. |
-| Section méthode | **Method** | Déjà validé. Conviction assumée, registre Authority dosé. |
-| Section composants | **System** | Court, parle au designer ; le recruteur le découvre au scroll. Pas dans la nav (D4). |
-| Section perso | **About** | Standard. Aucune raison de réinventer. |
-| Pied / formulaire | **Contact** | Idem. |
-| Bandeau hors-vitrine | **Elsewhere** | Décidé. Vrai temporellement (passé + présent) et tonalement (voix off). Pas « Previously » (faux : GIE est actuel), pas « Also » (plus plat). |
-| Mini-bloc situation | **Currently** | Déjà validé. Voix off, présent continu. |
-| Mini-bloc recherche | **What I'm looking for** | Déjà validé. Factuel, lisible recruteur. |
-| Page méta v1.1 | **Making this** | Voix off, présent continu, dit l'objet (le site lui-même). Slug `/work/making-this`. |
-| Lien de retour | **← Work** | Pas « Back », pas « ← Home ». Dit où on retourne. |
-| Lien étude suivante | **Next case →** | Court, conventionnel. |
-| Footer CV | **CV (PDF)** | Indique le format pour éviter la surprise. |
+| Showcase section | **Work** | Not "Projects" (generic), not "Portfolio" (meta), not "Selected work" (designer jargon). Simple, neutral, scannable. |
+| Method section | **Method** | Already validated. Assumed conviction, dosed Authority register. |
+| Components section | **System** | Short, speaks to designers; recruiters discover it via scroll. Not in nav (D4). |
+| Personal section | **About** | Standard. No reason to reinvent. |
+| Footer / form | **Contact** | Same. |
+| Off-showcase banner | **Elsewhere** | Decided. True temporally (past + present) and tonally (voice-over). Not "Previously" (wrong: current role is present), not "Also" (flatter). |
+| Situation mini-block | **Currently** | Already validated. Voice-over, present continuous. |
+| Search mini-block | **What I'm looking for** | Already validated. Factual, recruiter-readable. |
+| v1.1 meta page | **Making this** | Voice-over, present continuous, states the object (the site itself). Slug `/work/making-this`. |
+| Return link | **← Work** | Not "Back", not "← Home". States where you return to. |
+| Next case link | **Next case →** | Short, conventional. |
+| Footer CV | **CV (PDF)** | States the format to avoid surprise. |
 
-**Bannis explicitement :**
+**Explicitly banned:**
 
-- « Solutions », « Resources » — vague, catch-all (failure pattern du skill IA).
-- « Selected work », « Featured projects » — jargon designer convenu, vide.
-- « Get in touch », « Let's chat » — registre Medium/Substack écarté en 93.
-- « My portfolio », « My work » — possessif inutile, le site est déjà à toi.
-- « Crafted », « delightful », « passionate » — vocabulaire catégorie banni en 93.
+- "Solutions", "Resources" — vague, catch-all (IA skill failure pattern).
+- "Selected work", "Featured projects" — conventional designer jargon, empty.
+- "Get in touch", "Let's chat" — Medium/Substack register rejected in 93.
+- "My portfolio", "My work" — unnecessary possessive, the site is already yours.
+- "Crafted", "delightful", "passionate" — banned category vocabulary from 93.
 
 ---
 
-## 9. Implications pour le build
+## 9. Build implications
 
-Pour la passe Next.js qui vient ensuite, l'IA implique :
+For the upcoming Next.js pass, the IA implies:
 
-- **Routing App Router** :
-  - `app/page.tsx` : home (toutes les sections + ancres)
-  - `app/work/[slug]/page.tsx` : gabarit unique d'étude de cas (route dynamique)
-  - `app/work/[slug]/page.tsx` lit le contenu depuis MDX ou un objet — un seul
-    composant `<CaseStudy>` pour tous les cas.
-- **Composants partagés** :
-  - `<StickyNav>` — 4 liens, hash sur la home, full path ailleurs
-  - `<CaseStudyHeader>` — visuel + méta (rôle, période, type, périmètre)
+- **App Router routing**:
+  - `app/page.tsx`: home (all sections + anchors)
+  - `app/work/[slug]/page.tsx`: single case study template (dynamic route)
+  - `app/work/[slug]/page.tsx` reads content from MDX or an object — one
+    `<CaseStudy>` component for all cases.
+- **Shared components**:
+  - `<StickyNav>` — 4 links, hash on home, full path elsewhere
+  - `<CaseStudyHeader>` — visual + meta (role, period, type, scope)
   - `<CaseStudyFooter>` — ← Work + Next case →
-  - `<Elsewhere>` — bandeau compact sous la vitrine
+  - `<Elsewhere>` — compact banner below showcase
   - `<Footer>` — Contact + mentions
-- **MDX recommandé** pour les études de cas : sépare le contenu du composant, et
-  garde le contenu en clair (facilite une future version FR sans i18n maintenant).
-- **Smooth scroll** activé pour les ancres (`scroll-behavior: smooth`).
-- **SEO de base** : sitemap.xml généré, robots.txt permissif, Open Graph images
-  par page (les recruteurs partagent des liens dans Slack).
+- **MDX recommended** for case studies: separates content from component, and
+  keeps content in plain text (eases a future FR version without i18n now).
+- **Smooth scroll** enabled for anchors (`scroll-behavior: smooth`).
+- **Basic SEO**: generated sitemap.xml, permissive robots.txt, Open Graph images
+  per page (recruiters share links in Slack).
 
 ---
 
-## 10. Ce qu'on ne fait pas (déclaré explicitement)
+## 10. What we do not do (explicitly declared)
 
-- Pas de moteur de recherche.
-- Pas de breadcrumbs.
-- Pas de pagination, pas d'archive.
-- Pas de catégories, pas de tags, pas de pages d'index par catégorie.
-- Pas de blog ou de section écriture (séparé du périmètre de cette refonte).
-- Pas de page contact dédiée — `#contact` = footer.
-- Pas de page d'index `/work` — la vitrine `#work` joue ce rôle.
-- Pas de page CV en HTML — lien vers le PDF.
-- Pas de toggle light/dark (light only au launch).
-- Pas de version FR (anglais only au launch).
+- No search engine.
+- No breadcrumbs.
+- No pagination, no archive.
+- No categories, no tags, no category index pages.
+- No blog or writing section (out of scope for this redesign).
+- No dedicated contact page — `#contact` = footer.
+- No `/work` index page — the `#work` showcase plays that role.
+- No HTML CV page — link to the PDF.
+- No light/dark toggle (light only at launch).
+- No FR version (English only at launch).
 
-Ce sont des choix, pas des oublis.
-
----
-
-## 11. Questions ouvertes (post-IA)
-
-- **Confidentialité eStorie** : peut-on publier les écrans / le nom ? Décision
-  bloquante pour le visuel d'ouverture du cas. À régler avant l'écriture.
-- **Visuel d'ouverture de chaque cas** : 1 image fixe ? Une mini-séquence ? À
-  décider au moment du design.
-- **Open Graph image de la home** : à concevoir (c'est l'aperçu qui apparaît
-  quand le lien est partagé — décisif côté recruteur qui partage en Slack).
+These are choices, not oversights.
 
 ---
 
-## Décisions de session (récap)
+## 11. Open questions (post-IA)
 
-| Question | Décision |
+- **eStorie confidentiality**: can screens / the name be published? Blocking
+  decision for the case opening visual. To resolve before writing.
+- **Opening visual for each case**: 1 static image? A mini-sequence? To
+  decide at design time.
+- **Home Open Graph image**: to design (the preview that appears when
+  the link is shared — decisive for a recruiter sharing in Slack).
+
+---
+
+## Session decisions (recap)
+
+| Question | Decision |
 |---|---|
-| Pattern URL études de cas | `/work/[slug]` (D1.a) |
-| eStorie a-t-elle une étude de cas ? | Oui, comme les deux autres (D2) |
-| Hors-vitrine (GIE/Sparteo/Bfast) | Bandeau compact, label **Elsewhere** (D3.b) |
-| Nav primaire | Sticky 4 liens : Work · Method · About · Contact (D4.a) |
-| Page making-of / process | Étude de cas méta `/work/making-this`, écrite après launch, en v1.1 (D5.c) |
-| Label de la page méta | **Making this** |
-| Ordre vitrine | eStorie → Mention → eKonsilio (refermé depuis 90) |
-| Taxonomie | Aucune (assumé) |
-| Breadcrumbs | Aucun (2 niveaux suffisent) |
+| Case study URL pattern | `/work/[slug]` (D1.a) |
+| Does eStorie have a case study? | Yes, like the other two (D2) |
+| Off-showcase (Sparteo/Bfast) | Compact banner, label **Elsewhere** (D3.b) |
+| Primary nav | Sticky 4 links: Work · Method · About · Contact (D4.a) |
+| Making-of / process page | Meta case study `/work/making-this`, written after launch, in v1.1 (D5.c) |
+| Label for meta page | **Making this** |
+| Showcase order | eStorie → Mention → eKonsilio (settled since 90) |
+| Taxonomy | None (intentional) |
+| Breadcrumbs | None (2 levels suffice) |
