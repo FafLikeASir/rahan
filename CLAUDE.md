@@ -1,60 +1,60 @@
 # CLAUDE.md — Portfolio Maxime Luet
 
-> Ce fichier est lu automatiquement par Claude Code à chaque session.
-> Il pointe vers la documentation complète dans `/docs`.
+> This file is automatically read by Claude Code at the start of every session.
+> It points to the full documentation in `/docs`.
 
-## Règle #0 — Plan mode & protocole de session
+## Rule #0 — Plan mode & session protocol
 
-**Toujours démarrer en plan mode.** Aucune implémentation sans plan validé.
-Lire `docs/00-workflow-protocol.md` pour le protocole complet :
-scoring de faisabilité, routing des skills, workflow Figma → code, audit Lyse.
+**Always start in plan mode.** No implementation without a validated plan.
+Read `docs/00-workflow-protocol.md` for the full protocol:
+feasibility scoring, skill routing, Figma → code workflow, Lyse audit.
 
-**Format plan obligatoire** (template `docs/00-workflow-protocol.md §2`) :
-- Chaque étape : `[Feasibility: XX%]` + `→ Skill: X`
-- Score < 90% → routine de déblocage avant d'implémenter
-- Vérifier avec `/plan-check`
+**Required plan format** (template `docs/00-workflow-protocol.md §2`):
+- Each step: `[Feasibility: XX%]` + `→ Skill: X`
+- Score < 90% → unblocking routine before implementing
+- Validate with `/plan-check`
 
-**Custom commands disponibles :** `/design-review` · `/lyse` · `/document` · `/plan-check`  
-**Agents :** `.claude/agents/` — lyse-auditor, component-documenter, design-reviewer
+**Custom commands:** `/design-review` · `/lyse` · `/document` · `/plan-check`  
+**Agents:** `.claude/agents/` — lyse-auditor, component-documenter, design-reviewer
 
-## Règle #1
+## Rule #1
 
-Lire `docs/96-project-structure.md` avant toute action. C'est la source de
-vérité sur l'architecture, la stack, les conventions, et les contraintes.
+Read `docs/96-project-structure.md` before any action. It is the source of
+truth for architecture, stack, conventions, and constraints.
 
-## Règle #2
+## Rule #2
 
-Consulter `docs/97-skill-orchestration.md` pour savoir quel skill et quel
-document lire selon la tâche en cours.
+Consult `docs/97-skill-orchestration.md` to know which skill and which
+document to read for the current task.
 
-## Règle #3
+## Rule #3
 
-Si une décision est écrite dans un des docs 91-95, elle est prise.
-Ne pas la re-débattre. L'appliquer. Si elle semble contradictoire avec une
-autre, demander à Maxime.
+If a decision is written in any of docs 91-95, it is final.
+Do not re-debate it. Apply it. If it appears to conflict with another,
+ask Maxime.
 
-## Design system — accès rapide
+## Design system — quick access
 
-`DESIGN.md` (racine) — tokens YAML + do's and don'ts condensés. Lecture rapide avant
-toute tâche visuelle. Pointe vers les docs complètes pour les détails.
+`DESIGN.md` (root) — YAML tokens + condensed do's and don'ts. Quick read before
+any visual task. Points to the full docs for details.
 
-## Hiérarchie des documents
+## Document hierarchy
 
-1. `docs/96-project-structure.md` — architecture et contraintes techniques
-2. `docs/93-creative-direction.md` — axes esthétiques + liste de rejet
-3. `docs/94-information-architecture.md` — structure, labels, gabarit
-4. `docs/95-hero-visual-spec.md` — spécification du hero
-5. `docs/92-creative-brief.md` — direction visuelle et scope
-6. `docs/00-brief-global.md` — contenu validé
-7. `docs/91-brand-discovery.md` — territoires et analyse
+1. `docs/96-project-structure.md` — architecture and technical constraints
+2. `docs/93-creative-direction.md` — aesthetic axes + rejection list
+3. `docs/94-information-architecture.md` — structure, labels, case study template
+4. `docs/95-hero-visual-spec.md` — hero specification
+5. `docs/92-creative-brief.md` — visual direction and scope
+6. `docs/00-brief-global.md` — validated content
+7. `docs/91-brand-discovery.md` — territories and analysis
 
 ## Stack
 
 Next.js 15 (App Router) · TypeScript · Tailwind v4 · shadcn/ui · Plus Jakarta Sans · Vercel
 
-## Ce qu'on ne fait PAS
+## What we do NOT do
 
-Pas de Pages Router. Pas de dark mode. Pas de blog. Pas de formulaire.
-Pas de API routes. Pas de CMS. Pas de canvas/WebGL au launch.
-Pas de framer-motion (GSAP autorisé, phase animation uniquement). Pas de `bg-white` en dur — tokens sémantiques.
-Liste complète dans `docs/96-project-structure.md` §15.
+No Pages Router. No dark mode. No blog. No forms.
+No API routes. No CMS. No canvas/WebGL at launch.
+No framer-motion (GSAP allowed, animation phase only). No hardcoded `bg-white` — semantic tokens only.
+Full list in `docs/96-project-structure.md` §15.

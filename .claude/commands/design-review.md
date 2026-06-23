@@ -1,27 +1,27 @@
 # /design-review
 
-Invoque l'agent `design-reviewer` sur la tâche ou le diff en cours.
+Invokes the `design-reviewer` agent on the current task or diff.
 
 ## Usage
 
 ```
 /design-review
-/design-review [description de la tâche]
+/design-review [task description]
 ```
 
-## Ce que ça fait
+## What it does
 
-1. Lit `DESIGN.md` + `docs/93-creative-direction.md` + `docs/95-hero-visual-spec.md`
-2. Analyse le diff courant (`git diff HEAD`) ou la description fournie
-3. Produit un rapport avec score d'alignement DS
-4. Si score < 70% → stoppe et remonte à Maxime
+1. Reads `DESIGN.md` + `docs/93-creative-direction.md` + `docs/95-hero-visual-spec.md`
+2. Analyzes the current diff (`git diff HEAD`) or the provided description
+3. Produces a report with a DS alignment score
+4. If score < 70% → stops and escalates to Maxime
 
-## Quand l'utiliser
+## When to use
 
-- Avant de commencer toute implémentation visuelle
-- Avant de merger une PR qui touche des composants UI
-- Pour valider qu'une décision de design respecte le brief
+- Before starting any visual implementation
+- Before merging a PR that touches UI components
+- To validate that a design decision respects the brief
 
-## Agent sous-jacent
+## Underlying agent
 
 `.claude/agents/design-reviewer/AGENT.md`

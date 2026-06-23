@@ -1,14 +1,14 @@
 # Components Index
 
-> Index master de tous les composants du projet.
-> Mis à jour à chaque composant créé ou modifié (voir docs/00-workflow-protocol.md §4).
-> Généré manuellement — ne pas supprimer les lignes existantes sans vérifier que le composant est supprimé.
+> Master index of all project components.
+> Updated whenever a component is created or modified (see docs/00-workflow-protocol.md §4).
+> Generated manually — do not delete existing rows without verifying the component has been removed.
 
 ---
 
 ## Index
 
-| Composant | Catégorie | Fichier | Doc .md | Tokens Lyse | Notes |
+| Component | Category | File | Doc .md | Lyse tokens | Notes |
 |---|---|---|---|---|---|
 | `StickyNav` | layout | `components/layout/StickyNav.tsx` | ✅ | `--glass-bg`, `--badge-accent-bg`, `--badge-accent-border` | Client — scroll state |
 | `Footer` | layout | `components/layout/Footer.tsx` | ✅ | `--border`, `--background`, `--text-secondary`, `--text-tertiary` | Server |
@@ -23,18 +23,18 @@
 
 ---
 
-## Légende
+## Legend
 
-- **Doc .md** : `—` = pas encore créé, `✅` = à jour, `⚠️` = à mettre à jour
-- **Tokens Lyse** : tokens CSS custom utilisés (depuis `@theme inline` dans globals.css)
-- **Notes** : Server / Client, comportements notables
+- **Doc .md**: `—` = not yet created, `✅` = up to date, `⚠️` = needs updating
+- **Lyse tokens**: custom CSS tokens used (from `@theme inline` in globals.css)
+- **Notes**: Server / Client, notable behaviors
 
 ---
 
-## Template pour ajout
+## Template for additions
 
-Copier-coller cette ligne et remplir :
+Copy-paste this row and fill in:
 
 ```
-| `ComponentName` | catégorie | `components/cat/ComponentName.tsx` | `components/cat/ComponentName.md` | `--color-X` | Server/Client — note |
+| `ComponentName` | category | `components/cat/ComponentName.tsx` | `components/cat/ComponentName.md` | `--color-X` | Server/Client — note |
 ```

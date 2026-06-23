@@ -2,34 +2,34 @@
 version: "1.0"
 name: portfolio-maxime-luet
 description: >
-  Portfolio d'un Product Designer spécialisé UI & Design System qui code.
-  Langage warm dark (hero cinématographique) → blanc éditorial (body).
-  Un accent orange, une famille typo, sobriété maximale hors hero.
+  Portfolio of a UI & Design System–focused Product Designer who codes.
+  Warm dark language (cinematic hero) → editorial white (body).
+  One orange accent, one type family, maximum restraint outside the hero.
 
 colors:
-  # ── Surfaces éditoriales (body) ──────────────────────────────────────
+  # ── Editorial surfaces (body) ────────────────────────────────────────
   background: "#ffffff"
   foreground: "oklch(0.208 0.042 265.755)"    # slate-900
   muted: "oklch(0.984 0.003 247.858)"         # slate-50
   muted-foreground: "oklch(0.554 0.046 257.417)"  # slate-500
   border: "oklch(0.929 0.013 255.508)"        # slate-200
 
-  # ── Texte sémantique ─────────────────────────────────────────────────
+  # ── Semantic text ────────────────────────────────────────────────────
   text-primary: "oklch(0.208 0.042 265.755)"   # slate-900
   text-secondary: "oklch(0.446 0.043 257.281)" # slate-600
   text-tertiary: "oklch(0.554 0.046 257.417)"  # slate-500
 
-  # ── Accent (flèche P2, focus rings) ──────────────────────────────────
+  # ── Accent (P2 arrow, focus rings) ───────────────────────────────────
   accent: "oklch(0.488 0.196 258.5)"           # blue-600
   accent-foreground: "#ffffff"
 
-  # ── Hero : warm dark ─────────────────────────────────────────────────
+  # ── Hero: warm dark ──────────────────────────────────────────────────
   hero-bg: "#1f1f1f"
-  hero-orange: "#fb3706"    # blob principal, couleur signature
-  hero-slate: "#809fb4"     # blob secondaire
-  hero-shadow: "#782800"    # ombre orange profond
+  hero-orange: "#fb3706"    # main blob, signature color
+  hero-slate: "#809fb4"     # secondary blob
+  hero-shadow: "#782800"    # deep orange shadow
 
-  # ── Hero : texte sur fond sombre ─────────────────────────────────────
+  # ── Hero: text on dark background ────────────────────────────────────
   hero-text-1: "rgba(255,255,255,0.85)"
   hero-text-2: "rgba(255,255,255,0.55)"
   hero-text-3: "rgba(255,255,255,0.45)"
@@ -41,21 +41,21 @@ typography:
     fontWeight: 600
     lineHeight: 1
     letterSpacing: "-0.03em"
-    use: "Headline hero (Designer)"
+    use: "Hero headline (Product Designer)"
   display-lg:
     fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
     fontSize: 40px
     fontWeight: 600
     lineHeight: 1.1
     letterSpacing: "-0.02em"
-    use: "Titres de sections"
+    use: "Section headings"
   display-md:
     fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
     fontSize: 24px
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: "-0.015em"
-    use: "Titres de cartes, principes Method"
+    use: "Card titles, Method principles"
   body-lg:
     fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
     fontSize: 18px
@@ -67,27 +67,27 @@ typography:
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.6
-    use: "Corps de texte standard"
+    use: "Standard body text"
   body-sm:
     fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
     fontSize: 15px
     fontWeight: 400
     lineHeight: 1.5
     letterSpacing: "-0.01em"
-    use: "Métadonnées, nav links, captions"
+    use: "Metadata, nav links, captions"
   label:
     fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
     fontSize: 11px
     fontWeight: 500
     lineHeight: 1
     letterSpacing: "0.08em"
-    use: "Tags, badges, labels uppercase RARES"
+    use: "Tags, badges, rare uppercase labels"
   mono:
     fontFamily: "JetBrains Mono, ui-monospace, monospace"
     fontSize: 13px
     fontWeight: 400
     lineHeight: 1.5
-    use: "Labels techniques, stats hero (accent uniquement)"
+    use: "Technical labels, hero stats (accent only)"
 
 spacing:
   xs: 8px
@@ -102,8 +102,8 @@ spacing:
 
 rounded:
   sm: 4px     # inputs, tags
-  md: 8px     # cartes
-  lg: 12px    # cartes grandes
+  md: 8px     # cards
+  lg: 12px    # large cards
   xl: 16px    # work cards
   full: 9999px
 
@@ -116,7 +116,7 @@ components:
     backgroundColor: "{colors.hero-bg}"
     minHeight: "100dvh"
     grid: "7-col visible via border-white/10"
-    blobs: "orange centré animé + slate bas-gauche statique + grain SVG 25%"
+    blobs: "centered animated orange + static bottom-left slate + SVG grain 25%"
   work-card:
     backgroundColor: "{colors.background}"
     rounded: "{rounded.xl}"
@@ -124,45 +124,45 @@ components:
   section-editorial:
     backgroundColor: "{colors.background}"
     paddingY: "{spacing.section}"
-    maxWidth: "1440px centré, contenu dans cols 2-6 (≈ 72% du viewport)"
+    maxWidth: "1440px centered, content in cols 2-6 (≈ 72% of viewport)"
 
 ---
 
-## Vue d'ensemble
+## Overview
 
-Portfolio personnel de Maxime Luet, Product Designer UI & Design System qui code.
-Audience double : recruteur au scan 6 s + head of design à l'inspection du craft.
+Personal portfolio of Maxime Luet, UI & Design System Product Designer who codes.
+Dual audience: recruiter scanning in 6s + head of design inspecting craft.
 
-**Principe structurel :** hero cinématographique warm dark (unique moment expressif du site) → transition → blanc éditorial patient (tout le reste). La retenue *est* le signal.
+**Structural principle:** cinematic warm dark hero (the site's sole expressive moment) → transition → patient editorial white (everything else). Restraint *is* the signal.
 
-**Identité visuelle :** un seul accent fort (orange `{colors.hero-orange}` et sa déclinaison slate `{colors.hero-slate}`), une seule famille typo (Plus Jakarta Sans, bien réglée), aucun décor hors hero. La densité croît vers l'intérieur du site — le scan voit peu, l'inspection voit tout.
+**Visual identity:** one strong accent (orange `{colors.hero-orange}` and its slate variant `{colors.hero-slate}`), one type family (Plus Jakarta Sans, well-tuned), no decoration outside the hero. Density increases toward the interior — the scan sees little, the inspection sees everything.
 
 ## Do
 
-- Utiliser `{colors.hero-orange}` comme seul accent expressif (hors interactions UI bleues)
-- Tracking négatif agressif sur les titres display (`-0.03em` à `-0.015em`)
-- `min-h-[100dvh]` — jamais `h-screen`
-- Tokens CSS sémantiques (`text-primary`, `text-secondary`) — jamais valeurs hex en dur
-- Grain + blobs uniquement dans le hero, pas sur d'autres sections
-- Une seule famille typo ; JetBrains Mono en accent *rare* (stats, labels techniques)
-- Crédits et périmètres précis dans les études de cas
+- Use `{colors.hero-orange}` as the sole expressive accent (outside blue UI interactions)
+- Aggressive negative tracking on display headings (`-0.03em` to `-0.015em`)
+- `min-h-[100dvh]` — never `h-screen`
+- Semantic CSS tokens (`text-primary`, `text-secondary`) — never hardcoded hex values
+- Grain + blobs in the hero only, not on other sections
+- One type family only; JetBrains Mono as a *rare* accent (stats, technical labels)
+- Precise credits and scope in case studies
 
 ## Don't
 
-- `bg-white` ou couleurs hex en dur hors hero (utiliser les tokens)
-- Dark mode — le light éditorial est le choix délibéré
-- Gradient / glass décoratif hors hero
-- Deuxième famille typo en thème (une seule, point)
-- Monospace / terminal comme ambiance globale (accent rare seulement)
-- `framer-motion` / `motion` — GSAP uniquement en phase animation
-- Vocabulaire générique : « crafted », « pixel-perfect », « passionate », « seamless »
-- Double diamant ou process maps décoratifs
-- Dark sections isolées dans un contexte light (thème lock global)
-- Em-dash (`—`) partout — utiliser tiret ou restructurer
+- `bg-white` or hardcoded hex colors outside the hero (use tokens)
+- Dark mode — editorial light is the deliberate choice
+- Decorative gradient / glass outside the hero
+- Second type family as a theme (one only, period)
+- Monospace / terminal as a global mood (rare accent only)
+- `framer-motion` / `motion` — GSAP only, during animation phase
+- Generic vocabulary: "crafted", "pixel-perfect", "passionate", "seamless"
+- Double diamond or decorative process maps
+- Isolated dark sections in a light context (global theme lock)
+- Em-dash (`—`) everywhere — use a hyphen or restructure
 
-## Références complètes
+## Full references
 
-- Direction créative complète : `docs/93-creative-direction.md`
-- Spécification hero : `docs/95-hero-visual-spec.md`
-- Architecture & conventions : `docs/96-project-structure.md`
-- Tokens CSS live : `app/global.css` (`@theme inline`)
+- Full creative direction: `docs/93-creative-direction.md`
+- Hero specification: `docs/95-hero-visual-spec.md`
+- Architecture & conventions: `docs/96-project-structure.md`
+- Live CSS tokens: `app/global.css` (`@theme inline`)

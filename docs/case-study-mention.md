@@ -1,92 +1,92 @@
-# Mention — Refondre le design system d'un SaaS B2B
+# Mention — Redesigning a B2B SaaS design system
 
-**Product Designer · Octobre 2022 – Juillet 2024**
-Plateforme de media monitoring & social listening · Seul designer, en collaboration avec l'équipe produit et les développeurs
-
----
-
-## Le contexte
-
-Mention est une plateforme SaaS de media monitoring et de social listening : elle permet de surveiller le web et les réseaux sociaux, d'analyser les conversations en ligne et de gérer sa présence sociale, le tout dans un seul outil. J'y étais le seul designer, en lien direct avec les PM et les développeurs.
-
-Le produit reposait sur Material UI, habillé d'une simple couche de CSS pour en remplacer les couleurs. Côté design, il n'existait aucun UI Kit : seulement des maquettes Figma éparses. Ni côté design, ni côté code, il n'y avait de source de vérité commune.
+**Product Designer · October 2022 – July 2024**
+Media monitoring & social listening platform · Sole designer, in collaboration with the product team and developers
 
 ---
 
-## Le problème
+## The context
 
-Sans système partagé, chaque équipe travaillait dans son coin — et le design restait en bout de chaîne, jamais là où les choix produit se faisaient.
+Mention is a SaaS platform for media monitoring and social listening: it lets you track the web and social media, analyze online conversations, and manage your social presence, all in one tool. I was the sole designer there, working directly with PMs and developers.
 
-Côté design, les maquettes vivaient dans un fichier Figma fourre-tout, non documenté, où chacun venait modifier par-dessus le travail des autres. Aucun UI Kit, aucune règle : juste des écrans empilés.
-
-Côté développement, faute de bibliothèque commune, les composants n'existaient pas vraiment. On copiait un bout de code qui tournait déjà en prod, on le collait dans l'écran en cours, on ajustait le style pour coller à la maquette. Pas de composant cadré, structuré ou documenté — juste de la duplication. Les couleurs étaient codées en dur, dispersées entre le HTML, le CSS et ces pseudo-composants, et Material UI disparaissait sous une accumulation de patchs CSS.
-
-Entre les deux, aucun handoff : la passation se résumait à un lien Figma déposé dans un ticket Jira, sans contexte ni intention. Le coût se payait à la fin, en review : les retours front et les tests s'accumulaient au point qu'une user story pouvait demander autant de temps de correction que le temps initialement estimé pour la produire.
-
-Le résultat ne tenait pas seulement à des incohérences visuelles d'un écran à l'autre. C'était une équipe qui passait son énergie à colmater et à refaire, au lieu de concevoir.
+The product was built on Material UI, dressed with a thin CSS layer replacing its colors. On the design side, there was no UI Kit: only scattered Figma mockups. Neither design nor code had a shared source of truth.
 
 ---
 
-## Le mandat
+## The problem
 
-Je n'ai pas été recruté pour ranger un fichier Figma. Le Head of Product m'a fait venir avec un objectif clair : faire entrer le design dans les décisions produit. Jusque-là, le design exécutait des choix arrêtés en amont par les PM et les développeurs. L'enjeu était d'en faire une voix à part entière — et, plus largement, de diffuser une culture design dans l'équipe produit d'abord, puis chez les développeurs, puis dans toute l'entreprise.
+Without a shared system, each team worked in silos — and design stayed at the end of the chain, never where product decisions were made.
 
-Le design system n'était donc pas une fin en soi. C'était le moyen : un terrain concret pour rapprocher design et développement, et installer une façon de travailler commune.
+On the design side, mockups lived in a catch-all Figma file, undocumented, where anyone would overwrite each other's work. No UI Kit, no rules: just stacked screens.
 
-## L'audit
+On the development side, with no shared library, components barely existed. A piece of working production code would get copy-pasted into the current screen, styled to match the mockup. No structured, documented component — just duplication. Colors were hardcoded, scattered across HTML, CSS, and these pseudo-components, while Material UI disappeared under layers of CSS patches.
 
-Plutôt que d'attaquer les composants tout de suite, j'ai commencé par un état des lieux complet : le fichier Figma, l'UI en production, l'UX globale de l'application, le workflow d'équipe et le handoff. L'objectif était de comprendre où se perdaient le temps et la cohérence avant de décider quoi changer.
+Between the two: no handoff. Delivery meant dropping a Figma link into a Jira ticket, without context or intent. The cost came due in review: front-end feedback and test cycles stacked up to the point where a user story could take as long to correct as to build.
 
-Cet audit a débouché sur un plan d'action mené sur deux fronts en parallèle. Avec la squad Foundation, l'équipe en charge des fondations techniques du produit, le volet système : un UI Kit commun au design et au code. Avec les PM, le volet collaboration : une façon partagée de cadrer, documenter et transmettre le travail.
-
----
-
-## L'approche
-
-Le plan d'action avançait sur deux fronts en parallèle. D'abord rapprocher les équipes autour d'une façon de travailler commune ; ensuite leur donner la fondation technique qui la rende durable.
-
-### Front 1 — Une collaboration cadrée (avec les PM)
-
-**Normaliser les fichiers Figma.** Tant que le design vivait dans un fichier fourre-tout où chacun écrasait le travail des autres, aucune source de vérité n'était possible. J'ai donné aux fichiers Figma une structure normée — une organisation prévisible, où chaque chose a sa place et où l'on retrouve l'état réel d'un écran sans avoir à demander.
-
-**Définir un « fini ».** Les retours interminables en review venaient d'un désaccord jamais explicité sur ce qu'était une maquette terminée. Une Definition of Done partagée a tranché la question en amont : un design n'était transmis que couvert pour tous ses cas — état par défaut, vide, erreur, chargement. Le débat avait lieu avant le développement, plus après.
-
-**Fiabiliser le handoff.** Un lien Figma jeté dans un ticket ne transmet ni l'intention, ni les décisions, ni les cas à couvrir. J'ai donc reconstruit la passation de bout en bout.
-
-Zeplin est devenu la passerelle « ready to dev » : un sas où n'entraient que les maquettes validées, accompagnées de leurs spécifications, servant de source de vérité unique à toutes les équipes.
-
-Côté Jira, j'ai mis en place un workflow et des templates de tickets qui reliaient explicitement le design et le développement. Un ticket principal portait l'objectif produit — une feature, un problème à résoudre. Sous lui, les user stories design portaient chacune le contexte de conception : lien vers la discovery, l'UX research, les retours utilisateurs, la liste des cas d'usage à produire, une Definition of Done couvrant les états (défaut, vide, erreur, chargement), et un prototype quand il était nécessaire. Les user stories dev, elles, étaient rattachées à une ou plusieurs user stories design : le développeur y retrouvait le contexte, les décisions et les commentaires, les liens Zeplin correspondants, sa branche Git dédiée, et le renvoi vers Storybook quand le composant y était documenté.
-
-Le handoff cessait d'être un mur entre deux équipes. C'était un fil continu : du problème produit jusqu'au composant intégré, chaque maillon portait le contexte du précédent.
-
-### Front 2 — Une fondation commune au design et au code (avec la squad Foundation)
-
-**Repartir de l'existant, pas d'une page blanche.** Le produit reposait sur Material UI. Plutôt que d'imposer une refonte brutale — risquée, et vécue comme un désaveu par les devs — j'ai gardé Material UI comme socle et l'ai redessiné : un UI Kit Figma qui conservait les composants déjà en place, mais retravaillés, en m'appuyant sur les principes de *Refactoring UI* et *Practical UI*.
-
-**Mettre une couche d'abstraction entre le style et les composants.** Les couleurs codées en dur, éparpillées dans le HTML et le CSS, rendaient le moindre changement risqué et manuel. En introduisant TailwindCSS et ses design tokens, le style cessait d'être écrit en clair partout : il passait par une couche intermédiaire, modifiable en un point, répercutée partout.
-
-**Développer les composants avec les devs, pas pour eux.** Un design system livré clé en main aurait été contourné comme le reste. Les composants ont donc été construits avec les développeurs front, pour entrer dans leur process et devenir leur outil — pas une contrainte de plus imposée d'en haut.
-
-**Documenter pour rendre la fondation accessible.** Un système que personne ne sait lire n'est pas un système partagé, juste un dossier de plus. Storybook a donné aux composants une bibliothèque vivante et documentée, consultable par tous. Surtout, via l'addon Designs de Storybook, chaque composant y était relié à sa maquette Figma de référence : la maquette s'affichait directement dans un onglet « Design », à côté du composant réel. Designers et développeurs regardaient enfin le même objet, décrit au même endroit, sans avoir à passer d'un outil à l'autre. La bibliothèque servait aussi de point d'entrée pour les nouveaux développeurs front-end et fullstack : plutôt que de fouiller du code épars pour comprendre l'existant, ils disposaient d'un catalogue clair — ce qui a nettement accéléré leur prise en main.
+The result wasn't just visual inconsistencies from one screen to the next. It was a team spending its energy patching and redoing, instead of designing.
 
 ---
 
-## Les résultats
+## The mandate
 
-**Une source de vérité, partagée.** Designers, PM et développeurs travaillaient enfin à partir des mêmes références : un UI Kit Figma, une bibliothèque de composants documentée, des maquettes validées. L'UI Kit couvrait l'ampleur de Material UI, soit près de 100 écrans en trois déclinaisons — desktop, tablette, mobile.
+I wasn't hired to tidy a Figma file. The Head of Product brought me in with a clear objective: bring design into product decisions. Until then, design was executing choices already made upstream by PMs and developers. The goal was to make it a voice in its own right — and more broadly, to spread a design culture first within the product team, then developers, then the whole company.
 
-**Moins de friction, moins de reprise.** Les reviews interminables se sont résorbées : avec une Definition of Done partagée et des composants cadrés, le débat avait lieu en amont, plus en fin de course. Les composants, testés une fois au niveau de la bibliothèque, n'avaient plus à être re-vérifiés à chaque feature — la charge de tests côté production s'en est trouvée allégée d'autant.
+The design system was not an end in itself. It was the means: concrete ground for bringing design and development closer, and establishing a shared way of working.
 
-**Un design intégré, pas exécuté.** C'était le mandat de départ : il a été tenu. Le workflow reliait le contexte produit aux user stories design puis dev ; le design n'arrivait plus en bout de chaîne, il était présent là où les décisions se prenaient. La cohérence visuelle s'est aussi étendue au-delà du produit, alignant l'interface et les supports marketing.
+## The audit
 
-**Du temps rendu à la conception.** En cessant de colmater, l'équipe a regagné du temps pour ce qui compte vraiment : la discovery, l'UX research, la R&D. Il devenait même possible de monter des POC rapidement pour valider une idée de feature ou un concept avant de s'engager.
+Rather than attacking components right away, I started with a full picture: the Figma file, the production UI, the app's overall UX, team workflow, and handoff. The goal was to understand where time and consistency were being lost before deciding what to change.
+
+This audit produced an action plan running on two fronts in parallel. With the Foundation squad — the team responsible for the product's technical foundations — the system front: a UI Kit shared across design and code. With the PMs, the collaboration front: a shared way to frame, document, and hand off work.
 
 ---
 
-## Ce que j'en retire
+## The approach
 
-**Un design system est un outil social avant d'être un outil technique.** Le plus dur n'a pas été de dessiner des composants ou de structurer des tokens, mais de faire adopter une façon de travailler commune. Construire les composants *avec* les développeurs plutôt que de les leur livrer, c'est ce qui a fait la différence entre un système vivant et une bibliothèque ignorée. Je l'aborderais de la même manière aujourd'hui.
+The action plan advanced on two parallel fronts. First, bring teams together around a shared way of working; then give them the technical foundation to make it last.
 
-**Les outils datent, les principes restent.** À l'époque, Zeplin était le bon choix pour servir de passerelle « ready to dev ». Depuis, les évolutions de Figma — modes de partage, dev mode, specs intégrées — ont rendu cet intermédiaire obsolète : aujourd'hui, je ferais tenir ce rôle directement dans Figma, sans outil tiers. Ce qui comptait n'était pas Zeplin, mais la fonction qu'il remplissait : une frontière nette entre « en cours » et « prêt à développer ». Cette fonction, elle, reste nécessaire.
+### Front 1 — Structured collaboration (with PMs)
 
-**Ce que je retiens pour la suite.** Ce projet a confirmé ce qui m'intéresse vraiment : non pas le design system pour lui-même, mais ce qu'il permet — relier le design, le produit et le code dans un même mouvement. C'est devenu le fil de ma pratique.
+**Normalize Figma files.** As long as design lived in a catch-all file where anyone could overwrite anyone else's work, no source of truth was possible. I gave Figma files a normalized structure — a predictable organization where everything has its place and where you can find the actual state of a screen without asking.
+
+**Define "done."** The endless review cycles came from an unstated disagreement about what a finished mockup was. A shared Definition of Done settled it upfront: a design was only handed off when it covered all its states — default, empty, error, loading. The debate happened before development, not after.
+
+**Reliable handoff.** A Figma link dropped in a ticket conveys neither intent, nor decisions, nor cases to cover. I rebuilt the handoff end to end.
+
+Zeplin became the "ready to dev" gateway: a checkpoint where only validated mockups entered, accompanied by their specs, serving as the single source of truth for all teams.
+
+In Jira, I introduced a workflow and ticket templates that explicitly connected design and development. A parent ticket carried the product objective — a feature, a problem to solve. Under it, design user stories each carried the design context: link to discovery, UX research, user feedback, the list of use cases to produce, a Definition of Done covering all states (default, empty, error, loading), and a prototype when needed. Dev user stories were attached to one or more design user stories: the developer found context, decisions and comments, the relevant Zeplin links, their dedicated Git branch, and a reference to Storybook when the component was documented there.
+
+Handoff stopped being a wall between two teams. It became a continuous thread: from the product problem to the integrated component, each link carried the context of the one before.
+
+### Front 2 — A shared foundation for design and code (with the Foundation squad)
+
+**Build from the existing, not from a blank page.** The product was built on Material UI. Rather than imposing a brutal redesign — risky, and felt as a repudiation by the devs — I kept Material UI as the base and redesigned it: a Figma UI Kit that preserved the existing components, but reworked, drawing on the principles of *Refactoring UI* and *Practical UI*.
+
+**Add an abstraction layer between style and components.** Hardcoded colors scattered across HTML and CSS made every change risky and manual. By introducing TailwindCSS and its design tokens, style stopped being written literally everywhere: it passed through an intermediate layer, changeable in one place, applied everywhere.
+
+**Build components with the devs, not for them.** A turnkey design system would have been bypassed like everything else. Components were built with the front-end developers, to fit their process and become their tool — not another top-down constraint.
+
+**Document to make the foundation accessible.** A system nobody can read isn't a shared system, just another folder. Storybook gave components a living, documented library, readable by everyone. Crucially, via the Storybook Designs addon, each component was linked to its reference Figma mockup: the mockup displayed directly in a "Design" tab, alongside the real component. Designers and developers finally looked at the same object, described in the same place, without switching tools. The library also served as the entry point for new front-end and fullstack developers: instead of digging through scattered code to understand what existed, they had a clear catalog — which significantly accelerated their onboarding.
+
+---
+
+## The results
+
+**One shared source of truth.** Designers, PMs, and developers finally worked from the same references: a Figma UI Kit, a documented component library, validated mockups. The UI Kit covered the breadth of Material UI — nearly 100 screens in three breakdowns: desktop, tablet, mobile.
+
+**Less friction, less rework.** The endless review cycles cleared up: with a shared Definition of Done and structured components, the debate happened upfront, not at the finish line. Components, tested once at the library level, no longer needed re-checking with each feature — production test load was reduced accordingly.
+
+**Design integrated, not executed.** That was the original mandate, and it was met. The workflow connected product context to design user stories to dev user stories; design no longer arrived at the end of the chain, it was present where decisions were made. Visual consistency also extended beyond the product, aligning the interface with marketing materials.
+
+**Time returned to design.** By stopping the patching, the team reclaimed time for what matters: discovery, UX research, R&D. It even became possible to quickly build POCs to validate a feature idea or concept before committing.
+
+---
+
+## What I take from this
+
+**A design system is a social tool before it's a technical one.** The hardest part wasn't drawing components or structuring tokens — it was getting a shared way of working adopted. Building components *with* developers rather than delivering them was what made the difference between a living system and an ignored library. I'd approach it the same way today.
+
+**Tools age, principles don't.** At the time, Zeplin was the right choice for the "ready to dev" gateway. Since then, Figma's own evolutions — sharing modes, dev mode, integrated specs — have made that intermediary obsolete: today I'd have Figma itself play that role, without a third-party tool. What mattered wasn't Zeplin, but the function it served: a clear boundary between "in progress" and "ready to build." That function remains necessary.
+
+**What I carry forward.** This project confirmed what genuinely interests me: not the design system for itself, but what it enables — connecting design, product, and code in a single movement. That has become the thread of my practice.
