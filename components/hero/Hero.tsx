@@ -12,8 +12,8 @@ const diagonalPattern = `repeating-linear-gradient(-45deg, rgba(255,255,255,0.08
 export function Hero() {
   const sectionRef    = useRef<HTMLElement>(null)
   const bgRef         = useRef<HTMLDivElement>(null)
-  const blobRef       = useRef<HTMLDivElement>(null)
-  const slateBlobRef  = useRef<HTMLDivElement>(null)
+  const blobRef       = useRef<HTMLImageElement>(null)
+  const slateBlobRef  = useRef<HTMLImageElement>(null)
   const navLineRef    = useRef<HTMLDivElement>(null)
   const vLinesRef     = useRef<HTMLDivElement[]>([])
   const hStatsLineRef = useRef<HTMLDivElement>(null)
@@ -143,23 +143,24 @@ export function Hero() {
       <div ref={bgRef} aria-hidden="true" className="absolute inset-0" style={{ backgroundColor: 'var(--hero-bg)' }} />
 
       {/* Warm orange blob — entrance + drift + mouse parallax */}
-      <div
+      {/* ponytail: pre-rendered WebP, CSS filter blur was too expensive on GPU */}
+      <img
         ref={blobRef}
+        src="/blobs/blob-orange.webp"
+        alt=""
         aria-hidden="true"
+        fetchPriority="high"
         className="pointer-events-none absolute inset-0 will-change-transform"
-        style={{ backgroundImage: 'radial-gradient(ellipse 44% 76% at 50% 50%, color-mix(in srgb, var(--hero-warm-orange) 90%, transparent) 0%, transparent 65%)' }}
       />
 
       {/* Slate blob (bottom-left) — drift ambiant */}
-      <div
+      <img
         ref={slateBlobRef}
+        src="/blobs/blob-blue.webp"
+        alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 right-0 will-change-transform"
-        style={{
-          left: '-30%',
-          bottom: '-50%',
-          backgroundImage: 'radial-gradient(ellipse 40% 60% at 46% 67%, color-mix(in srgb, var(--hero-warm-slate) 75%, transparent) 0%, transparent 65%)',
-        }}
+        className="pointer-events-none absolute will-change-transform"
+        style={{ left: '-30%', bottom: '-50%', width: '160%', height: 'auto' }}
       />
 
       {/* Noise grain */}
@@ -248,23 +249,23 @@ export function Hero() {
           {/* col 4 (lg) / mobile col 1 — 10+ */}
           <div ref={stat1Ref} className="flex flex-col justify-center p-[24px] border-r border-white/[0.1] lg:border-r-0">
             <span
-              className="font-medium leading-none text-white text-[40px] lg:text-[52px]"
+              className="font-medium leading-none text-white text-[34px] lg:text-[44px]"
               style={{ letterSpacing: '-1.5px' }}
             >
               10+
             </span>
-            <span className="text-base text-white/[72%]">years of XP</span>
+            <span className="text-sm text-white/[72%]">years of XP</span>
           </div>
 
           {/* col 5 (lg) / mobile col 2 — Open */}
           <div ref={stat2Ref} className="flex flex-col justify-center p-[24px] border-r border-white/[0.1] lg:border-r-0">
             <span
-              className="font-medium leading-none text-white text-[40px] lg:text-[52px]"
+              className="font-medium leading-none text-white text-[34px] lg:text-[44px]"
               style={{ letterSpacing: '-1.5px' }}
             >
               Open
             </span>
-            <span className="text-base text-white/[72%]">for full-time roles</span>
+            <span className="text-sm text-white/[72%]">for full-time roles</span>
           </div>
 
           {/* col 6 (lg) — diagonal pattern */}
