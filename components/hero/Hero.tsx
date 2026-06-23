@@ -147,7 +147,7 @@ export function Hero() {
         ref={blobRef}
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 will-change-transform"
-        style={{ backgroundImage: 'radial-gradient(ellipse 44% 76% at 50% 50%, color-mix(in srgb, var(--hero-warm-orange) 90%, transparent) 0%, transparent 65%)', filter: 'blur(300px)' }}
+        style={{ backgroundImage: 'radial-gradient(ellipse 44% 76% at 50% 50%, color-mix(in srgb, var(--hero-warm-orange) 90%, transparent) 0%, transparent 65%)' }}
       />
 
       {/* Slate blob (bottom-left) — drift ambiant */}
@@ -159,7 +159,6 @@ export function Hero() {
           left: '-30%',
           bottom: '-50%',
           backgroundImage: 'radial-gradient(ellipse 40% 60% at 46% 67%, color-mix(in srgb, var(--hero-warm-slate) 75%, transparent) 0%, transparent 65%)',
-          filter: 'blur(300px)',
         }}
       />
 
@@ -201,7 +200,7 @@ export function Hero() {
                 style={{ fontSize: 'clamp(48px, 8.33vw, 120px)', letterSpacing: '-4.2px' }}
               >
                 <span className="inline-block overflow-hidden align-bottom pb-[0.15em]">
-                  <span className="hero-word inline-block" style={{ mixBlendMode: 'soft-light' }}>Product</span>
+                  <span className="hero-word inline-block">Product</span>
                 </span>
                 <span className="inline-block overflow-hidden align-bottom pb-[0.15em]">
                   <span className="hero-word inline-block">Designer</span>
