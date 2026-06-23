@@ -150,7 +150,7 @@ export function Hero() {
         alt=""
         aria-hidden="true"
         fetchPriority="high"
-        className="pointer-events-none absolute inset-0 w-full h-full object-cover will-change-transform"
+        className="pointer-events-none absolute inset-0 will-change-transform"
       />
 
       {/* Slate blob (bottom-left) — drift ambiant */}
