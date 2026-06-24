@@ -13,6 +13,7 @@ export const caseStudies = [
     bgFrom: 'var(--hero-bg)',
     bgTo: 'var(--hero-mid)',
     nextSlug: 'mention',
+    caseReady: false, // confidentiality review pending
   },
   {
     slug: 'mention',
@@ -28,6 +29,7 @@ export const caseStudies = [
     bgFrom: 'var(--hero-deep)',
     bgTo: 'var(--hero-navy)',
     nextSlug: 'ekonsilio',
+    caseReady: true,
   },
   {
     slug: 'ekonsilio',
@@ -43,6 +45,7 @@ export const caseStudies = [
     bgFrom: 'var(--hero-teal)',
     bgTo: 'var(--hero-green)',
     nextSlug: null,
+    caseReady: true,
   },
 ] as const
 
@@ -63,3 +66,62 @@ export const elsewhere = [
     period: '2015-2019',
   },
 ] as const
+
+export const sideProjects: { name: string; role: string; period: string; url?: string }[] = []
+
+export type WorkItem = {
+  company: string
+  role?: string
+  period: string
+  slug?: string
+  bgFrom?: string
+  bgTo?: string
+  caseReady?: boolean
+}
+
+// Ordered display list for the home Work section.
+// caseStudies keeps full data for /work/[slug] routes; workItems drives the list UI.
+export const workItems: WorkItem[] = [
+  {
+    company: 'eStorie',
+    role: 'Founding Product Designer',
+    period: 'Currently',
+    slug: 'estorie',
+    bgFrom: 'var(--hero-bg)',
+    bgTo: 'var(--hero-mid)',
+    caseReady: false,
+  },
+  {
+    company: 'SII',
+    role: 'Senior UI/UX Designer',
+    period: '2026',
+  },
+  {
+    company: 'Sparteo',
+    role: 'Senior Product Designer',
+    period: '2024-2025',
+  },
+  {
+    company: 'Mention',
+    role: 'Product Designer, UI & Design System',
+    period: '2022-2024',
+    slug: 'mention',
+    bgFrom: 'var(--hero-deep)',
+    bgTo: 'var(--hero-navy)',
+    caseReady: true,
+  },
+  {
+    company: 'eKonsilio',
+    role: 'Founding UI/UX Designer & Front-end Developer',
+    period: '2019-2022',
+    slug: 'ekonsilio',
+    bgFrom: 'var(--hero-teal)',
+    bgTo: 'var(--hero-green)',
+    caseReady: true,
+  },
+  {
+    company: 'Bfast System',
+    role: 'UI/UX Designer & Web Integrator',
+    period: '2015-2019',
+  },
+]
