@@ -37,10 +37,15 @@ export function StickyNav() {
 
   useEffect(() => {
     if (!isHome) return
+    const intersecting = new Set<string>()
     const observer = new IntersectionObserver(
       (entries) => {
-        const hit = entries.find(e => e.isIntersecting)
-        if (hit) setActiveSection(hit.target.id)
+        entries.forEach(e => {
+          if (e.isIntersecting) intersecting.add(e.target.id)
+          else intersecting.delete(e.target.id)
+        })
+        const active = links.find(l => intersecting.has(l.section))
+        setActiveSection(active?.section ?? null)
       },
       { rootMargin: '-35% 0px -50% 0px', threshold: 0 }
     )
