@@ -14,7 +14,6 @@ Aucune prop — contenu entièrement statique (cf. `docs/00-brief-global.md`).
 
 ## Variants / états
 - État initial : opacité 0 sur canvas + textes (GSAP timeline à l'entrée)
-- Mouse parallax : `mouseRef.current.x/y` mis à jour on `mousemove` → lu par le shader via `uMouse`
 - `prefers-reduced-motion` : désactive la timeline GSAP et fige `uTime` dans le shader
 
 ## Architecture WebGL (HeroCanvas.tsx)
@@ -22,7 +21,7 @@ Pipeline deux passes via React Three Fiber :
 1. **Noise pass** — simplex noise 2D (snoise2d, Ashima Arts) rendu dans un FBO 256×256 → texture de warp `uNoiseMap`
 2. **Main pass** — `GaussianEllipses` + distortion warp + effet "fluted glass" + grain JPG + tone mapping exponentiel
 
-Presets "Flow-like" hardcodés : `noiseScaleX=0.35`, `noiseScaleY=0.55`, `warpStrength=0.4`, `warpSpeed=0.12`, `fluteWidth=70`, `fluteStrength=140`, `toneMapExposure=0.9`, `grainStrength=0.04`.
+Presets "Flow-like" hardcodés : `noiseScaleX=0.35`, `noiseScaleY=0.55`, `warpStrength=0.4`, `warpSpeed=0.12`, `fluteWidth=70`, `fluteStrength=140`, `toneMapExposure=0.9`, `grainStrength=0.2`.
 
 Palette warm dark (5 blobs Gaussian) :
 - uC1 `#fb3706` (orange, grande ellipse)
