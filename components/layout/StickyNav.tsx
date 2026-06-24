@@ -121,7 +121,7 @@ export function StickyNav() {
             />
             <Link
               href="/"
-              className="text-xl font-normal text-white transition-opacity duration-200 hover:opacity-70"
+              className="text-lg font-normal text-white transition-opacity duration-200 hover:opacity-70"
             >
               Maxime Luet
             </Link>
