@@ -1,15 +1,8 @@
 import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { caseStudies, elsewhere } from '@/data/case-studies'
-import { cn, grainSvg } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import { WorkAnimations } from './WorkAnimations'
-
-const gradientOverlay = [
-  'radial-gradient(ellipse 70% 600% at 52% 50%, color-mix(in srgb, var(--hero-warm-orange) 70%, transparent) 0%, color-mix(in srgb, var(--hero-warm-orange) 25%, transparent) 65%, transparent 85%)',
-  'radial-gradient(ellipse 55% 600% at 12% 50%, color-mix(in srgb, var(--hero-warm-slate) 58%, transparent) 0%, transparent 70%)',
-].join(', ')
-
-// ponytail: single div replaces 29 Figma backdrop-blur strips; visual fidelity ~95%
-const glassStrips = 'repeating-linear-gradient(90deg, rgba(0,0,0,0.10) 0%, rgba(255,255,255,0.02) 1.6%, transparent 3.33%)'
 
 const textColor = { primary: 'text-foreground', secondary: 'text-text-secondary', meta: 'text-muted-foreground' }
 
@@ -55,28 +48,8 @@ export function WorkSection() {
           return (
             <div
               key={study.slug}
-              className="work-row relative border-t border-foreground/[8%] group"
+              className="work-row border-t border-foreground/[8%]"
             >
-              {/* Gradient overlay — all rows, on hover */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ backgroundImage: gradientOverlay }}
-              />
-
-              {/* Noise tile — all rows, on hover */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-[0.25] transition-opacity duration-300"
-                style={{ backgroundImage: grainSvg, backgroundSize: '300px 300px', mixBlendMode: 'color-burn' }}
-              />
-
-              {/* Glass strips — all rows, on hover */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ backgroundImage: glassStrips, mixBlendMode: 'overlay' }}
-              />
 
               {/* ─── Desktop: 7-column table ─────────────────────────── */}
               <div className="hidden lg:grid grid-cols-7 py-6 relative z-10">
@@ -111,8 +84,7 @@ export function WorkSection() {
                     href={`/work/${study.slug}`}
                     className={cn('text-xs font-semibold leading-5 underline-offset-2 transition-all', c.primary)}
                   >
-                    Read case study{' '}
-                    <span className="inline-block transition-transform duration-150 group-hover:translate-x-1">→</span>
+                    Read case study <ArrowRight className="inline-block w-3 h-3 ml-0.5 align-middle" strokeWidth={2.5} />
                   </Link>
                 </div>
 
@@ -130,7 +102,7 @@ export function WorkSection() {
                   href={`/work/${study.slug}`}
                   className={cn('inline-block text-xs font-semibold mt-3', c.primary)}
                 >
-                  Read case study →
+                  Read case study <ArrowRight className="inline-block w-3 h-3 ml-0.5 align-middle" strokeWidth={2.5} />
                 </Link>
               </div>
             </div>
