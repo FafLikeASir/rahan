@@ -102,10 +102,9 @@ looks like a template, contradicts a UI-craft positioning).
 tech/dark wave: closer to the About voice, and exactly what separates from the
 terminal-dark flow. (Optional dark mode possible later, but not a toggle-gadget put forward.)
 
-**Typography:** **one polished sans, product register (neo-grotesque).** Serves the
-T2 territory (the site as interface). Sharp hierarchy, generous whitespace.
-One well-tuned family beats two poorly matched; a second typographic voice (mono or serif)
-possibly *as a rare accent* — a spec label, a system detail — never as a theme.
+**Typography:** **one editorial sans (Syne, variable 400–800).** Sharp hierarchy, generous
+whitespace, strong display character at title scale. Single family covers all scales;
+JetBrains Mono as rare technical accent only — a spec label, a system detail, never as a theme.
 
 **Color — to decide (b3, tracks below).** Maxime's instinct: blue, green,
 gradient/fractal/glassmorphism ambiances. Tension to manage: glass/gradient is

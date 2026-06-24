@@ -1,16 +1,15 @@
 import './global.css'
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google'
+import { Syne, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { cn } from '@/lib/utils'
 import { StickyNav } from '@/components/layout/StickyNav'
 import { Footer } from '@/components/layout/Footer'
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const syne = Syne({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-plus-jakarta-sans',
+  variable: '--font-syne',
   display: 'swap',
 })
 
@@ -61,7 +60,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(plusJakartaSans.variable, jetbrainsMono.variable)}
+      className={cn(syne.variable, jetbrainsMono.variable)}
     >
       <body>
         <a

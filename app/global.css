@@ -109,7 +109,7 @@
 
 /* ─── @theme inline — Tailwind v4 design token map ───────────────── */
 @theme inline {
-  --font-sans: var(--font-plus-jakarta-sans);
+  --font-sans: var(--font-syne);
   --font-mono: var(--font-jetbrains-mono);
 
   /* Editorial colors */

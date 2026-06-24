@@ -36,47 +36,47 @@ colors:
 
 typography:
   display-xl:
-    fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
+    fontFamily: "Syne, system-ui, sans-serif"
     fontSize: 72px
     fontWeight: 600
     lineHeight: 1
     letterSpacing: "-0.03em"
     use: "Hero headline (Product Designer)"
   display-lg:
-    fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
+    fontFamily: "Syne, system-ui, sans-serif"
     fontSize: 40px
     fontWeight: 600
     lineHeight: 1.1
     letterSpacing: "-0.02em"
     use: "Section headings"
   display-md:
-    fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
+    fontFamily: "Syne, system-ui, sans-serif"
     fontSize: 24px
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: "-0.015em"
     use: "Card titles, Method principles"
   body-lg:
-    fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
+    fontFamily: "Syne, system-ui, sans-serif"
     fontSize: 18px
     fontWeight: 400
     lineHeight: 1.6
     use: "Lead paragraphs, intro sections"
   body-md:
-    fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
+    fontFamily: "Syne, system-ui, sans-serif"
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.6
     use: "Standard body text"
   body-sm:
-    fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
+    fontFamily: "Syne, system-ui, sans-serif"
     fontSize: 15px
     fontWeight: 400
     lineHeight: 1.5
     letterSpacing: "-0.01em"
     use: "Metadata, nav links, captions"
   label:
-    fontFamily: "Plus Jakarta Sans, system-ui, sans-serif"
+    fontFamily: "Syne, system-ui, sans-serif"
     fontSize: 11px
     fontWeight: 500
     lineHeight: 1

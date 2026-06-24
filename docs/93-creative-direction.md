@@ -44,7 +44,7 @@ cold for an already distinctive voice) and Playful ("no Medium/Substack tone").
 ### Axis 2 — Aesthetic philosophy: **Editorial Restrained**
 
 Editorial light, generous white, rare and intentional color, one well-tuned type
-family, discreet interactions. Restraint is the signal. Rejects Polished
+family (Syne), discreet interactions. Restraint is the signal. Rejects Polished
 Standard — which would be exactly the median Framer template the portfolio must
 stand apart from (red flag 2).
 
