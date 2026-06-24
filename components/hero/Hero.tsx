@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { MapPin } from 'lucide-react'
 import gsap from 'gsap'
@@ -28,19 +28,22 @@ export function Hero() {
   const locRef        = useRef<HTMLDivElement>(null)
   const stat1Ref      = useRef<HTMLDivElement>(null)
   const stat2Ref      = useRef<HTMLDivElement>(null)
+  const stripsRef     = useRef<HTMLDivElement[]>([])
 
   // Computed at component level so HeroCanvas can receive it too
   const reducedMotion = typeof window !== 'undefined'
     ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
     : false
 
+  const [canvasReady, setCanvasReady] = useState(false)
+
+  // Masquage initial synchrone (avant le premier paint)
   useIsomorphicLayoutEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    const navEl     = document.querySelector<HTMLElement>('[data-sticky-nav]')
     const isDesktop = window.matchMedia('(min-width: 1024px)').matches
+    const navEl     = document.querySelector<HTMLElement>('[data-sticky-nav]')
 
-    // ── État initial caché ───────────────────────────────────────────────
     gsap.set(bgRef.current,     { opacity: 0 })
     gsap.set(canvasRef.current, { opacity: 0 })
     if (navEl) gsap.set(navEl,  { opacity: 0, yPercent: -100 })
@@ -54,19 +57,37 @@ export function Hero() {
       gsap.set(hStatsLineRef.current, { scaleX: 1 })
     }
 
+    gsap.set(stripsRef.current, { scaleX: 1 })
     gsap.set(h1Ref.current!.querySelectorAll('.hero-word'), { y: '110%' })
     gsap.set([subRef.current, locRef.current], { opacity: 0, y: 10 })
     gsap.set([stat1Ref.current, stat2Ref.current], { opacity: 0, y: 12 })
+  }, [])
 
-    // ── Timeline d'entrance ─────────────────────────────────────────────
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+  // Body scroll lock pendant le chargement
+  useEffect(() => {
+    document.body.style.overflow = canvasReady ? '' : 'hidden'
+    return () => { document.body.style.overflow = '' }
+  }, [canvasReady])
+
+  // ── Timeline d'entrance — démarre seulement quand Three.js est prêt ──
+  useEffect(() => {
+    if (!canvasReady) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const navEl     = document.querySelector<HTMLElement>('[data-sticky-nav]')
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches
+    // delay: 0.3 laisse l'overlay se fondre avant que le contenu s'anime
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.3 })
 
     if (isDesktop) {
-      // Phase 1 — fond + canvas fractal
-      tl.to(bgRef.current,     { opacity: 1, duration: 0.9, ease: 'power2.inOut' })
-      tl.to(canvasRef.current, { opacity: 1, duration: 0.9, ease: 'power2.out' }, '-=0.7')
+      // Phase 1 — fond sombre
+      tl.to(bgRef.current, { opacity: 1, duration: 0.9, ease: 'power2.inOut' })
+      // Phase 2 — gradient canvas arrive sous les strips
+      tl.to(canvasRef.current, { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.4')
+      // Phase 3 — volets s'ouvrent : fractal révélé colonne par colonne
+      tl.to(stripsRef.current, { scaleX: 0, duration: 0.55, stagger: { amount: 0.4, from: 'start' }, ease: 'power3.inOut' }, '-=0.1')
 
-      // Phase 2 — lignes de grille
+      // Phase 4 — lignes de grille
       tl.to(vLinesRef.current,    { scaleY: 1, duration: 0.65, stagger: 0.06, ease: 'power3.inOut' }, '-=0.3')
       tl.to(navLineRef.current,   { scaleX: 1, duration: 0.55, ease: 'power3.inOut' }, '<')
       tl.to(hStatsLineRef.current,{ scaleX: 1, duration: 0.5,  ease: 'power3.inOut' }, '<+=0.15')
@@ -84,7 +105,8 @@ export function Hero() {
     } else {
       // Mobile — séquence compressée
       tl.to(bgRef.current,     { opacity: 1, duration: 0.7, ease: 'power2.inOut' })
-      tl.to(canvasRef.current, { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.5')
+      tl.to(canvasRef.current, { opacity: 1, duration: 0.5, ease: 'power2.out' }, '-=0.3')
+      tl.to(stripsRef.current, { scaleX: 0, duration: 0.45, stagger: { amount: 0.3, from: 'start' }, ease: 'power3.inOut' }, '-=0.1')
       if (navEl) tl.to(navEl, { opacity: 1, yPercent: 0, duration: 0.45 }, '-=0.1')
       tl.to(h1Ref.current!.querySelectorAll('.hero-word'), { y: '0%', duration: 0.6, stagger: 0.12 }, '-=0.1')
       tl.to(subRef.current,  { opacity: 1, y: 0, duration: 0.45 }, '-=0.3')
@@ -96,27 +118,47 @@ export function Hero() {
       tl.kill()
       if (navEl) gsap.killTweensOf(navEl)
     }
-  }, [])
+  }, [canvasReady])
 
   return (
-    <section ref={sectionRef} className="relative min-h-[100dvh] overflow-hidden" aria-label="Introduction">
+    <section ref={sectionRef} className="relative min-h-[100dvh] overflow-hidden" aria-label="Introduction" style={{ backgroundColor: 'var(--hero-bg)' }}>
 
       {/* Background base — solid #1f1f1f, visible while canvas loads */}
       <div ref={bgRef} aria-hidden="true" className="absolute inset-0" style={{ backgroundColor: 'var(--hero-bg)' }} />
 
+      {/* Loader fullscreen — couvre tout le viewport jusqu'au chargement de Three.js */}
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-500"
+        style={{ backgroundColor: 'var(--hero-bg)', opacity: canvasReady ? 0 : 1, pointerEvents: canvasReady ? 'none' : 'auto' }}
+        aria-hidden="true"
+      >
+        <div className="w-6 h-6 rounded-full border-2 border-[#fb3706]/25 border-t-[#fb3706] animate-spin" />
+      </div>
+
       {/* Fractal glass gradient canvas (replaces WebP blobs) */}
       <div ref={canvasRef} aria-hidden="true" className="absolute inset-0 pointer-events-none">
-        <HeroCanvas reducedMotion={reducedMotion} />
+        <HeroCanvas reducedMotion={reducedMotion} onLoad={() => setCanvasReady(true)} />
+      </div>
+
+      {/* Volets — couvrent le canvas, se rétractent pour révéler le fractal */}
+      <div aria-hidden="true" className="absolute inset-0 z-[3] pointer-events-none flex">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            ref={el => { if (el) stripsRef.current[i] = el }}
+            className="h-full flex-1"
+            style={{ backgroundColor: 'var(--hero-bg)', transformOrigin: 'right center' }}
+          />
+        ))}
       </div>
 
       {/* Grid lines overlay — desktop only */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[5] hidden lg:block">
-        {[1, 2, 3, 4, 5, 6].map(i => (
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[5] hidden lg:grid lg:grid-cols-7">
+        {Array.from({ length: 7 }).map((_, i) => (
           <div
             key={i}
-            ref={el => { if (el) vLinesRef.current[i - 1] = el }}
-            className="absolute top-0 h-full w-px bg-white/[0.1] origin-top will-change-transform"
-            style={{ left: `${(i / 7) * 100}%` }}
+            ref={el => { if (el && i < 6) vLinesRef.current[i] = el }}
+            className={`h-full will-change-transform${i < 6 ? ' border-r border-white/[0.1]' : ''}`}
           />
         ))}
       </div>
@@ -146,7 +188,7 @@ export function Hero() {
                 </span>
               </h1>
 
-              <p ref={subRef} className="mt-2.5 text-white" style={{ fontSize: '20px' }}>
+              <p ref={subRef} className="mt-2.5 text-xl text-white">
                 I design UI for digital products and ship design systems.
               </p>
             </div>
@@ -167,7 +209,7 @@ export function Hero() {
         />
 
         {/* Stats zone */}
-        <div className="grid grid-cols-2 lg:grid-cols-7 h-[180px] lg:h-[257px]">
+        <div className="grid grid-cols-2 lg:grid-cols-7 h-44 lg:h-64">
           <div className="hidden lg:block" aria-hidden="true" />
 
           <div
@@ -179,9 +221,9 @@ export function Hero() {
 
           <div className="hidden lg:block" aria-hidden="true" />
 
-          <div ref={stat1Ref} className="flex flex-col justify-center p-[24px] border-r border-white/[0.1] lg:border-r-0">
+          <div ref={stat1Ref} className="flex flex-col justify-center p-6 border-r border-white/[0.1] lg:border-r-0">
             <span
-              className="font-medium leading-none text-white text-[34px] lg:text-[44px]"
+              className="font-medium leading-none text-white text-4xl lg:text-5xl"
               style={{ letterSpacing: '-1.5px' }}
             >
               10+
@@ -189,9 +231,9 @@ export function Hero() {
             <span className="text-sm text-white/[72%]">years of XP</span>
           </div>
 
-          <div ref={stat2Ref} className="flex flex-col justify-center p-[24px] border-r border-white/[0.1] lg:border-r-0">
+          <div ref={stat2Ref} className="flex flex-col justify-center p-6 border-r border-white/[0.1] lg:border-r-0">
             <span
-              className="font-medium leading-none text-white text-[34px] lg:text-[44px]"
+              className="font-medium leading-none text-white text-4xl lg:text-5xl"
               style={{ letterSpacing: '-1.5px' }}
             >
               Open

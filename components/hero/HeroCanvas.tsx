@@ -6,13 +6,13 @@ import { Suspense } from 'react'
 import * as THREE from 'three'
 import { VERTEX, NOISE_VERTEX, NOISE_FRAGMENT, FRAGMENT } from './shaders'
 
-// ─── Warm dark palette (orange #fb3706 + slate #809fb4 + variations) ──────────
+// ─── Warm dark palette (orange #fb3706 + rust + espresso) ────────────────────
 const PALETTE = [
   [0.984, 0.216, 0.024], // #fb3706 — signature orange
   [0.900, 0.350, 0.050], // warm amber
   [0.600, 0.130, 0.010], // deep orange-red
-  [0.502, 0.624, 0.706], // #809fb4 — slate
-  [0.250, 0.380, 0.490], // dark slate
+  [0.490, 0.200, 0.055], // ~#7D330E — rouille warm
+  [0.220, 0.078, 0.018], // ~#381404 — espresso profond
 ] as const
 
 // Hardcoded to "Flow-like" preset from the source repo
@@ -28,9 +28,10 @@ const GRAIN_STRENGTH   = 0.2
 // ─── Inner scene component (must be inside <Canvas>) ─────────────────────────
 interface SceneProps {
   reducedMotion: boolean
+  onLoad?: () => void
 }
 
-function FractalScene({ reducedMotion }: SceneProps) {
+function FractalScene({ reducedMotion, onLoad }: SceneProps) {
   const { gl, size } = useThree()
 
   // Noise FBO refs
@@ -106,6 +107,9 @@ function FractalScene({ reducedMotion }: SceneProps) {
     }
   }, [grainTexture])
 
+  // Signal parent when canvas is ready (texture loaded, Suspense resolved)
+  useEffect(() => { onLoad?.() }, [])
+
   // Cleanup FBO on unmount
   useEffect(() => () => { noiseFBORef.current?.dispose() }, [])
 
@@ -116,6 +120,7 @@ function FractalScene({ reducedMotion }: SceneProps) {
     if (!reducedMotion) {
       noiseUniformsRef.current.uTime.value += delta
       uniformsRef.current.uTime.value      += delta
+
     }
 
     // Render noise warp map to FBO
@@ -145,9 +150,10 @@ function FractalScene({ reducedMotion }: SceneProps) {
 // ─── Exported canvas wrapper ──────────────────────────────────────────────────
 export interface HeroCanvasProps {
   reducedMotion?: boolean
+  onLoad?: () => void
 }
 
-export function HeroCanvas({ reducedMotion = false }: HeroCanvasProps) {
+export function HeroCanvas({ reducedMotion = false, onLoad }: HeroCanvasProps) {
   return (
     <Canvas
       gl={{ antialias: false }}
@@ -156,7 +162,7 @@ export function HeroCanvas({ reducedMotion = false }: HeroCanvasProps) {
       className="absolute inset-0 w-full h-full"
     >
       <Suspense fallback={null}>
-        <FractalScene reducedMotion={reducedMotion} />
+        <FractalScene reducedMotion={reducedMotion} onLoad={onLoad} />
       </Suspense>
     </Canvas>
   )
