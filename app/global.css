@@ -50,7 +50,7 @@
 
   /* ── Hero warm gradient (new design) ────────────────────────────── */
   --hero-warm-orange: #fb3706;
-  --hero-warm-slate: #809fb4;
+  --hero-warm-rust: #7D330E;
   --hero-warm-shadow: #782800;
   --badge-ink-gradient: linear-gradient(99deg, color-mix(in srgb, var(--foreground) 5%, transparent) 0%, color-mix(in srgb, var(--foreground) 12%, transparent) 100%);
 

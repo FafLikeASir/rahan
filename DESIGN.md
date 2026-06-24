@@ -26,7 +26,7 @@ colors:
   # ── Hero: warm dark ──────────────────────────────────────────────────
   hero-bg: "#1f1f1f"
   hero-orange: "#fb3706"    # main blob, signature color
-  hero-slate: "#809fb4"     # secondary blob
+  hero-rust: "#7D330E"      # secondary blob (warm rust)
   hero-shadow: "#782800"    # deep orange shadow
 
   # ── Hero: text on dark background ────────────────────────────────────
@@ -116,7 +116,7 @@ components:
     backgroundColor: "{colors.hero-bg}"
     minHeight: "100dvh"
     grid: "7-col visible via border-white/10"
-    blobs: "centered animated orange + static bottom-left slate + SVG grain 25%"
+    blobs: "centered animated orange + warm rust depth blobs + SVG grain 25%"
   work-card:
     backgroundColor: "{colors.background}"
     rounded: "{rounded.xl}"
