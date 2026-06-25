@@ -177,8 +177,8 @@ export function Hero() {
             <div className="flex-1 flex flex-col justify-center">
               <h1
                 ref={h1Ref}
-                className="flex gap-4 font-semibold leading-none text-black"
-                style={{ fontSize: 'clamp(48px, 8.33vw, 120px)', letterSpacing: '-4.2px' }}
+                className="flex flex-col lg:flex-row sm:gap-4 font-semibold leading-none text-black"
+                style={{ fontSize: 'clamp(64px, 10vw, 144px)', letterSpacing: '-4.2px' }}
               >
                 <span className="inline-block overflow-hidden align-bottom pb-[0.15em]">
                   <span className="hero-word inline-block">Product</span>
@@ -193,7 +193,7 @@ export function Hero() {
               </p>
             </div>
 
-            <div ref={locRef} className="flex items-center gap-1 p-2 text-base text-white">
+            <div ref={locRef} className="flex items-center gap-1 py-2 sm:px-2 text-base text-white">
               <MapPin size={16} aria-hidden="true" />
               Based in France
             </div>
