@@ -178,7 +178,7 @@ export function Hero() {
               <h1
                 ref={h1Ref}
                 className="flex flex-col lg:flex-row sm:gap-4 font-semibold leading-none text-black"
-                style={{ fontSize: 'clamp(64px, 10vw, 144px)', letterSpacing: '-4.2px' }}
+                style={{ fontSize: 'clamp(64px, 7.5vw, 100px)', letterSpacing: '-4.2px' }}
               >
                 <span className="inline-block overflow-hidden align-bottom pb-[0.15em]">
                   <span className="hero-word inline-block">Product</span>

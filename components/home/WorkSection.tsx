@@ -4,17 +4,20 @@ import { workItems, sideProjects } from '@/data/case-studies'
 import { cn } from '@/lib/utils'
 import { WorkAnimations } from './WorkAnimations'
 
-function IconBadge({ name, bgFrom, bgTo }: { name: string; bgFrom?: string; bgTo?: string }) {
+function IconBadge({ name, logo, bgFrom, bgTo }: { name: string; logo?: string; bgFrom?: string; bgTo?: string }) {
   return (
     <div
       className={cn(
-        'w-9 h-9 rounded-lg flex items-center justify-center shrink-0 font-semibold text-sm select-none',
-        bgFrom ? 'text-white' : 'bg-muted text-muted-foreground',
+        'size-10 rounded-xl flex items-center justify-center shrink-0 font-semibold text-sm select-none overflow-hidden shadow-sm',
+        !logo && (bgFrom ? 'text-white' : 'bg-muted text-muted-foreground'),
       )}
-      style={bgFrom && bgTo ? { background: `linear-gradient(135deg, ${bgFrom}, ${bgTo})` } : undefined}
+      style={!logo && bgFrom && bgTo ? { background: `linear-gradient(135deg, ${bgFrom}, ${bgTo})` } : undefined}
       aria-hidden
     >
-      {name[0]}
+      {logo
+        ? <img src={logo} alt="" className="w-full h-full object-cover" />
+        : name[0]
+      }
     </div>
   )
 }
@@ -65,7 +68,7 @@ export function WorkSection() {
                 <div className="hidden lg:grid lg:grid-cols-7 gap-2 py-5 relative z-10">
                   <div />
                   <div className="flex items-center gap-3">
-                    <IconBadge name={item.company} bgFrom={item.bgFrom} bgTo={item.bgTo} />
+                    <IconBadge name={item.company} logo={item.logo} bgFrom={item.bgFrom} bgTo={item.bgTo} />
                     <p className="text-sm font-semibold text-foreground">{item.company}</p>
                   </div>
                   <div className="col-span-2 flex items-center">
@@ -92,7 +95,7 @@ export function WorkSection() {
 
                 {/* Mobile: vertical stack */}
                 <div className="lg:hidden px-6 py-5 flex flex-col gap-2 relative z-10">
-                  <IconBadge name={item.company} bgFrom={item.bgFrom} bgTo={item.bgTo} />
+                  <IconBadge name={item.company} logo={item.logo} bgFrom={item.bgFrom} bgTo={item.bgTo} />
                   <div>
                     <p className="text-sm font-semibold text-foreground">{item.company}</p>
                     {item.role && (

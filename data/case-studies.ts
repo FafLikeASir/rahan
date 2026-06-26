@@ -74,6 +74,7 @@ export type WorkItem = {
   role?: string
   period: string
   slug?: string
+  logo?: string
   bgFrom?: string
   bgTo?: string
   caseReady?: boolean
@@ -87,6 +88,7 @@ export const workItems: WorkItem[] = [
     role: 'Founding Product Designer',
     period: 'Currently',
     slug: 'estorie',
+    logo: '/logos/estorie.svg',
     bgFrom: 'var(--hero-bg)',
     bgTo: 'var(--hero-mid)',
     caseReady: false,
@@ -95,17 +97,20 @@ export const workItems: WorkItem[] = [
     company: 'SII',
     role: 'Senior UI/UX Designer',
     period: '2026',
+    logo: '/logos/sii.svg',
   },
   {
     company: 'Sparteo',
     role: 'Senior Product Designer',
     period: '2024-2025',
+    logo: '/logos/sparteo.svg',
   },
   {
     company: 'Mention',
     role: 'Product Designer, UI & Design System',
     period: '2022-2024',
     slug: 'mention',
+    logo: '/logos/mention.svg',
     bgFrom: 'var(--hero-deep)',
     bgTo: 'var(--hero-navy)',
     caseReady: true,
@@ -115,6 +120,7 @@ export const workItems: WorkItem[] = [
     role: 'Founding UI/UX Designer & Front-end Developer',
     period: '2019-2022',
     slug: 'ekonsilio',
+    logo: '/logos/ekonsilio.svg',
     bgFrom: 'var(--hero-teal)',
     bgTo: 'var(--hero-green)',
     caseReady: true,
@@ -123,5 +129,6 @@ export const workItems: WorkItem[] = [
     company: 'Bfast System',
     role: 'UI/UX Designer & Web Integrator',
     period: '2015-2019',
+    logo: '/logos/bfast.svg',
   },
 ]
