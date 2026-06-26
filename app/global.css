@@ -226,6 +226,10 @@
 pre::-webkit-scrollbar { display: none; }
 pre { -ms-overflow-style: none; scrollbar-width: none; }
 
+/* ─── GSAP-animated work rows — hidden until ScrollTrigger fires ──── */
+.work-row       { opacity: 0; transform: translateY(12px); }
+.elsewhere-item { opacity: 0; transform: translateY(8px); }
+
 /* ─── Scroll-driven method reveals (CSS native, no GSAP) ─────────── */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
