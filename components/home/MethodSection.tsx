@@ -21,41 +21,102 @@ const principles = [
   },
 ] as const
 
+// border classes for each grid position in the 3×2 bento
+// row 0: header, p[0], p[1]   — border-b + border-r where needed
+// row 1: p[2], p[3], p[4]     — border-r only (no border-b on desktop; border-b on mobile except last)
+const principleBorder = [
+  'border-b border-white/[0.05] lg:border-r',    // p[0] row 0 col 1
+  'border-b border-white/[0.05]',                 // p[1] row 0 col 2
+  'border-b lg:border-b-0 border-white/[0.05] lg:border-r', // p[2] row 1 col 0
+  'border-b lg:border-b-0 border-white/[0.05] lg:border-r', // p[3] row 1 col 1
+  '',                                              // p[4] row 1 col 2 — last cell
+]
+
 export function MethodSection() {
   return (
-    <section id="method" className="scroll-mt-20 bg-muted">
-      <div className="mx-auto max-w-6xl px-6 py-24 lg:px-8">
-        <div className="max-w-2xl">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-primary lg:text-4xl">
-            Method
-          </h2>
-          <p className="mb-16 text-base leading-relaxed text-text-secondary">
-            I came to product design through code — and I&apos;ve stayed at that intersection
-            ever since. Different products, different teams, same convictions underneath.
-          </p>
+    <section id="method" className="relative scroll-mt-20 bg-[var(--hero-bg)]">
 
-          <ol className="flex flex-col gap-10" role="list">
+      {/* ── Grid lines overlay — proportions match the bento cols (gutter|cell|cell|cell|gutter) ── */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 hidden lg:grid lg:grid-cols-[3fr_5fr_5fr_5fr_3fr]"
+      >
+        {Array.from({ length: 5 }).map((_, col) => (
+          <div
+            key={col}
+            className={`h-full${col < 4 ? ' border-r border-white/[0.05]' : ''}`}
+          />
+        ))}
+      </div>
+
+      {/* ── Horizontal hairline at nav-height (mirrors hero top border) ── */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-20 h-px bg-white/[0.05]"
+      />
+
+      {/* ── Content grid ── */}
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-7">
+
+        {/* Col 1: left gutter */}
+        <div className="hidden lg:block" aria-hidden="true" />
+
+        {/* Cols 2-6: bento */}
+        <div className="col-span-1 lg:col-span-5 px-6 pt-20 pb-20 lg:px-0">
+          <div className="grid grid-cols-1 lg:grid-cols-3">
+
+            {/* Header cell — row 0 col 0 */}
+            <div className="border-b border-white/[0.05] lg:border-r p-8 lg:p-10 flex flex-col min-h-[260px] lg:min-h-[300px]">
+              <h2
+                className="font-bold text-white leading-none"
+                style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', letterSpacing: '-0.04em' }}
+              >
+                Method
+              </h2>
+              <p
+                className="mt-6 leading-relaxed"
+                style={{ fontSize: '14px', color: 'var(--hero-text-3)' }}
+              >
+                5 convictions on craft and collaboration.
+              </p>
+            </div>
+
+            {/* Principle cells */}
             {principles.map((p, i) => (
-              <li key={i} className="method-reveal flex items-start gap-5">
-                {/* Giant decorative numeral */}
+              <div
+                key={i}
+                className={`${principleBorder[i]} p-8 lg:p-10 flex flex-col min-h-[260px] lg:min-h-[300px]`}
+              >
                 <span
-                  className="flex-shrink-0 select-none font-black leading-[0.8] tracking-tighter opacity-[.06]"
+                  className="font-bold leading-none"
                   style={{
-                    fontSize: 'clamp(3.5rem, 7vw, 5.5rem)',
-                    color: 'var(--foreground)',
+                    fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
+                    letterSpacing: '-0.05em',
+                    color: 'var(--hero-warm-orange)',
                   }}
-                  aria-hidden="true"
                 >
-                  {i + 1}
+                  {String(i + 1).padStart(2, '0')}
                 </span>
-                <div className="pt-2">
-                  <h3 className="mb-2 text-base font-semibold text-primary">{p.title}</h3>
-                  <p className="text-sm leading-relaxed text-text-secondary">{p.body}</p>
-                </div>
-              </li>
+                <h3
+                  className="mt-4 font-bold text-white"
+                  style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.05rem)', lineHeight: 1.2 }}
+                >
+                  {p.title}
+                </h3>
+                <p
+                  className="mt-3 leading-relaxed"
+                  style={{ fontSize: '13px', color: 'var(--hero-text-2)' }}
+                >
+                  {p.body}
+                </p>
+              </div>
             ))}
-          </ol>
+
+          </div>
         </div>
+
+        {/* Col 7: right gutter */}
+        <div className="hidden lg:block" aria-hidden="true" />
       </div>
     </section>
   )
