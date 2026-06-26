@@ -46,7 +46,7 @@ export function WorkSection() {
         <div className="hidden lg:block" />
         <div className="col-span-1 lg:col-span-5 px-6 lg:px-0">
           <h2
-            className="font-semibold tracking-tight text-foreground"
+            className="work-heading font-semibold tracking-tight text-foreground"
             style={{ fontSize: 'clamp(40px, 4.5vw, 64px)', letterSpacing: '-0.035em' }}
           >
             Work
