@@ -231,18 +231,6 @@ pre { -ms-overflow-style: none; scrollbar-width: none; }
 .work-row       { opacity: 0; transform: translate(-20px, 8px); }
 .elsewhere-item { opacity: 0; transform: translateY(8px); }
 
-/* ─── Scroll-driven method reveals (CSS native, no GSAP) ─────────── */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .method-reveal {
-      opacity: 0;
-      transform: translateY(12px);
-      animation: methodReveal linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 40%;
-    }
-    @keyframes methodReveal {
-      to { opacity: 1; transform: translateY(0); }
-    }
-  }
-}
+/* ─── GSAP-animated method cells — hidden until ScrollTrigger fires ── */
+.method-header { opacity: 0; transform: translateY(20px); }
+.method-cell   { opacity: 0; transform: translateY(16px); }

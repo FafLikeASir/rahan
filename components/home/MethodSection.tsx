@@ -1,3 +1,5 @@
+import { MethodAnimations } from './MethodAnimations'
+
 const principles = [
   {
     title: 'Design where decisions happen.',
@@ -49,11 +51,9 @@ export function MethodSection() {
         ))}
       </div>
 
-      {/* ── Horizontal hairline at nav-height (mirrors hero top border) ── */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-20 h-px bg-white/[0.05]"
-      />
+      {/* ── Horizontal hairlines — top at nav-height, bottom closes the grid ── */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-20 h-px bg-white/[0.05]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-20 h-px bg-white/[0.05]" />
 
       {/* ── Content grid ── */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-7">
@@ -66,7 +66,7 @@ export function MethodSection() {
           <div className="grid grid-cols-1 lg:grid-cols-3">
 
             {/* Header cell — row 0 col 0 */}
-            <div className="border-b border-white/[0.05] lg:border-r p-8 lg:p-10 flex flex-col min-h-[260px] lg:min-h-[300px]">
+            <div className="method-header border-b border-white/[0.05] lg:border-r p-8 lg:p-10 flex flex-col min-h-[260px] lg:min-h-[300px]">
               <h2
                 className="font-bold text-white leading-none"
                 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', letterSpacing: '-0.04em' }}
@@ -85,7 +85,7 @@ export function MethodSection() {
             {principles.map((p, i) => (
               <div
                 key={i}
-                className={`${principleBorder[i]} p-8 lg:p-10 flex flex-col min-h-[260px] lg:min-h-[300px]`}
+                className={`method-cell ${principleBorder[i]} p-8 lg:p-10 flex flex-col min-h-[260px] lg:min-h-[300px] transition-colors duration-500 hover:bg-white/[0.025]`}
               >
                 <span
                   className="font-bold leading-none"
@@ -118,6 +118,7 @@ export function MethodSection() {
         {/* Col 7: right gutter */}
         <div className="hidden lg:block" aria-hidden="true" />
       </div>
+      <MethodAnimations />
     </section>
   )
 }
