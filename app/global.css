@@ -230,7 +230,3 @@ pre { -ms-overflow-style: none; scrollbar-width: none; }
 .work-heading   { opacity: 0; transform: translateY(24px); }
 .work-row       { opacity: 0; transform: translate(-20px, 8px); }
 .elsewhere-item { opacity: 0; transform: translateY(8px); }
-
-/* ─── GSAP-animated method cells — hidden until ScrollTrigger fires ── */
-.method-header { opacity: 0; transform: translateY(20px); }
-.method-cell   { opacity: 0; transform: translateY(16px); }

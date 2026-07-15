@@ -13,7 +13,6 @@ gsap.registerPlugin(useGSAP)
 
 const links = [
   { href: '/#work', label: 'Work', section: 'work' },
-  { href: '/#method', label: 'Method', section: 'method' },
   { href: '/#about', label: 'About', section: 'about' },
 ]
 
