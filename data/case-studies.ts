@@ -78,6 +78,7 @@ export type WorkItem = {
   bgFrom?: string
   bgTo?: string
   caseReady?: boolean
+  externalUrl?: string
 }
 
 // Ordered display list for the home Work section.
@@ -92,6 +93,7 @@ export const workItems: WorkItem[] = [
     bgFrom: 'var(--hero-bg)',
     bgTo: 'var(--hero-mid)',
     caseReady: false,
+    externalUrl: 'https://www.estorie.fr',
   },
   {
     company: 'SII',
