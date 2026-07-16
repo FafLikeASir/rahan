@@ -6,6 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { cn } from '@/lib/utils'
 import { StickyNav } from '@/components/layout/StickyNav'
 import { Footer } from '@/components/layout/Footer'
+import { SmoothWrapper } from '@/components/layout/SmoothWrapper'
 
 const syne = Syne({
   subsets: ['latin'],
@@ -70,8 +71,10 @@ export default function RootLayout({
           Skip to main content
         </a>
         <StickyNav />
-        {children}
-        <Footer />
+        <SmoothWrapper>
+          {children}
+          <Footer />
+        </SmoothWrapper>
         <Analytics />
         <SpeedInsights />
       </body>
