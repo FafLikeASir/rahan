@@ -88,7 +88,7 @@ export function CaseStudyLayout({
             className="cs-back inline-flex items-center gap-2 text-sm font-medium text-text-tertiary hover:text-primary transition-colors"
           >
             <ArrowLeft className="size-3.5" aria-hidden="true" />
-            Work
+            Back
           </Link>
         </div>
 
