@@ -4,6 +4,8 @@ import { ArrowLeft, ArrowRight, Link as LinkIcon, MapPin } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { CaseStudy } from '@/data/case-studies'
 import { caseStudyMap } from '@/data/case-studies'
+import { CaseStudyEnter } from './CaseStudyEnter'
+import { CaseStudyScrollAnimations } from './CaseStudyScrollAnimations'
 
 // Maps tool name → filename in /public/tools/ (without .svg). Add entry when a new SVG is dropped in.
 const TOOL_ICONS: Record<string, string> = {
@@ -66,7 +68,7 @@ export function CaseStudyLayout({
       >
         {/* Gradient blob — brand orange centered just below the cover, soft outer glow fills the visible area */}
         <div
-          className="pointer-events-none absolute rounded-full"
+          className="cs-gradient pointer-events-none absolute rounded-full"
           aria-hidden="true"
           style={{
             width: '1600px',
@@ -83,7 +85,7 @@ export function CaseStudyLayout({
         <div className="relative z-10 mx-auto w-full max-w-3xl px-6 lg:px-8 pt-28">
           <Link
             href="/#work"
-            className="inline-flex items-center gap-2 text-sm font-medium text-text-tertiary hover:text-primary transition-colors"
+            className="cs-back inline-flex items-center gap-2 text-sm font-medium text-text-tertiary hover:text-primary transition-colors"
           >
             <ArrowLeft className="size-3.5" aria-hidden="true" />
             Work
@@ -95,7 +97,7 @@ export function CaseStudyLayout({
           <div className="flex flex-col items-center gap-3 w-full max-w-[720px]">
             {/* Company icon */}
             <div
-              className="size-10 rounded-xl flex items-center justify-center shrink-0 font-semibold text-sm select-none overflow-hidden shadow-sm"
+              className="cs-icon size-10 rounded-xl flex items-center justify-center shrink-0 font-semibold text-sm select-none overflow-hidden shadow-sm"
               style={
                 !study.logo && study.bgFrom && study.bgTo
                   ? { background: `linear-gradient(135deg, ${study.bgFrom}, ${study.bgTo})` }
@@ -112,7 +114,7 @@ export function CaseStudyLayout({
 
             {/* H1 — Syne Bold 700, 40px, centered */}
             <h1
-              className="font-bold text-[2.5rem] leading-[1.1] tracking-[-0.02em] text-center text-foreground"
+              className="cs-title font-bold text-[2.5rem] leading-[1.1] tracking-[-0.02em] text-center text-foreground"
               style={{ fontFamily: 'var(--font-syne)' }}
             >
               {study.title}
@@ -121,7 +123,7 @@ export function CaseStudyLayout({
 
           {/* Glassmorphism screen wrapper — overflow clips at section bottom (peek effect) */}
           {study.coverImage && (
-            <div className="-mb-10 w-full max-w-[720px]">
+            <div className="cs-cover-image -mb-10 w-full max-w-[720px]">
               <div
                 className="rounded-3xl border border-white/20 p-2"
                 style={{ background: 'rgba(255,255,255,0.2)' }}
@@ -144,16 +146,16 @@ export function CaseStudyLayout({
       {/* Constrained meta + content + footer */}
       <main id="main" className="mx-auto max-w-3xl px-6 pb-32 pt-10 lg:px-8">
         {/* Meta */}
-        <header className="mb-12">
+        <header className="cs-meta mb-12">
           <div className="flex flex-col gap-6">
             {/* Role + date */}
-            <div className="flex flex-col gap-1.5">
+            <div className="cs-row flex flex-col gap-1.5">
               <p className="text-xl font-semibold text-primary">{study.role}</p>
               <p className="text-base text-text-tertiary">{yearsOnly(study.period)}</p>
             </div>
 
             {/* Company row */}
-            <div className="flex items-center gap-5 flex-wrap">
+            <div className="cs-row flex items-center gap-5 flex-wrap">
               <div className="flex items-center gap-2.5">
                 <div
                   className="size-10 rounded-xl flex items-center justify-center shrink-0 font-semibold text-sm select-none overflow-hidden shadow-sm"
@@ -188,7 +190,7 @@ export function CaseStudyLayout({
             </div>
 
             {/* Tools */}
-            <div className="flex flex-wrap gap-2">
+            <div className="cs-row flex flex-wrap gap-2">
               {study.tags.map((tag) => (
                 <ToolTag key={tag} name={tag} />
               ))}
@@ -200,7 +202,7 @@ export function CaseStudyLayout({
         <article className="prose">{children}</article>
 
         {/* Footer nav */}
-        <footer className="mt-20 flex items-center justify-between border-t border-border pt-8">
+        <footer className="cs-footer mt-20 flex items-center justify-between border-t border-border pt-8">
           <Link
             href="/#work"
             className="inline-flex items-center gap-2 text-sm font-medium text-text-tertiary hover:text-primary transition-colors"
@@ -219,6 +221,8 @@ export function CaseStudyLayout({
           )}
         </footer>
       </main>
+      <CaseStudyEnter />
+      <CaseStudyScrollAnimations />
     </>
   )
 }
