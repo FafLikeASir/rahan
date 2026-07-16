@@ -115,25 +115,27 @@ export function WorkSection() {
                     )}
                   </div>
                   <p className="text-base text-muted-foreground">{item.period}</p>
-                  {showDiscover && (
-                    <a
-                      href={item.externalUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 self-start rounded-full border border-foreground/20 px-3 py-1.5 text-xs font-semibold text-foreground mt-1"
-                    >
-                      Discover
-                      <ArrowUpRight className="w-3 h-3" strokeWidth={2.5} />
-                    </a>
-                  )}
-                  {showCta && (
-                    <Link
-                      href={`/work/${item.slug}`}
-                      className="inline-flex items-center gap-1 self-start rounded-full border border-foreground/20 px-3 py-1.5 text-xs font-semibold text-foreground mt-1"
-                    >
-                      Read case study
-                      <ArrowRight className="w-3 h-3" strokeWidth={2.5} />
-                    </Link>
+                  {(showCta || showDiscover) && (
+                    <div className="flex gap-2 mt-1">
+                      {showCta && (
+                        <Link
+                          href={`/work/${item.slug}`}
+                          className="inline-flex flex-1 items-center justify-center rounded-md bg-foreground px-4 py-2.5 text-sm font-semibold text-background"
+                        >
+                          Read case study
+                        </Link>
+                      )}
+                      {showDiscover && (
+                        <a
+                          href={item.externalUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex flex-1 items-center justify-center rounded-md border border-foreground px-4 py-2.5 text-sm font-semibold text-foreground"
+                        >
+                          Discover
+                        </a>
+                      )}
+                    </div>
                   )}
                 </div>
               </div>

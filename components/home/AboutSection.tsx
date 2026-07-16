@@ -88,6 +88,25 @@ export function AboutSection() {
                 </div>
               </div>
             </div>
+
+            <div className="mt-5 flex flex-col gap-2 sm:flex-row">
+              <a
+                href="https://www.linkedin.com/in/maxime-luet/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex flex-1 items-center justify-center rounded-md bg-foreground px-4 py-2.5 text-sm font-semibold text-background"
+              >
+                Get in touch
+              </a>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex flex-1 items-center justify-center rounded-md border border-foreground px-4 py-2.5 text-sm font-semibold text-foreground"
+              >
+                Resume
+              </a>
+            </div>
           </div>
         </div>
 
