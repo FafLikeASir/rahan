@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
+import { TransitionLink as Link } from '@/components/layout/PageTransition'
 import { ArrowLeft, ArrowRight, Link as LinkIcon, MapPin } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { CaseStudy } from '@/data/case-studies'

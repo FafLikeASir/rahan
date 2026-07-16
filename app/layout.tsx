@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 import { StickyNav } from '@/components/layout/StickyNav'
 import { Footer } from '@/components/layout/Footer'
 import { SmoothWrapper } from '@/components/layout/SmoothWrapper'
+import { PageTransitionProvider } from '@/components/layout/PageTransition'
 
 const syne = Syne({
   subsets: ['latin'],
@@ -64,19 +65,21 @@ export default function RootLayout({
       className={cn(syne.variable, jetbrainsMono.variable)}
     >
       <body>
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:ring-2 focus:ring-ring"
-        >
-          Skip to main content
-        </a>
-        <StickyNav />
-        <SmoothWrapper>
-          {children}
-          <Footer />
-        </SmoothWrapper>
-        <Analytics />
-        <SpeedInsights />
+        <PageTransitionProvider>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:ring-2 focus:ring-ring"
+          >
+            Skip to main content
+          </a>
+          <StickyNav />
+          <SmoothWrapper>
+            {children}
+            <Footer />
+          </SmoothWrapper>
+          <Analytics />
+          <SpeedInsights />
+        </PageTransitionProvider>
       </body>
     </html>
   )

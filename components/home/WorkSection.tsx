@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { TransitionLink as Link } from '@/components/layout/PageTransition'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { workItems, sideProjects } from '@/data/case-studies'
 import { cn } from '@/lib/utils'

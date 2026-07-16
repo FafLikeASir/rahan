@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
+import { TransitionLink } from '@/components/layout/PageTransition'
 import { Menu, MessageCircleDashed, X } from 'lucide-react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -147,12 +148,12 @@ export function StickyNav() {
               height={32}
               className="size-8 rounded-full object-cover shrink-0"
             />
-            <Link
+            <TransitionLink
               href="/"
               className="text-lg font-normal text-white transition-opacity duration-200 hover:opacity-70"
             >
               Maxime Luet
-            </Link>
+            </TransitionLink>
           </div>
 
           {/* Nav links */}
@@ -230,12 +231,12 @@ export function StickyNav() {
               height={28}
               className="size-7 rounded-full object-cover shrink-0"
             />
-            <Link
+            <TransitionLink
               href="/"
               className="text-base font-normal text-white transition-opacity duration-200 hover:opacity-70"
             >
               Maxime Luet
-            </Link>
+            </TransitionLink>
             <button
               className="ml-auto text-white/60 hover:text-white transition-colors duration-200"
               onClick={() => setMenuOpen(!menuOpen)}
