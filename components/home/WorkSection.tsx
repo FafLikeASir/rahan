@@ -60,6 +60,7 @@ export function WorkSection() {
         {workItems.map((item, i) => {
           const showCta = !!item.slug && item.caseReady !== false
           const showDiscover = !!item.externalUrl
+          const showDemo = !!item.demoUrl
 
           return (
             <div key={item.company}>
@@ -81,6 +82,17 @@ export function WorkSection() {
                     <p className="text-base text-muted-foreground text-center">{item.period}</p>
                   </div>
                   <div className="flex items-center justify-end">
+                    {showDemo && (
+                      <a
+                        href={item.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold text-foreground underline-offset-2 transition-all"
+                      >
+                        View demo{' '}
+                        <ArrowUpRight className="inline-block w-3 h-3 ml-0.5 align-middle" strokeWidth={2.5} />
+                      </a>
+                    )}
                     {showDiscover && (
                       <a
                         href={item.externalUrl}
@@ -115,7 +127,7 @@ export function WorkSection() {
                     )}
                   </div>
                   <p className="text-base text-muted-foreground">{item.period}</p>
-                  {(showCta || showDiscover) && (
+                  {(showCta || showDiscover || showDemo) && (
                     <div className="flex gap-2 mt-1">
                       {showCta && (
                         <Link
@@ -133,6 +145,16 @@ export function WorkSection() {
                           className="inline-flex flex-1 items-center justify-center rounded-md border border-foreground px-4 py-2.5 text-sm font-semibold text-foreground"
                         >
                           Discover
+                        </a>
+                      )}
+                      {showDemo && (
+                        <a
+                          href={item.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex flex-1 items-center justify-center rounded-md border border-foreground px-4 py-2.5 text-sm font-semibold text-foreground"
+                        >
+                          View demo
                         </a>
                       )}
                     </div>

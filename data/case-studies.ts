@@ -110,6 +110,7 @@ export type WorkItem = {
   bgTo?: string
   caseReady?: boolean
   externalUrl?: string
+  demoUrl?: string
 }
 
 // Ordered display list for the home Work section.
@@ -131,6 +132,7 @@ export const workItems: WorkItem[] = [
     role: 'Senior UI/UX Designer',
     period: '2026',
     logo: '/logos/sii.svg',
+    demoUrl: 'https://vitale-catalogue.vercel.app/',
   },
   {
     company: 'Sparteo',
