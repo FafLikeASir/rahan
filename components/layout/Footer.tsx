@@ -46,7 +46,7 @@ export function Footer() {
               <GitHubIcon className="size-4" />
             </a>
             <a
-              href="https://www.linkedin.com/in/maximeluet"
+              href="https://www.linkedin.com/in/maxime-luet/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-text-secondary hover:text-primary transition-colors"
@@ -78,7 +78,7 @@ export function Footer() {
               <GitHubIcon className="size-4" />
             </a>
             <a
-              href="https://www.linkedin.com/in/maximeluet"
+              href="https://www.linkedin.com/in/maxime-luet/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-text-secondary hover:text-primary transition-colors"
