@@ -1,4 +1,23 @@
-export const caseStudies = [
+export type CaseStudy = {
+  slug: string
+  company: string
+  title: string
+  role: string
+  period: string
+  scope: string
+  context: string
+  description: string
+  logo: string
+  location: string
+  url?: string
+  tags: string[]
+  bgFrom: string
+  bgTo: string
+  nextSlug: string | null
+  caseReady: boolean
+}
+
+export const caseStudies: CaseStudy[] = [
   {
     slug: 'estorie',
     company: 'eStorie',
@@ -9,11 +28,14 @@ export const caseStudies = [
     context: 'funeral-tech startup · B2B2C SaaS',
     description:
       'Sole designer at a funeral-tech startup, building the entire product from scratch: tribute spaces for families, tools for funeral homes, on a design system shipped to production.',
-    tags: ['Design System', 'B2B2C', 'From scratch'],
+    logo: '/logos/estorie.svg',
+    location: 'Le Mans, France',
+    url: 'https://www.estorie.fr',
+    tags: ['Claude', 'Figma', 'Notion'],
     bgFrom: 'var(--hero-bg)',
     bgTo: 'var(--hero-mid)',
     nextSlug: 'mention',
-    caseReady: false, // confidentiality review pending
+    caseReady: false,
   },
   {
     slug: 'mention',
@@ -25,7 +47,10 @@ export const caseStudies = [
     context: 'B2B SaaS · media monitoring & social listening',
     description:
       'Turned a scattered Material UI codebase into a real design system, and rebuilt the design-to-dev workflow so design finally had a seat in product decisions.',
-    tags: ['Design System', 'Governance', 'B2B SaaS'],
+    logo: '/logos/mention.svg',
+    location: 'Paris, France',
+    url: 'https://www.mention.com/',
+    tags: ['Figma', 'Zeplin', 'Storybook', 'MUI', 'TailwindCSS', 'React', 'Github', 'Jira', 'Miro', 'Slack'],
     bgFrom: 'var(--hero-deep)',
     bgTo: 'var(--hero-navy)',
     nextSlug: 'ekonsilio',
@@ -41,17 +66,20 @@ export const caseStudies = [
     context: 'B2B SaaS · conversational marketing',
     description:
       'First designer at a conversational-marketing startup. Defined the UI, founded the design system, and built it in React: the foundation a product team would scale on.',
-    tags: ['UI/UX', 'React', 'From scratch'],
+    logo: '/logos/ekonsilio.svg',
+    location: 'Le Mans, France',
+    url: 'https://www.ekonsilio.com',
+    tags: ['Figma', 'Zeplin', 'Storybook', 'TailwindCSS', 'React', 'Github', 'Jira', 'Slack'],
     bgFrom: 'var(--hero-teal)',
     bgTo: 'var(--hero-green)',
     nextSlug: null,
     caseReady: true,
   },
-] as const
+]
 
-export type CaseStudy = (typeof caseStudies)[number]
-
-export const caseStudyMap = Object.fromEntries(caseStudies.map((c) => [c.slug, c]))
+export const caseStudyMap: Record<string, CaseStudy> = Object.fromEntries(
+  caseStudies.map((c) => [c.slug, c])
+)
 
 export const elsewhere = [
   // ponytail: GIE SESAM-Vitale entry removed before public release — private employer data
