@@ -15,6 +15,7 @@ export type CaseStudy = {
   bgTo: string
   nextSlug: string | null
   caseReady: boolean
+  coverImage?: string
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -48,6 +49,7 @@ export const caseStudies: CaseStudy[] = [
     description:
       'Turned a scattered Material UI codebase into a real design system, and rebuilt the design-to-dev workflow so design finally had a seat in product decisions.',
     logo: '/logos/mention.svg',
+    coverImage: '/covers/mention.jpg',
     location: 'Paris, France',
     url: 'https://www.mention.com/',
     tags: ['Figma', 'Zeplin', 'Storybook', 'MUI', 'TailwindCSS', 'React', 'Github', 'Jira', 'Miro', 'Slack'],
@@ -67,6 +69,7 @@ export const caseStudies: CaseStudy[] = [
     description:
       'First designer at a conversational-marketing startup. Defined the UI, founded the design system, and built it in React: the foundation a product team would scale on.',
     logo: '/logos/ekonsilio.svg',
+    coverImage: '/covers/ekonsilio.jpg',
     location: 'Le Mans, France',
     url: 'https://www.ekonsilio.com',
     tags: ['Figma', 'Zeplin', 'Storybook', 'TailwindCSS', 'React', 'Github', 'Jira', 'Slack'],
