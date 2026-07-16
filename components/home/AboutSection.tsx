@@ -46,7 +46,7 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Right: identity block + what I'm looking for */}
+        {/* Right: identity block + looking for card */}
         <div className="flex flex-col justify-between gap-12">
           <div>
             <h2 className="text-[24px] font-semibold leading-[1.2] tracking-[-0.015em] text-text-primary">
@@ -54,19 +54,39 @@ export function AboutSection() {
             </h2>
             <p className="mt-2 text-body-sm text-text-tertiary">Founding Product Designer at eStorie</p>
           </div>
-          <div>
-            <p className="mb-3 text-tag font-medium uppercase tracking-[0.08em] text-text-tertiary">
-              Looking for
-            </p>
-            <div className="mb-3 flex flex-wrap gap-1.5">
-              <span className="rounded-full border border-border px-2.5 py-0.5 text-sm font-semibold text-text-primary">UI/UX</span>
-              <span className="rounded-full border border-border px-2.5 py-0.5 text-sm font-semibold text-text-primary">Product Design</span>
-              <span className="rounded-full border border-border px-2.5 py-0.5 text-sm font-semibold text-text-primary">Design System Ops</span>
-            </div>
-            <div className="space-y-0.5 text-body-sm leading-[1.5] text-text-secondary">
-              <p>Remote in Europe</p>
-              <p>Hybrid in Paris and western France</p>
-              <p>Onsite at Laval and Le Mans</p>
+
+          <div className="rounded-xl border border-border bg-background p-5">
+            <p className="mb-5 text-body-sm font-semibold text-text-primary">Looking for</p>
+
+            <div className="space-y-4">
+              {/* Roles */}
+              <div>
+                <p className="mb-2 text-tag font-medium uppercase tracking-[0.08em] text-text-tertiary">
+                  Roles
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  <span className="rounded-sm border border-border px-2.5 py-0.5 text-sm font-medium text-text-primary">
+                    Product Design
+                  </span>
+                  <span className="rounded-sm border border-border px-2.5 py-0.5 text-sm font-medium text-text-primary">
+                    UI/UX
+                  </span>
+                  <span className="rounded-sm border border-border px-2.5 py-0.5 text-sm font-medium text-text-primary">
+                    Design System Ops
+                  </span>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div>
+                <p className="mb-2 text-tag font-medium uppercase tracking-[0.08em] text-text-tertiary">
+                  Location
+                </p>
+                <div className="space-y-1 text-body-sm leading-[1.5] text-text-secondary">
+                  <p>🇪🇺 Europe in remote</p>
+                  <p>🇫🇷 Paris or western France in hybrid</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
