@@ -25,6 +25,7 @@ const TransitionContext = createContext<TransitionCtx | null>(null)
 
 export function PageTransitionProvider({ children }: { children: ReactNode }) {
   const overlayRef = useRef<HTMLDivElement>(null)
+  const loaderBarRef = useRef<HTMLDivElement>(null)
   const isTransitioning = useRef(false)
   const isFirst = useRef(true)
   const router = useRouter()
@@ -44,13 +45,15 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
       }
 
       isTransitioning.current = true
+      document.body.style.overflow = 'hidden'
+      gsap.killTweensOf('#smooth-content')
       gsap.set(overlayRef.current, { pointerEvents: 'auto' })
+      gsap.set(loaderBarRef.current, { opacity: 1 })
       gsap.to(overlayRef.current, {
         yPercent: 0,
         duration: 0.45,
         ease: 'power3.inOut',
         onComplete: () => {
-          ScrollSmoother.get()?.scrollTo(0, true)
           router.push(href)
         },
       })
@@ -67,12 +70,16 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const id = setTimeout(() => {
+      document.body.style.overflow = ''
+      gsap.set('#smooth-content', { y: 0 })
+      ScrollSmoother.get()?.scrollTop(0)
       gsap.to(overlayRef.current, {
         yPercent: -100,
         duration: 0.55,
         ease: 'power3.inOut',
         onComplete: () => {
           gsap.set(overlayRef.current, { yPercent: 100, pointerEvents: 'none' })
+          gsap.set(loaderBarRef.current, { opacity: 0 })
           isTransitioning.current = false
         },
       })
@@ -94,7 +101,21 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
           pointerEvents: 'none',
           willChange: 'transform',
         }}
-      />
+      >
+        <div
+          ref={loaderBarRef}
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            width: '40%',
+            height: '2px',
+            opacity: 0,
+            backgroundColor: '#fb3706',
+            animation: 'loader-sweep 1.2s ease-in-out infinite',
+          }}
+        />
+      </div>
     </TransitionContext.Provider>
   )
 }
