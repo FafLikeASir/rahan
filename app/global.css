@@ -228,6 +228,13 @@ pre { -ms-overflow-style: none; scrollbar-width: none; }
 .work-row       { opacity: 0; transform: translate(-20px, 8px); }
 .elsewhere-item { opacity: 0; transform: translateY(8px); }
 
+/* ─── GSAP-animated about section — hidden until ScrollTrigger fires ── */
+.about-label    { opacity: 0; transform: translateY(12px); }
+.about-lead     { opacity: 0; transform: translateY(24px); }
+.about-bio      { opacity: 0; transform: translateY(16px); }
+.about-photo    { opacity: 0; transform: scale(0.96); }
+.about-identity { opacity: 0; transform: translateY(16px); }
+
 /* ─── GSAP-animated case study — hidden until enter / scroll fires ── */
 /* Enter elements (.cs-back/.cs-icon/.cs-title/.cs-cover-image) are hidden via gsap.set in CaseStudyEnter.tsx */
 /* .cs-row initial state is set by gsap.set in CaseStudyEnter.tsx */

@@ -1,11 +1,13 @@
+import { AboutAnimations } from './AboutAnimations'
+
 export function AboutSection() {
   return (
     <section id="about" className="mx-auto max-w-6xl scroll-mt-20 px-6 py-32 lg:px-8">
       {/* Label */}
-      <p className="mb-6 text-tag font-medium uppercase tracking-[0.08em] text-text-tertiary">About</p>
+      <p className="about-label mb-6 text-tag font-medium uppercase tracking-[0.08em] text-text-tertiary">About</p>
 
       {/* Lead sentence — display-scale entry point */}
-      <p className="mb-16 text-[46px] font-semibold leading-[1.5] tracking-[-0.025em] text-text-primary">
+      <p className="about-lead mb-16 text-[46px] font-semibold leading-[1.5] tracking-[-0.025em] text-text-primary">
         I&apos;m a French product designer,<br />
         living in Sarthe but never far from Mayenne dept. 一 my home turf.
       </p>
@@ -14,7 +16,7 @@ export function AboutSection() {
       <div className="grid gap-10 lg:grid-cols-3 lg:gap-16">
 
         {/* Left: bio para 2 + 3 with italic emphasis */}
-        <div className="space-y-5 text-body-sm leading-[1.6] text-text-secondary">
+        <div className="about-bio space-y-5 text-body-sm leading-[1.6] text-text-secondary">
           <p>
             I came to design through code — or more honestly, <em>code through interfaces</em>.
             The abstract languages never quite landed; the visual ones did. Pixels you could
@@ -32,7 +34,7 @@ export function AboutSection() {
 
         {/* Center: photo */}
         <div
-          className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-border bg-muted"
+          className="about-photo relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-border bg-muted"
           aria-label="Maxime Luet"
           role="img"
         >
@@ -47,7 +49,7 @@ export function AboutSection() {
         </div>
 
         {/* Right: identity block + looking for card */}
-        <div className="flex flex-col justify-between gap-12">
+        <div className="about-identity flex flex-col justify-between gap-12">
           <div>
             <h2 className="text-[24px] font-semibold leading-[1.2] tracking-[-0.015em] text-text-primary">
               Maxime Luet
@@ -111,6 +113,7 @@ export function AboutSection() {
         </div>
 
       </div>
+      <AboutAnimations />
     </section>
   )
 }
