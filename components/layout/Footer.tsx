@@ -37,7 +37,7 @@ export function Footer() {
           </p>
           <div className="flex items-center justify-end gap-4">
             <a
-              href="https://github.com/maximeluet"
+              href="https://github.com/FafLikeASir"
               target="_blank"
               rel="noopener noreferrer"
               className="text-text-secondary hover:text-primary transition-colors"
@@ -69,7 +69,7 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com/maximeluet"
+              href="https://github.com/FafLikeASir"
               target="_blank"
               rel="noopener noreferrer"
               className="text-text-secondary hover:text-primary transition-colors"
