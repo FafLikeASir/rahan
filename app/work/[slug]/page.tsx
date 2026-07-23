@@ -6,8 +6,10 @@ import type { Metadata } from 'next'
 import { caseStudies, caseStudyMap } from '@/data/case-studies'
 import { CaseStudyLayout } from '@/components/case-study/CaseStudyLayout'
 import { CaseFigure } from '@/components/case-study/CaseFigure'
+import { PipelineDiagram } from '@/components/case-study/PipelineDiagram'
+import { ScreensGrid } from '@/components/case-study/ScreensGrid'
 
-const components = { CaseFigure }
+const components = { CaseFigure, PipelineDiagram, ScreensGrid }
 
 function getContent(slug: string): string | null {
   const filePath = path.join(process.cwd(), 'content', `${slug}.mdx`)
@@ -47,7 +49,8 @@ export default async function CaseStudyPage({
 
   return (
     <CaseStudyLayout study={study}>
-      <MDXRemote source={content} components={components} />
+      {/* blockJS: false — content/*.mdx is authored locally, not remote/untrusted; default blockJS strips object/array JSX props (e.g. PipelineDiagram's `steps`) */}
+      <MDXRemote source={content} components={components} options={{ blockJS: false }} />
     </CaseStudyLayout>
   )
 }

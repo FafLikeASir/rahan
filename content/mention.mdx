@@ -4,6 +4,12 @@ Mention is a B2B SaaS platform for media monitoring and social listening: it let
 
 The product ran on Material UI, dressed with a thin CSS layer to swap out the colors. On the design side, there was no UI kit — only scattered Figma mockups. Neither design nor code had a shared source of truth.
 
+<CaseFigure
+  src="/case-studies/mention/all-alerts.jpg"
+  alt="Mention alerts dashboard — volume, sentiment, sources, and tags for tracked mentions"
+  caption="Tracking mentions across the web — volume, sentiment, sources, and tags in one view."
+/>
+
 ---
 
 ## The problem
@@ -18,7 +24,23 @@ Between the two, there was no handoff. Delivery meant dropping a Figma link into
 
 The result wasn't just visual inconsistency from one screen to the next. It was a team spending its energy patching and redoing, instead of designing.
 
-<CaseFigure label="Before — the Figma catch-all file" caption="The state of the Figma file when I arrived. No structure, no source of truth, no UI kit." />
+<CaseFigure
+  src="/case-studies/mention/feed.jpg"
+  alt="Mention's Feed screen before the design system"
+  caption="The Feed — one of many screens built by hand, with no shared source of truth behind it."
+/>
+
+<CaseFigure
+  src="/case-studies/mention/nav-flyout.jpg"
+  alt="Publish and Settings flyout menus, side by side, before the design system"
+  caption="Two flyout menus, Publish and Settings — same product, no shared pattern between them."
+/>
+
+<CaseFigure
+  src="/case-studies/mention/modal.jpg"
+  alt="An upsell modal interrupting the alerts dashboard"
+  caption="An upsell modal, dropped over the dashboard mid-task — the kind of inconsistency that piles up without a system."
+/>
 
 ---
 
@@ -50,7 +72,15 @@ The plan advanced on two fronts at once. First, bring teams together around a co
 
 Zeplin became the "ready to dev" gateway: a staging area where only validated mockups entered, accompanied by their specs, serving as the single source of truth for all teams.
 
-<CaseFigure label="Workflow diagram — design → handoff → dev" caption="The handoff pipeline: Figma (in progress) → Zeplin (ready to dev) → Jira user stories → development. Each link carried the context of the one before it." />
+<PipelineDiagram
+  steps={[
+    { tool: 'Figma', role: 'in progress' },
+    { tool: 'Zeplin', role: 'ready to dev' },
+    { tool: 'Jira', role: 'user stories' },
+    { tool: 'Development', role: 'shipped' },
+  ]}
+  caption="The handoff pipeline: Figma (in progress) → Zeplin (ready to dev) → Jira user stories → development. Each link carried the context of the one before it."
+/>
 
 On the Jira side, I put in place a workflow and ticket templates that explicitly connected design and development. A parent ticket carried the product objective — a feature, a problem to solve. Under it, design user stories each held the design context: a link to discovery, UX research, user feedback, the list of cases to produce, a Definition of Done covering all states, and a prototype when needed. Dev user stories were attached to one or more design user stories: the developer found the context, decisions, and comments there, along with the Zeplin links and a reference to Storybook when the component was documented.
 
@@ -64,15 +94,37 @@ The handoff stopped being a wall between two teams. It became a continuous threa
 
 **Building components with developers, not for them.** A design system delivered as a finished product would have been worked around like everything else. The components were built *with* the front-end developers, to fit into their process and become their tool — not another constraint imposed from above.
 
-<CaseFigure label="UI kit — component library in Figma" caption="The Figma component library, built on the redesigned Material UI base. Each component linked to its Storybook counterpart via the Designs addon." />
+<CaseFigure
+  src="/case-studies/mention/components.jpg"
+  alt="Figma UI kit component library — table, navigation rail, quota cards, mentions card, and topbar"
+  caption="A slice of the UI kit's component library — table, navigation rail, quota cards, and mentions card, each documented with its states."
+/>
 
 **Documenting to make the foundation accessible.** A system nobody knows how to read isn't a shared system — it's just another folder. Storybook gave the components a living, documented library that anyone could consult. Crucially, through Storybook's Designs addon, each component was linked to its reference Figma mockup: the mockup appeared directly in a "Design" tab, next to the real component. Designers and developers were finally looking at the same object, described in the same place, without switching between tools. The library also served as an entry point for new front-end and fullstack developers: rather than trawling scattered code to understand what existed, they had a clear catalog — which noticeably accelerated their ramp-up.
+
+<CaseFigure
+  src="/case-studies/mention/specs.jpg"
+  alt="Redline spec for the Button component, showing size, spacing, and radius values"
+  caption="A component spec — the kind of detail that shipped with every validated mockup, no ambiguity left for the developer."
+/>
 
 ---
 
 ## Results
 
 **A shared source of truth.** Designers, PMs, and developers were finally working from the same references: a Figma UI kit, a documented component library, validated mockups. The UI kit covered the full scope of Material UI — around 100 screens across three breakpoints: desktop, tablet, and mobile.
+
+<ScreensGrid
+  images={[
+    { src: '/case-studies/mention/dashboard.jpg', alt: 'Dashboard overview' },
+    { src: '/case-studies/mention/adidas-feed.jpg', alt: 'Adidas feed — per-client mentions' },
+    { src: '/case-studies/mention/mention-detail.jpg', alt: 'Adidas feed with a tracked mention opened in detail' },
+    { src: '/case-studies/mention/publish-calendar.jpg', alt: 'Publish — post scheduling calendar' },
+    { src: '/case-studies/mention/influencers.jpg', alt: 'Influencers — tracking table' },
+    { src: '/case-studies/mention/insight-center.jpg', alt: 'Insight Center — custom reporting' },
+  ]}
+  caption="A sample of the ~100 screens the UI kit covered: dashboard, per-client monitoring, scheduling, influencer tracking, and custom reporting."
+/>
 
 **Less friction, less rework.** The endless review cycles dried up. With a shared Definition of Done and structured components, the debate happened upstream, not at the end. Components, tested once at the library level, no longer needed to be re-checked at every feature — which noticeably reduced the production-testing load.
 

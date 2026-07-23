@@ -60,11 +60,29 @@ For the mockups themselves, Zeplin sat between Figma and the developer. Once a s
 
 ### The product, built on top of the system
 
-<CaseFigure label="The embedded chat widget" caption="The chat window — the visible end of the platform, embedded on client sites." />
+<CaseFigure
+  src="/case-studies/ekonsilio/lead-card.jpg"
+  alt="eKonsilio lead detail screen — client identity, trade-in vehicle, and dealership"
+  caption="A lead's detail view — client identity, trade-in vehicle, and the dealership it routes to. Lead capture, replacing HubSpot."
+/>
 
 With the system in place, the product itself came together. The chat tool first — the advisor interface and the chat windows we embedded on client sites — replacing what LiveChat had been doing. Client and advisor management. Lead capture, replacing HubSpot. Reporting and dashboards, replacing the Excel exports and the PDFs.
 
-<CaseFigure label="Pipeline — Figma → Zeplin → Storybook → React" caption="The design-to-dev pipeline. Four tools, one direction of flow: design — handoff — component documentation — production code." />
+<CaseFigure
+  src="/case-studies/ekonsilio/reporting-leads.jpg"
+  alt="eKonsilio reporting dashboard — activity feed, leads chart, and per-channel stats"
+  caption="Reporting and lead analytics — the dashboards that replaced Excel exports and PDFs."
+/>
+
+<PipelineDiagram
+  steps={[
+    { tool: 'Figma', role: 'design' },
+    { tool: 'Zeplin', role: 'handoff' },
+    { tool: 'Storybook', role: 'component documentation' },
+    { tool: 'React', role: 'production code' },
+  ]}
+  caption="The design-to-dev pipeline. Four tools, one direction of flow: design — handoff — component documentation — production code."
+/>
 
 Through 2020, the design system held the product together. I designed the screens, built the React components, and worked on the integration of the front-end into the app. The fullstack developer owned everything I didn't — backend, infrastructure, deployment. The boundary held cleanly throughout.
 
