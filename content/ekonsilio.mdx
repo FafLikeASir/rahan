@@ -50,7 +50,11 @@ It was a decision about a team I hadn't met yet. It held up.
 
 With Figma's Auto Layout in hand and Tailwind underneath, I built a real design system — the first one I had the time and the tooling to build properly.
 
-<CaseFigure label="Design system — tokens & primitives" caption="Design system foundations, January 2020. Color tokens, type ramp, spacing scale — and a grid of primitives with their state machines (button: default / hover / focus / disabled / error)." />
+<CaseFigure
+  src="/case-studies/ekonsilio/reporting-leads.jpg"
+  alt="eKonsilio product screens — cards, buttons, badges, dropdowns, and charts built from the design system's token set"
+  caption="The system in production — cards, buttons, badges, dropdowns, and charts, all composed from the same color, type, and spacing tokens."
+/>
 
 Foundations first: color, typography, spacing, radius — the tokens that everything above would consume. Both as Figma styles and as Tailwind theme extensions, mapped one-to-one so the design file and the codebase were speaking the same vocabulary, with no translation step between them.
 
@@ -67,12 +71,6 @@ For the mockups themselves, Zeplin sat between Figma and the developer. Once a s
 />
 
 With the system in place, the product itself came together. The chat tool first — the advisor interface and the chat windows we embedded on client sites — replacing what LiveChat had been doing. Client and advisor management. Lead capture, replacing HubSpot. Reporting and dashboards, replacing the Excel exports and the PDFs.
-
-<CaseFigure
-  src="/case-studies/ekonsilio/reporting-leads.jpg"
-  alt="eKonsilio reporting dashboard — activity feed, leads chart, and per-channel stats"
-  caption="Reporting and lead analytics — the dashboards that replaced Excel exports and PDFs."
-/>
 
 <PipelineDiagram
   steps={[
@@ -91,6 +89,12 @@ Through 2020, the design system held the product together. I designed the screen
 ## Act 3 — Scaling up (September 2020 – August 2022)
 
 In September 2020 — about nine months after the rebuild — the team began to grow. A second fullstack developer arrived, then a third. By mid-2021 the engineering team was around five fullstack developers, plus a product manager.
+
+<CaseFigure
+  src="/covers/ekonsilio.jpg"
+  alt="eKonsilio's full reporting dashboard — global stats, conversations, and leads across every channel"
+  caption="eKonsilio by 2022 — the product the design system had scaled to support, across a five-person engineering team."
+/>
 
 The shift in my role didn't happen as a decision. There was no moment where I declared I was stepping back from the code. The product grew, which meant more screens to design, which meant more components to maintain, which meant more documentation to keep up to date. My time slid, gradually, from production work to consolidation work.
 

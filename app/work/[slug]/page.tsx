@@ -8,8 +8,9 @@ import { CaseStudyLayout } from '@/components/case-study/CaseStudyLayout'
 import { CaseFigure } from '@/components/case-study/CaseFigure'
 import { PipelineDiagram } from '@/components/case-study/PipelineDiagram'
 import { ScreensGrid } from '@/components/case-study/ScreensGrid'
+import { CaseLink } from '@/components/case-study/CaseLink'
 
-const components = { CaseFigure, PipelineDiagram, ScreensGrid }
+const components = { CaseFigure, PipelineDiagram, ScreensGrid, CaseLink }
 
 function getContent(slug: string): string | null {
   const filePath = path.join(process.cwd(), 'content', `${slug}.mdx`)

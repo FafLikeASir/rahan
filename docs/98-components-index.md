@@ -19,6 +19,7 @@
 | `SystemSection` | home | `components/home/SystemSection.tsx` | ✅ | `--border`, `--text-secondary`, `--text-tertiary` | Client — hover token preview |
 | `CaseStudyLayout` | case-study | `components/case-study/CaseStudyLayout.tsx` | ✅ | `--border`, `--background`, `--hero-grid-size`, `--hero-grid`, `--text-initial` | Server — MDX wrapper |
 | `CaseFigure` | case-study | `components/case-study/CaseFigure.tsx` | ✅ | `--border`, `--muted`, `--text-tertiary` | Server — image + caption placeholder |
+| `CaseLink` | case-study | `components/case-study/CaseLink.tsx` | ✅ | `--text-secondary`, `--primary` | Server — inline GitHub link for MDX body |
 | `Button` | ui | `components/ui/button.tsx` | ✅ | `--primary`, `--accent`, `--border` | shadcn override — variants default/outline/ghost/link/icon |
 
 ---
